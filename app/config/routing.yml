@@ -1,5 +1,4 @@
 rankingowiec:
-    resource: "@RankingowiecBundle/Controller/"
-    type:     annotation
+    resource: "@RankingowiecBundle/Resources/config/routing.yml"
     prefix:   /
 

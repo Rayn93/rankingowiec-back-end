@@ -1,0 +1,4 @@
+rankingowiec_ranking:
+    resource: "@RankingowiecBundle/Controller/RankingController.php"
+    type:     annotation
+    prefix:   /

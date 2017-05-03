@@ -1,0 +1,359 @@
+{% extends "RankingowiecBundle::base.html.twig" %}
+
+{% block pageTitle %} Oceniaj wszystko i wszystkich! {% endblock %}
+
+{% block pageDescription %} Portal z rankingami, oceniaj sławnych ludzi, filmy, youtuberów czy najlepsze piwo! Dowiedz się co inni myślą. {% endblock %}
+
+{% block bodyId %} homepage {% endblock %}
+
+{% block topImage %}
+    <!--Carousel top-->
+    <div class="container-fluid">
+        <div class="row">
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <!-- Carousel indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                    <li data-target="#myCarousel" data-slide-to="3"></li>
+                    <li data-target="#myCarousel" data-slide-to="4"></li>
+                </ol>
+                <!-- Wrapper for carousel items -->
+                <div class="carousel-inner ">
+                    <div class="item active">
+                        <img src="{{ asset('img/slajdy/slide0.jpg') }}" alt="slajd 1"/>
+
+                        <div class="carousel-caption">
+                            <h3>WITAJ NA RANKINGOWIEC.PL</h3>
+
+                            <p>W pierwszym polskim serwisie rankingowym. Dowiedz się jakie są najpopularniejsze filmy,
+                                kto jest według polaków największym polskim bohaterów lub jakie jest najlepsze piwo?
+                                Miej realny wpływ na rankingi i głosuj! Oceniaj wszystko i wszystkij!</p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <a href="#"><img class="img-responsive" src="{{ asset('img/slajdy/slide1.jpg') }}" alt="slajd 2"/></a>
+
+                        <div class="carousel-caption">
+                            <h3>Polak, który najbardziej przyczynił się do rozwoju polski</h3>
+                            <a class="button" href="#"><span>ZOBACZ RANKING</span></a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <a href="#"><img src="{{ asset('img/slajdy/slide2.jpg') }}" alt="slajd 3"/></a>
+
+                        <div class="carousel-caption">
+                            <h3>Najpiękniejsza polska aktorka</h3>
+                            <a class="button" href="#"><span>ZOBACZ RANKING</span></a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <a href="#"><img src="{{ asset('img/slajdy/slide3.jpg') }}" alt="slajd 3"/></a>
+
+                        <div class="carousel-caption">
+                            <h3>Najlepsza uczelnia wyższa w Polsce</h3>
+                            <a class="button" href="#"><span>ZOBACZ RANKING</span></a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <a href="#"><img src="{{ asset('img/slajdy/slide4.jpg') }}" alt="slajd 4"/></a>
+
+                        <div class="carousel-caption">
+                            <h3>Polskie piwo o najlepszym smaku</h3>
+                            <a class="button" href="#"><span>ZOBACZ RANKING</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end carousel-->
+
+{% endblock %}
+
+{% block underImage %}
+
+    <!--nav bar under carouse-->
+    <div class="nav-category">
+        <ul>
+            <li><a href="#"><i class="fa fa-users" aria-hidden="true"></i> LUDZIE </a></li>
+            <li><a href="#"><i class="fa fa-video-camera" aria-hidden="true"></i> FILM </a></li>
+            <li><a href="#"><i class="fa fa-music" aria-hidden="true"></i> MUZYKA </a></li>
+            <li><a href="#"><i class="fa fa-futbol-o" aria-hidden="true"></i> SPORT </a></li>
+            <li><a href="#"><i class="fa fa-smile-o" aria-hidden="true"></i> ZABAWNE </a></li>
+            <li><a href="#"><i class="fa fa-newspaper-o" aria-hidden="true"></i> WYDARZENIA </a></li>
+            <li><a href="#"><i class="fa fa-laptop" aria-hidden="true"></i> INTERNET </a></li>
+            <li><a href="#"><i class="fa fa-sitemap" aria-hidden="true"></i> WIĘCEJ </a></li>
+        </ul>
+    </div>
+
+{% endblock %}
+
+{% block pageContent %}
+
+    <!-- SECTION THE MOST POPULAR-->
+
+    <section class="home-ranking-section">
+        <div class="container">
+            <div class="row">
+                <header>
+                    <h2 class="home_title"><i class="fa fa-star" aria-hidden="true"></i> Najpopularniejsze rankingi</h2>
+                </header>
+
+                <div class="col-md-6 smallpadding">
+                    <div class="ranking">
+                        <a href="#">
+                            <img class="img-responsive myBackgroundImage" src="{{ asset('img/ranking_photos/rank1.jpg') }}" alt="1">
+
+                            <div class="rank-title "><h3>Teorie spiskowe, w które wierzę Teorie </h3></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6 smallpadding">
+                    <div class="ranking">
+                        <a href="#">
+                            <img class="img-responsive myBackgroundImage" src="{{ asset('img/ranking_photos/rank2.jpg') }}" alt="1">
+
+                            <div class="rank-title "><h3>Teorie spiskowe, w które wierzę Teorie spiskowe, w które które
+                                    wierzę Teorie spiskowe, w które</h3></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 smallpadding">
+                    <div class="ranking">
+                        <a href="#">
+                            <img class="img-responsive myBackgroundImage" src="{{ asset('img/ranking_photos/rank3.jpg') }}" alt="1">
+
+                            <div class="rank-title "><h3>Teorie spiskowe, w które wierzę Teorie spiskowe, w które Teorie
+                                    spiskowe, w które </h3></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 smallpadding">
+                    <div class="ranking">
+                        <a href="#">
+                            <img class="img-responsive myBackgroundImage" src="{{ asset('img/ranking_photos/rank4.jpg') }}" alt="1">
+
+                            <div class="rank-title"><h3>Teorie spiskowe, w które wierzę Teorie spiskowe, w które </h3>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 smallpadding">
+                    <div class="ranking">
+                        <a href="#">
+                            <img class="img-responsive myBackgroundImage" src="{{ asset('img/ranking_photos/rank5.jpg') }}" alt="1">
+
+                            <div class="rank-title"><h3>Teorie spiskowe, w które wierzę </h3></div>
+                        </a>
+                    </div>
+                </div>
+
+                <a class="button" href="#"><span>WIĘCEJ POPULARNYCH</span></a>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="separator">
+        <div class="mask"></div>
+    </div>
+
+    <section class="home-ranking-section">
+        <div class="container">
+            <div class="row">
+                <header>
+                    <h2 class="home_title"><i class="fa fa-clock-o" aria-hidden="true"></i> Niedawno dodane</h2>
+                </header>
+
+
+                <div class="col-md-6 smallpadding">
+                    <div class="ranking">
+                        <a href="#">
+                            <img class="img-responsive myBackgroundImage" src="{{ asset('img/ranking_photos/rank1.jpg') }}" alt="1">
+
+                            <div class="rank-title "><h3>Teorie spiskowe, w które wierzę Teorie </h3></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6 smallpadding">
+                    <div class="ranking">
+                        <a href="#">
+                            <img class="img-responsive myBackgroundImage" src="{{ asset('img/ranking_photos/rank2.jpg') }}" alt="1">
+
+                            <div class="rank-title "><h3>Teorie spiskowe, w które wierzę Teorie spiskowe, w które które
+                                    wierzę Teorie spiskowe, w które</h3></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 smallpadding">
+                    <div class="ranking">
+                        <a href="#">
+                            <img class="img-responsive myBackgroundImage" src="{{ asset('img/ranking_photos/rank3.jpg') }}" alt="1">
+
+                            <div class="rank-title "><h3>Teorie spiskowe, w które wierzę Teorie spiskowe, w które Teorie
+                                    spiskowe, w które </h3></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 smallpadding">
+                    <div class="ranking">
+                        <a href="#">
+                            <img class="img-responsive myBackgroundImage" src="{{ asset('img/ranking_photos/rank4.jpg') }}" alt="1">
+
+                            <div class="rank-title"><h3>Teorie spiskowe, w które wierzę Teorie spiskowe, w które </h3>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 smallpadding">
+                    <div class="ranking">
+                        <a href="#">
+                            <img class="img-responsive myBackgroundImage" src="{{ asset('img/ranking_photos/rank5.jpg') }}" alt="1">
+
+                            <div class="rank-title"><h3>Teorie spiskowe, w które wierzę </h3></div>
+                        </a>
+                    </div>
+                </div>
+
+                <a class="button" href="#"><span>WIĘCEJ NAJNOWSZYCH</span></a>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="separator">
+        <div class="mask"></div>
+    </div>
+
+    <section class="home-ranking-section">
+        <div class="container">
+            <div class="row">
+                <header>
+                    <h2 class="home_title"><i class="fa fa-futbol-o" aria-hidden="true"></i> SPORT</h2>
+                </header>
+
+                <div class="col-md-6 smallpadding">
+                    <div class="ranking">
+                        <a href="#">
+                            <img class="img-responsive myBackgroundImage" src="{{ asset('img/ranking_photos/rank1.jpg') }}" alt="1">
+
+                            <div class="rank-title "><h3>Teorie spiskowe, w które wierzę Teorie </h3></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6 smallpadding">
+                    <div class="ranking">
+                        <a href="#">
+                            <img class="img-responsive myBackgroundImage" src="{{ asset('img/ranking_photos/rank2.jpg') }}" alt="1">
+
+                            <div class="rank-title "><h3>Teorie spiskowe, w które wierzę Teorie spiskowe, w które które
+                                    wierzę Teorie spiskowe, w które</h3></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 smallpadding">
+                    <div class="ranking">
+                        <a href="#">
+                            <img class="img-responsive myBackgroundImage" src="{{ asset('img/ranking_photos/rank3.jpg') }}" alt="1">
+
+                            <div class="rank-title "><h3>Teorie spiskowe, w które wierzę Teorie spiskowe, w które Teorie
+                                    spiskowe, w które </h3></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 smallpadding">
+                    <div class="ranking">
+                        <a href="#">
+                            <img class="img-responsive myBackgroundImage" src="{{ asset('img/ranking_photos/rank4.jpg') }}" alt="1">
+
+                            <div class="rank-title"><h3>Teorie spiskowe, w które wierzę Teorie spiskowe, w które </h3>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 smallpadding">
+                    <div class="ranking">
+                        <a href="#">
+                            <img class="img-responsive myBackgroundImage" src="{{ asset('img/ranking_photos/rank5.jpg') }}" alt="1">
+
+                            <div class="rank-title"><h3>Teorie spiskowe, w które wierzę </h3></div>
+                        </a>
+                    </div>
+                </div>
+
+                <a class="button" href="#"><span>WIĘCEJ</span></a>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="separator">
+        <div class="mask"></div>
+    </div>
+
+    <section class="home-ranking-section">
+        <div class="container">
+            <div class="row">
+                <header>
+                    <h2 class="home_title"><i class="fa fa-users" aria-hidden="true"></i> LUDZIE</h2>
+                </header>
+
+
+                <div class="col-md-6 smallpadding">
+                    <div class="ranking">
+                        <a href="#">
+                            <img class="img-responsive myBackgroundImage" src="{{ asset('img/ranking_photos/rank1.jpg') }}" alt="1">
+
+                            <div class="rank-title "><h3>Teorie spiskowe, w które wierzę Teorie </h3></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6 smallpadding">
+                    <div class="ranking">
+                        <a href="#">
+                            <img class="img-responsive myBackgroundImage" src="{{ asset('img/ranking_photos/rank2.jpg') }}" alt="1">
+
+                            <div class="rank-title "><h3>Teorie spiskowe, w które wierzę Teorie spiskowe, w które które
+                                    wierzę Teorie spiskowe, w które</h3></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 smallpadding">
+                    <div class="ranking">
+                        <a href="#">
+                            <img class="img-responsive myBackgroundImage" src="{{ asset('img/ranking_photos/rank3.jpg') }}" alt="1">
+
+                            <div class="rank-title "><h3>Teorie spiskowe, w które wierzę Teorie spiskowe, w które Teorie
+                                    spiskowe, w które </h3></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 smallpadding">
+                    <div class="ranking">
+                        <a href="#">
+                            <img class="img-responsive myBackgroundImage" src="{{ asset('img/ranking_photos/rank4.jpg') }}" alt="1">
+
+                            <div class="rank-title"><h3>Teorie spiskowe, w które wierzę Teorie spiskowe, w które </h3>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 smallpadding">
+                    <div class="ranking">
+                        <a href="#">
+                            <img class="img-responsive myBackgroundImage" src="{{ asset('img/ranking_photos/rank5.jpg') }}" alt="1">
+
+                            <div class="rank-title"><h3>Teorie spiskowe, w które wierzę </h3></div>
+                        </a>
+                    </div>
+                </div>
+
+                <a class="button" href="#"><span>WIĘCEJ</span></a>
+
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
