@@ -24,7 +24,7 @@ class RankingController extends Controller
     /**
      * @Route(
      *     "/ranking",
-     *      name="ranking_slug"
+     *      name="single_ranking"
      * )
      *
      * @Template()
@@ -35,6 +35,10 @@ class RankingController extends Controller
     }
 
     /**
+     * @Route(
+     *     "/obiekt/{slug}",
+     *      name="single_object"
+     * )
      * @Template()
      */
     public function objectAction()
@@ -43,6 +47,10 @@ class RankingController extends Controller
     }
 
     /**
+     * @Route(
+     *     "/kategoria",
+     *      name="ranking_category"
+     * )
      * @Template()
      */
     public function categoryAction()
@@ -51,6 +59,10 @@ class RankingController extends Controller
     }
 
     /**
+     * @Route(
+     *     "/tag",
+     *      name="ranking_tag"
+     * )
      * @Template()
      */
     public function tagAction()
@@ -59,6 +71,10 @@ class RankingController extends Controller
     }
 
     /**
+     * @Route(
+     *     "/szukaj",
+     *      name="ranking_search"
+     * )
      * @Template()
      */
     public function searchAction()
