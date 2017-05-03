@@ -1,0 +1,4 @@
+services:
+#    rankingowiec.example:
+#        class: RankingowiecBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

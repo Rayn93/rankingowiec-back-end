@@ -1,0 +1,5 @@
+rankingowiec:
+    resource: "@RankingowiecBundle/Controller/"
+    type:     annotation
+    prefix:   /
+

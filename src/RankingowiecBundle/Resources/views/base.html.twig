@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8"/>
+    <title>Rankingowiec.pl - oceniaj wszystko i wszystkich!</title>
+    <meta name="description"
+          content="Portal z rankingami, oceniaj sławnych ludzi, filmy, youtuberów czy najlepsze piwo! Dowiedz się co inni myślą."/>
+    <meta name="keywords" content="Ranking, rankingi, oceniać"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge.chrome=1"/>
+    <meta name="author" content="Robert Saternus">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href='http://fonts.googleapis.com/css?family=Pragati+Narrow:700,400&subset=latin,latin-ext' rel='stylesheet'
+          type='text/css'>
+    <!--<link rel="shortcut icon" href="img/favicon.ico" type="image/icon">-->
+
+    <link rel="stylesheet" href="{{ asset('css/html5reset-1.6.1.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/style_main.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/media-queries.css') }}" />
+
+    {#<link rel="stylesheet" type="text/css" href="css/html5reset-1.6.1.css">#}
+    {#<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">#}
+    {#<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">#}
+    {#<link rel="stylesheet" type="text/css" href="css/style_main.css">#}
+    {#<link rel="stylesheet" type="text/css" href="css/media-queries.css">#}
+
+</head>
+
+<body id="homepage">
+
+<div id="fb-root"></div>
+<script>(function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.net/pl_PL/sdk.js#xfbml=1&version=v2.7&appId=603470526483998";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+
+<!--HEADER -->
+<header>
+    <!--STICKY BAR-->
+    <div id="header-top">
+        <div class="burger"><i class="fa fa-thumbs-up" aria-hidden="true"></i>RANKINGI</div>
+        <div class="traggle-menu">
+            <i class="fa fa-times-circle close" aria-hidden="true"></i>
+
+            <div class="logo">
+                <h1><a href="#">RANKING <br/> - owiec</a></h1>
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a href="#"><i class="fa fa-users" aria-hidden="true"></i> LUDZIE </a></li>
+                    <li><a href="#"><i class="fa fa-video-camera" aria-hidden="true"></i> FILM </a></li>
+                    <li><a href="#"><i class="fa fa-television" aria-hidden="true"></i> TELEWIZJA </a></li>
+                    <li><a href="#"><i class="fa fa-music" aria-hidden="true"></i> MUZYKA </a></li>
+                    <li><a href="#"><i class="fa fa-futbol-o" aria-hidden="true"></i> SPORT </a></li>
+                    <li><a href="#"><i class="fa fa-gamepad" aria-hidden="true"></i> GRY </a></li>
+                    <li><a href="#"><i class="fa fa-laptop" aria-hidden="true"></i> INTERNET </a></li>
+                    <li><a href="#"><i class="fa fa-smile-o" aria-hidden="true"></i> ZABAWNE </a></li>
+                    <li><a href="#"><i class="fa fa-flask" aria-hidden="true"></i> NAUKA </a></li>
+                    <li><a href="#"><i class="fa fa-book" aria-hidden="true"></i> KSIĄŻKI </a></li>
+                    <li><a href="#"><i class="fa fa-newspaper-o" aria-hidden="true"></i> WYDARZENIA </a></li>
+                    <li><a href="#"><i class="fa fa-rocket" aria-hidden="true"></i> TECHNOLOGIA </a></li>
+                    <li><a href="#"><i class="fa fa-fort-awesome" aria-hidden="true"></i> POLITYKA I HISTORIA </a></li>
+                    <li><a href="#"><i class="fa fa-cutlery" aria-hidden="true"></i> JEDZENIE I NAPOJE </a></li>
+                    <li><a href="#"><i class="fa fa-sitemap" aria-hidden="true"></i> MAPA KATEGORI </a></li>
+                </ul>
+            </nav>
+        </div>
+
+
+        <div class="icons-header">
+            <ul>
+                <li><a href="#" data-toggle="modal" data-target="#search-modal"><i class="fa fa-search"
+                                                                                   aria-hidden="true"></i></a></li>
+                <li><a href="#" data-toggle="modal" data-target="#login-modal"><i class="fa fa-user"
+                                                                                  aria-hidden="true"></i></a></li>
+                <li><a href="index.html"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+            </ul>
+
+        </div>
+    </div>
+    <!--end sticky bar-->
+
+    <!-- Modal with member login -->
+    <div id="login-modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3 class="modal-title">ZALOGUJ SIĘ NA TWOJE KONTO</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                        </div>
+                        <div class="col-sm-8">
+
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="inputEmail" class="col-xs-3 control-label">Email</label>
+                                    <div class="col-xs-9">
+                                        <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword" class="col-xs-3 control-label">Hasło</label>
+                                    <div class="col-xs-9">
+                                        <input type="password" class="form-control" id="inputPassword"
+                                               placeholder="Hasło">
+                                        <p class="small"><a href="#">Nie pamiętam hasła</a></p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-xs-offset-1 col-xs-10">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox"> Zapamiętaj mnie
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-xs-offset-1 col-xs-10">
+                                        <button type="submit" class="btn btn-success btn-lg">Zaloguj</button>
+                                    </div>
+                                </div>
+                                <p class="bad-credential">Niepoprawny login lub hasło</p>
+
+                            </form>
+
+                        </div>
+                    </div>
+
+                    <div class="separator">
+                        <div class="mask"></div>
+                    </div>
+
+                    <h6>Nie masz jeszcze konta na Rankingowcu?</h6>
+                    <a class="button" href="#"><span>ZAŁÓŻ DARMOWE KONTO</span></a>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Modal with searching form -->
+    <div id="search-modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3 class="modal-title">SZUKAJ NA RANKINGOWCU</h3>
+                </div>
+                <div class="modal-body">
+
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <label class="sr-only" for="search-input">Amount (in dollars)</label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></div>
+                                <input type="text" class="form-control" id="search-input"
+                                       placeholder="Szukana fraza...">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-success btn-lg">Szukaj</button>
+                    </form>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Carousel top-->
+    <div class="container-fluid">
+        <div class="row">
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <!-- Carousel indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                    <li data-target="#myCarousel" data-slide-to="3"></li>
+                    <li data-target="#myCarousel" data-slide-to="4"></li>
+                </ol>
+                <!-- Wrapper for carousel items -->
+                <div class="carousel-inner ">
+                    <div class="item active">
+                        <img src="img/slajdy/slide0.jpg" alt="slajd 1"/>
+
+                        <div class="carousel-caption">
+                            <h3>WITAJ NA RANKINGOWIEC.PL</h3>
+
+                            <p>W pierwszym polskim serwisie rankingowym. Dowiedz się jakie są najpopularniejsze filmy,
+                                kto jest według polaków największym polskim bohaterów lub jakie jest najlepsze piwo?
+                                Miej realny wpływ na rankingi i głosuj! Oceniaj wszystko i wszystkij!</p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <a href="#"><img class="img-responsive" src="img/slajdy/slide1.jpg" alt="slajd 2"/></a>
+
+                        <div class="carousel-caption">
+                            <h3>Polak, który najbardziej przyczynił się do rozwoju polski</h3>
+                            <a class="button" href="#"><span>ZOBACZ RANKING</span></a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <a href="#"><img src="img/slajdy/slide2.jpg" alt="slajd 3"/></a>
+
+                        <div class="carousel-caption">
+                            <h3>Najpiękniejsza polska aktorka</h3>
+                            <a class="button" href="#"><span>ZOBACZ RANKING</span></a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <a href="#"><img src="img/slajdy/slide3.jpg" alt="slajd 3"/></a>
+
+                        <div class="carousel-caption">
+                            <h3>Najlepsza uczelnia wyższa w Polsce</h3>
+                            <a class="button" href="#"><span>ZOBACZ RANKING</span></a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <a href="#"><img src="img/slajdy/slide4.jpg" alt="slajd 4"/></a>
+
+                        <div class="carousel-caption">
+                            <h3>Polskie piwo o najlepszym smaku</h3>
+                            <a class="button" href="#"><span>ZOBACZ RANKING</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end carousel-->
+
+    <!--nav bar under carouse-->
+    <div class="nav-category">
+        <ul>
+            <li><a href="#"><i class="fa fa-users" aria-hidden="true"></i> LUDZIE </a></li>
+            <li><a href="#"><i class="fa fa-video-camera" aria-hidden="true"></i> FILM </a></li>
+            <li><a href="#"><i class="fa fa-music" aria-hidden="true"></i> MUZYKA </a></li>
+            <li><a href="#"><i class="fa fa-futbol-o" aria-hidden="true"></i> SPORT </a></li>
+            <li><a href="#"><i class="fa fa-smile-o" aria-hidden="true"></i> ZABAWNE </a></li>
+            <li><a href="#"><i class="fa fa-newspaper-o" aria-hidden="true"></i> WYDARZENIA </a></li>
+            <li><a href="#"><i class="fa fa-laptop" aria-hidden="true"></i> INTERNET </a></li>
+            <li><a href="#"><i class="fa fa-sitemap" aria-hidden="true"></i> WIĘCEJ </a></li>
+        </ul>
+    </div>
+
+</header>
+
+<main>
+
+    <!-- SECTION THE MOST POPULAR-->
+
+    <section class="home-ranking-section">
+        <div class="container">
+            <div class="row">
+                <header>
+                    <h2 class="home_title"><i class="fa fa-star" aria-hidden="true"></i> Najpopularniejsze rankingi</h2>
+                </header>
+
+                <div class="col-md-6 smallpadding">
+                    <div class="ranking">
+                        <a href="#">
+                            <img class="img-responsive myBackgroundImage" src="img/ranking_photos/rank1.jpg" alt="1">
+
+                            <div class="rank-title "><h3>Teorie spiskowe, w które wierzę Teorie </h3></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6 smallpadding">
+                    <div class="ranking">
+                        <a href="#">
+                            <img class="img-responsive myBackgroundImage" src="img/ranking_photos/rank2.jpg" alt="1">
+
+                            <div class="rank-title "><h3>Teorie spiskowe, w które wierzę Teorie spiskowe, w które które
+                                    wierzę Teorie spiskowe, w które</h3></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 smallpadding">
+                    <div class="ranking">
+                        <a href="#">
+                            <img class="img-responsive myBackgroundImage" src="img/ranking_photos/rank3.jpg" alt="1">
+
+                            <div class="rank-title "><h3>Teorie spiskowe, w które wierzę Teorie spiskowe, w które Teorie
+                                    spiskowe, w które </h3></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 smallpadding">
+                    <div class="ranking">
+                        <a href="#">
+                            <img class="img-responsive myBackgroundImage" src="img/ranking_photos/rank4.jpg" alt="1">
+
+                            <div class="rank-title"><h3>Teorie spiskowe, w które wierzę Teorie spiskowe, w które </h3>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 smallpadding">
+                    <div class="ranking">
+                        <a href="#">
+                            <img class="img-responsive myBackgroundImage" src="img/ranking_photos/rank5.jpg" alt="1">
+
+                            <div class="rank-title"><h3>Teorie spiskowe, w które wierzę </h3></div>
+                        </a>
+                    </div>
+                </div>
+
+                <a class="button" href="#"><span>WIĘCEJ POPULARNYCH</span></a>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="separator">
+        <div class="mask"></div>
+    </div>
+
+    <section class="home-ranking-section">
+        <div class="container">
+            <div class="row">
+                <header>
+                    <h2 class="home_title"><i class="fa fa-clock-o" aria-hidden="true"></i> Niedawno dodane</h2>
+                </header>
+
+
+                <div class="col-md-4 smallpadding">
+                    <div class="ranking">
+                        <a href="#">
+                            <img class="img-responsive myBackgroundImage" src="img/ranking_photos/rank3.jpg" alt="1">
+
+                            <div class="rank-title "><h3>Teorie spiskowe, w które wierzę Teorie spiskowe, w które Teorie
+                                    spiskowe, w które </h3></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 smallpadding">
+                    <div class="ranking">
+                        <a href="#">
+                            <img class="img-responsive myBackgroundImage" src="img/ranking_photos/rank4.jpg" alt="1">
+
+                            <div class="rank-title"><h3>Teorie spiskowe, w które wierzę Teorie spiskowe, w które </h3>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 smallpadding">
+                    <div class="ranking">
+                        <a href="#">
+                            <img class="img-responsive myBackgroundImage" src="img/ranking_photos/rank5.jpg" alt="1">
+
+                            <div class="rank-title"><h3>Teorie spiskowe, w które wierzę </h3></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6 smallpadding">
+                    <div class="ranking">
+                        <a href="#">
+                            <img class="img-responsive myBackgroundImage" src="img/ranking_photos/rank1.jpg" alt="1">
+
+                            <div class="rank-title "><h3>Teorie spiskowe, w które wierzę Teorie </h3></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6 smallpadding">
+                    <div class="ranking">
+                        <a href="#">
+                            <img class="img-responsive myBackgroundImage" src="img/ranking_photos/rank2.jpg" alt="1">
+
+                            <div class="rank-title "><h3>Teorie spiskowe, w które wierzę Teorie spiskowe, w które które
+                                    wierzę Teorie spiskowe, w które</h3></div>
+                        </a>
+                    </div>
+                </div>
+
+                <a class="button" href="#"><span>WIĘCEJ NAJNOWSZYCH</span></a>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="separator">
+        <div class="mask"></div>
+    </div>
+
+    <section class="home-ranking-section">
+        <div class="container">
+            <div class="row">
+                <header>
+                    <h2 class="home_title"><i class="fa fa-futbol-o" aria-hidden="true"></i> SPORT</h2>
+                </header>
+
+                <div class="col-md-6 smallpadding">
+                    <div class="ranking">
+                        <a href="#">
+                            <img class="img-responsive myBackgroundImage" src="img/ranking_photos/rank1.jpg" alt="1">
+
+                            <div class="rank-title "><h3>Teorie spiskowe, w które wierzę Teorie </h3></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6 smallpadding">
+                    <div class="ranking">
+                        <a href="#">
+                            <img class="img-responsive myBackgroundImage" src="img/ranking_photos/rank2.jpg" alt="1">
+
+                            <div class="rank-title "><h3>Teorie spiskowe, w które wierzę Teorie spiskowe, w które które
+                                    wierzę Teorie spiskowe, w które</h3></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 smallpadding">
+                    <div class="ranking">
+                        <a href="#">
+                            <img class="img-responsive myBackgroundImage" src="img/ranking_photos/rank3.jpg" alt="1">
+
+                            <div class="rank-title "><h3>Teorie spiskowe, w które wierzę Teorie spiskowe, w które Teorie
+                                    spiskowe, w które </h3></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 smallpadding">
+                    <div class="ranking">
+                        <a href="#">
+                            <img class="img-responsive myBackgroundImage" src="img/ranking_photos/rank4.jpg" alt="1">
+
+                            <div class="rank-title"><h3>Teorie spiskowe, w które wierzę Teorie spiskowe, w które </h3>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 smallpadding">
+                    <div class="ranking">
+                        <a href="#">
+                            <img class="img-responsive myBackgroundImage" src="img/ranking_photos/rank5.jpg" alt="1">
+
+                            <div class="rank-title"><h3>Teorie spiskowe, w które wierzę </h3></div>
+                        </a>
+                    </div>
+                </div>
+
+                <a class="button" href="#"><span>WIĘCEJ</span></a>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="separator">
+        <div class="mask"></div>
+    </div>
+
+    <section class="home-ranking-section">
+        <div class="container">
+            <div class="row">
+                <header>
+                    <h2 class="home_title"><i class="fa fa-users" aria-hidden="true"></i> LUDZIE</h2>
+                </header>
+
+
+                <div class="col-md-4 smallpadding">
+                    <div class="ranking">
+                        <a href="#">
+                            <img class="img-responsive myBackgroundImage" src="img/ranking_photos/rank3.jpg" alt="1">
+                            <div class="rank-title "><h3>Teorie spiskowe, w które wierzę Teorie spiskowe, w które Teorie
+                                    spiskowe, w które </h3></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 smallpadding">
+                    <div class="ranking">
+                        <a href="#">
+                            <img class="img-responsive myBackgroundImage" src="img/ranking_photos/rank4.jpg" alt="1">
+                            <div class="rank-title"><h3>Teorie spiskowe, w które wierzę Teorie spiskowe, w które </h3>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 smallpadding">
+                    <div class="ranking">
+                        <a href="#">
+                            <img class="img-responsive myBackgroundImage" src="img/ranking_photos/rank5.jpg" alt="1">
+                            <div class="rank-title"><h3>Teorie spiskowe, w które wierzę </h3></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6 smallpadding">
+                    <div class="ranking">
+                        <a href="#">
+                            <img class="img-responsive myBackgroundImage" src="img/ranking_photos/rank1.jpg" alt="1">
+                            <div class="rank-title "><h3>Teorie spiskowe, w które wierzę Teorie </h3></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6 smallpadding">
+                    <div class="ranking">
+                        <a href="#">
+                            <img class="img-responsive myBackgroundImage" src="img/ranking_photos/rank2.jpg" alt="1">
+                            <div class="rank-title "><h3>Teorie spiskowe, w które wierzę Teorie spiskowe, w które które
+                                    wierzę Teorie spiskowe, w które</h3></div>
+                        </a>
+                    </div>
+                </div>
+
+                <a class="button" href="#"><span>WIĘCEJ</span></a>
+
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 myself">
+                <p><strong>RANKINGOWIEC</strong> to witryna, która umożliwia głosowanie praktycznie wszystko przez
+                    wszystkich. Mamy dość opinii pojedyńczyć ludzi, dlatego stworzyliśmy serwis, gdzie rankingi bazują
+                    opinii większości. Dopiero ruszamy, ale i tak dodajemy kilkanaście/kiladziesiąt rankingów dziennie.
+                    Chcemy aby Rankingowiec był dla Was, dlatego zapraszamy do dyskucji w <a href="#">poczekalni</a>
+                    oraz <a href="#">listy to-do</a>.</p>
+            </div>
+
+            <div class="col-sm-4 nav-footer">
+                <div class="col-md-4 hidden-xs hidden-sm ico"><i class="fa fa-question-circle-o" aria-hidden="true"></i>
+                </div>
+                <div class="col-md-8 col-sm-12 navi">
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">JAK TO DZIAŁA</a></li>
+                        <li><a href="#">MAPA STRONY</a></li>
+                        <li><a href="#">KONTAKT</a></li>
+                        <li><a href="#">REGULAMIN</a></li>
+                        <li><a href="#">POLITYKA PRYWATNOŚCI</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">&copy; Wykonanie i prowadzenie strony: <a href="http://robertsaternus.pl/">Robert
+            Saternus</a></div>
+</footer>
+
+
+<!--SOCIAL MEDIA ICONS-->
+<div id="fb-widget">
+    <div class="fb-page" data-href="https://www.facebook.com/freelancelotPL" data-tabs="timeline"
+         data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+        <blockquote cite="https://www.facebook.com/freelancelotPL" class="fb-xfbml-parse-ignore"><a
+                    href="https://www.facebook.com/freelancelotPL">FreeLancelot</a></blockquote>
+    </div>
+    <img class="zakladka" src="img/facebook-icon.png" alt="Rankingowiec facebook funpage"/>
+</div>
+
+
+<script src="{{ asset('js/jquery-2.1.3.min.js') }}"></script>
+<script src="{{ asset('js/jquery-ui.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('js/script_main.js') }}"></script>
+
+
+{#<script src="js/jquery-2.1.3.min.js"></script>#}
+{#<script src="js/jquery-ui.min.js"></script>#}
+{#<script src="js/bootstrap.min.js"></script>#}
+{#<!--<script src="js/jquery.dotdotdot.min.js"></script>-->#}
+{#<script src="js/script_main.js"></script>#}
+
+</body>
+
+</html>
