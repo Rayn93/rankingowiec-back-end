@@ -81,4 +81,19 @@ class RankingController extends Controller
     {
         return array();
     }
+
+    /**
+     * @Route(
+     *     "/mapa-strony",
+     *      name="ranking_page_map"
+     * )
+     * @Template()
+     */
+    public function pageMapAction()
+    {
+        return array();
+    }
+
+
+
 }

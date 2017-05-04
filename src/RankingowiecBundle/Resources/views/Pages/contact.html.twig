@@ -1,0 +1,62 @@
+{% extends "RankingowiecBundle::base.html.twig" %}
+
+{% block pageTitle %} Kontakt {% endblock %}
+
+{% block pageDescription %} Masz jakieś pytanie lub propozycję współpracy? Skontaktuj się z Twórcami Rankingowca. {% endblock %}
+
+{% block bodyId %} static {% endblock %}
+
+{% block topImage %}
+
+    <!--Top Imagine for static pages-->
+    <div class="container-fluid nopadding">
+        <div class="row nomargin">
+            <div class="static-top">
+                <img class="img-background" src="{{ asset('img/static_backgroud.jpg') }}" alt="object_bq">
+
+                <h1>Skontaktuj się z nami ;)</h1>
+
+            </div>
+        </div>
+    </div>
+    <!--END Object top info-->
+
+{% endblock %}
+
+
+{% block pageContent %}
+
+    <section class="static-content contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas mattis eget odio eget tincidunt. Nullam tincidunt turpis est, et tincidunt nisl malesuada vel. Praesent ornare dictum lectus, id molestie tellus feugiat eu. Suspendisse dictum massa quis erat pretium condimentum nec a quam. Phasellus ac turpis tincidunt, congue mi nec, malesuada erat. Aenean vel laoreet nisi. Sed tincidunt blandit vulputate. </p>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <form>
+                        <div class="form-group">
+                            <label class="hidden" for="guest-name">Imię i nazwisko</label>
+                            <input type="text" class="form-control" id="guest-name" placeholder="Imię i nazwisko">
+                        </div>
+                        <div class="form-group">
+                            <label class="hidden" for="guest-email">Password</label>
+                            <input type="email" class="form-control" id="guest-email" placeholder="Twój Email">
+                        </div>
+                        <div class="form-group">
+                            <label class="hidden" for="guest-massage">Password</label>
+                            <textarea  class="form-control" id="guest-massage" placeholder="Wiadomość"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-success btn-lg">Wyślij</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

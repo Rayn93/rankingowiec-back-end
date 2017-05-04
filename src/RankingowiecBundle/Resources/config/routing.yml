@@ -2,3 +2,8 @@ rankingowiec_ranking:
     resource: "@RankingowiecBundle/Controller/RankingController.php"
     type:     annotation
     prefix:   /
+
+rankingowiec_pages:
+    resource: "@RankingowiecBundle/Controller/PagesController.php"
+    type:     annotation
+    prefix:   /
