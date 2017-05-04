@@ -1,0 +1,40 @@
+{% extends "RankingowiecBundle::base.html.twig" %}
+
+{% block pageTitle %} Problemy z serwerem {% endblock %}
+
+{% block pageDescription %} Błąd 500 - Problemy z serwerem. {% endblock %}
+
+{% block bodyId %} static {% endblock %}
+
+{% block topImage %}
+
+    <!--Top Imagine for static pages-->
+    <div class="container-fluid nopadding">
+        <div class="row nomargin">
+            <div class="static-top">
+                <img class="img-background" src="{{ asset('img/static_backgroud.jpg') }}" alt="object_bq">
+
+                <h1>PROBLEMY Z SERWEREM <BR /> BŁĄD 500</h1>
+
+            </div>
+        </div>
+    </div>
+    <!--END Object top info-->
+
+{% endblock %}
+
+
+{% block pageContent %}
+
+    <section class="static-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <p class="error-massage">Przepraszamy, nastąpił błąd serwera. Postaramy się go naprawić tak szybko jak to jest tylko możliwe. Zabraszamy na Rankingowca niebawem.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "RankingowiecBundle::base.html.twig" %}
+
+{% block pageTitle %} Nie znaleziono strony {% endblock %}
+
+{% block pageDescription %} Błąd 404 - Nie znaleziono strony. {% endblock %}
+
+{% block bodyId %} static {% endblock %}
+
+{% block topImage %}
+
+    <!--Top Imagine for static pages-->
+    <div class="container-fluid nopadding">
+        <div class="row nomargin">
+            <div class="static-top">
+                <img class="img-background" src="{{ asset('img/static_backgroud.jpg') }}" alt="object_bq">
+
+                <h1>NIE ZNALEZIONO STRONY <BR /> BŁĄD 404</h1>
+
+            </div>
+        </div>
+    </div>
+    <!--END Object top info-->
+
+{% endblock %}
+
+
+{% block pageContent %}
+
+    <section class="static-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <p class="error-massage">Zawędrowałeś pod zły adres. Nie ma takiej strony. Wróć najlepiej na <a href="#">stronę główną</a></p>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

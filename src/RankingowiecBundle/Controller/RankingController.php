@@ -18,6 +18,7 @@ class RankingController extends Controller
      */
     public function indexAction()
     {
+
         return array();
     }
 
