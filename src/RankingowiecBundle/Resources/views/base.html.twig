@@ -24,7 +24,9 @@
             'assets/css/select2.min.css'
             'assets/css/style_main.css'
             'assets/css/media-queries.css'
-            filter='cssrewrite' %}
+            filter='cssrewrite'
+            output = 'css/website_compiled.css'
+        %}
             <link rel="stylesheet" href="{{ asset_url }}" />
         {% endstylesheets %}
 
@@ -254,6 +256,7 @@
         'assets/js/bootstrap.min.js'
         'assets/js/select2.min.js'
         'assets/js/script_main.js'
+        output = 'js/website_compiled.js'
     %}
         <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
