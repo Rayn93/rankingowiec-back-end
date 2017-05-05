@@ -37,7 +37,7 @@ class RankingController extends Controller
 
     /**
      * @Route(
-     *     "/obiekt/{slug}",
+     *     "/obiekt",
      *      name="single_object"
      * )
      * @Template()
