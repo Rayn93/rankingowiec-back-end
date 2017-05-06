@@ -55,7 +55,29 @@ class Ranking{
     private $thumbnail;
 
 
+    /**
+     * @ORM\ManyToMany(
+     *     targetEntity = "Category",
+     *     inversedBy = "rankings"
+     * )
+     *
+     * @ORM\JoinTable(
+     *     name = "rankings_categories"
+     * )
+     */
     private $categories;
+
+
+    /**
+     * @ORM\ManyToMany(
+     *     targetEntity = "Tag",
+     *     inversedBy = "rankings"
+     * )
+     *
+     * @ORM\JoinTable(
+     *     name = "rankings_tags"
+     * )
+     */
     private $tags;
 
 

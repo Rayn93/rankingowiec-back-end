@@ -73,7 +73,18 @@ class RankObject{
     private $published_date;
 
 
-
+    /**
+     * @ORM\ManyToOne(
+     *     targetEntity = "Category",
+     *     inversedBy = "objects"
+     * )
+     *
+     * @ORM\JoinColumn(
+     *     name = "category_id",
+     *     referencedColumnName = "id",
+     *     onDelete = "SET NULL"
+     * )
+     */
     private $category;
 
 }

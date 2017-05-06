@@ -12,4 +12,12 @@ use Doctrine\ORM\Mapping as ORM;
 class Tag extends AbstractTaxonomy {
 
 
+    /**
+     * @ORM\ManyToMany(
+     *     targetEntity = "Ranking",
+     *     mappedBy = "tags"
+     * )
+     */
+    protected $rankings;
+
 }

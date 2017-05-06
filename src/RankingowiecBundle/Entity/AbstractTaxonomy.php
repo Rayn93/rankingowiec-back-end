@@ -28,7 +28,7 @@ abstract class AbstractTaxonomy{
     private $slug;
 
 
-    private $rankings;
+    protected $rankings;
 
 
 }
