@@ -64,7 +64,6 @@ class PagesFixtures extends AbstractFixture implements OrderedFixtureInterface{
             $Page = new Page();
 
             $Page->setTitle($details['title'])
-                ->setSlug($details['slug'])
                 ->setContent($details['content'])
                 ->setThumbnail($details['thumbnail'])
                 ->setAuthor($details['author'])

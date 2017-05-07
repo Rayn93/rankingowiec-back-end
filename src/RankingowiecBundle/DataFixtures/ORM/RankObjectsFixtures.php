@@ -86,7 +86,6 @@ class RankObjectsFixtures extends AbstractFixture implements OrderedFixtureInter
             $RankObject = new RankObject();
 
             $RankObject->setTitle($details['title'])
-                ->setSlug($details['slug'])
                 ->setDescription($details['description'])
                 ->setThumbnail($details['thumbnail'])
                 ->setAuthor($details['author'])

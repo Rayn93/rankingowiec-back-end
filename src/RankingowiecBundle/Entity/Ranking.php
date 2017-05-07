@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  * @ORM\Table(name="rankings")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Ranking{
 
@@ -171,7 +172,7 @@ class Ranking{
      */
     public function setSlug($slug)
     {
-        $this->slug = $slug;
+        $this->slug = \RankingowiecBundle\Libs\Utils::sluggify($slug);
 
         return $this;
     }
@@ -493,4 +494,17 @@ class Ranking{
     {
         return $this->tags;
     }
+
+    /**
+     * @ORM\PrePersist
+     * @ORM\PreUpdate
+     */
+    public function preSave(){
+
+        if( $this->slug === NULL){
+            $this->setSlug($this->getTitle());
+        }
+
+    }
+
 }

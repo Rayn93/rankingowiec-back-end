@@ -29,8 +29,7 @@ class TagsFixtures extends AbstractFixture implements OrderedFixtureInterface{
         foreach($tag_list as $name){
 
             $Tag = new Tag();
-            $Tag->setName($name)
-                ->setSlug($name);
+            $Tag->setName($name);
 
             $manager->persist($Tag);
 

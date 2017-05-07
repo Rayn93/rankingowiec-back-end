@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\MappedSuperclass
+ * @ORM\HasLifecycleCallbacks()
  */
 abstract class AbstractTaxonomy{
 
@@ -25,7 +26,7 @@ abstract class AbstractTaxonomy{
     /**
      * @ORM\Column(type="string", length=120, unique=true)
      */
-    private $slug;
+    private $slug = NULL;
 
 
     protected $rankings;
@@ -75,7 +76,7 @@ abstract class AbstractTaxonomy{
      */
     public function setSlug($slug)
     {
-        $this->slug = $slug;
+        $this->slug = \RankingowiecBundle\Libs\Utils::sluggify($slug);
 
         return $this;
     }
@@ -89,4 +90,19 @@ abstract class AbstractTaxonomy{
     {
         return $this->slug;
     }
+
+
+    /**
+     * @ORM\PrePersist
+     * @ORM\PrePersist
+     */
+    public function preSave(){
+
+        if( $this->slug === NULL){
+            $this->setSlug($this->getName());
+        }
+
+
+    }
+
 }

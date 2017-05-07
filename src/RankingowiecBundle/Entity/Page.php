@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  * @ORM\Table(name="pages")
+ * @ORM\HasLifecycleCallbacks
  */
 class Page{
 
@@ -107,7 +108,7 @@ class Page{
      */
     public function setSlug($slug)
     {
-        $this->slug = $slug;
+        $this->slug = \RankingowiecBundle\Libs\Utils::sluggify($slug);
 
         return $this;
     }
@@ -241,4 +242,17 @@ class Page{
     {
         return $this->published_date;
     }
+
+    /**
+     * @ORM\PrePersist
+     * @ORM\PreUpdate
+     */
+    public function preSave(){
+
+        if( $this->slug === NULL){
+            $this->setSlug($this->getTitle());
+        }
+
+    }
+
 }

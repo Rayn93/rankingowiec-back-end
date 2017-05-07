@@ -154,7 +154,6 @@ class RankingsFixtures extends AbstractFixture implements OrderedFixtureInterfac
             $Ranking = new Ranking();
 
             $Ranking->setTitle($details['title'])
-                ->setSlug($details['slug'])
                 ->setDescription($details['description'])
                 ->setItems($details['items'])
                 ->setItemsResult($details['items_result'])
