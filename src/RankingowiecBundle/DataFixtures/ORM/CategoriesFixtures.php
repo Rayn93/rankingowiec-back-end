@@ -3,11 +3,12 @@
 namespace RankingowiecBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\AbstractFixture;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use RankingowiecBundle\Entity\Category;
 
 
-class CategoriesFixtures extends AbstractFixture{
+class CategoriesFixtures extends AbstractFixture implements OrderedFixtureInterface{
 
 
     public function load(ObjectManager $manager){
@@ -24,15 +25,21 @@ class CategoriesFixtures extends AbstractFixture{
 
         foreach($category_list as $key => $name){
 
-            $category = new Category();
-            $category->setName($name)
+            $Category = new Category();
+            $Category->setName($name)
                 ->setSlug($name);
 
-            $manager->persist($category);
+            $manager->persist($Category);
+            
+            $this->addReference('category_'.$key, $Category);
         }
 
         $manager->flush();
 
+    }
+
+    public function getOrder(){
+        return 0;
     }
 
 

@@ -38,13 +38,13 @@ class Ranking{
 
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="array")
      */
     private $items;
 
 
     /**
-     * @ORM\Column(type="json_array")
+     * @ORM\Column(type="array")
      */
     private $items_result;
 
@@ -115,6 +115,7 @@ class Ranking{
      * @ORM\Column(type="bigint")
      */
     private $numb_visits;
+
 
 
 
@@ -212,7 +213,7 @@ class Ranking{
     /**
      * Set items
      *
-     * @param integer $items
+     * @param array $items
      *
      * @return Ranking
      */
@@ -226,7 +227,7 @@ class Ranking{
     /**
      * Get items
      *
-     * @return integer
+     * @return array
      */
     public function getItems()
     {
