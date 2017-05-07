@@ -49,7 +49,7 @@ class Page{
 
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="datetime")
      */
     private $create_date;
 
@@ -59,6 +59,8 @@ class Page{
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $published_date;
+
+
 
 
 
@@ -195,7 +197,7 @@ class Page{
     /**
      * Set createDate
      *
-     * @param boolean $createDate
+     * @param \DateTime $createDate
      *
      * @return Page
      */
@@ -209,7 +211,7 @@ class Page{
     /**
      * Get createDate
      *
-     * @return boolean
+     * @return \DateTime
      */
     public function getCreateDate()
     {
