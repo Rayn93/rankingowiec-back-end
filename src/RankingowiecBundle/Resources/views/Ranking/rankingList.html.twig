@@ -1,6 +1,6 @@
 {% extends "RankingowiecBundle::base.html.twig" %}
 
-{% block pageTitle %} Oceniaj wszystko i wszystkich! {% endblock %}
+{% block pageTitle %} {{ ListTitle }} {% endblock %}
 
 {% block pageDescription %} Portal z rankingami, oceniaj sławnych ludzi, filmy, youtuberów czy najlepsze piwo! Dowiedz się co inni myślą. {% endblock %}
 
@@ -14,54 +14,35 @@
             <div id="myCarousel" class="carousel slide" data-ride="carousel">
                 <!-- Carousel indicators -->
                 <ol class="carousel-indicators">
-                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#myCarousel" data-slide-to="1"></li>
-                    <li data-target="#myCarousel" data-slide-to="2"></li>
-                    <li data-target="#myCarousel" data-slide-to="3"></li>
-                    <li data-target="#myCarousel" data-slide-to="4"></li>
+                    {% for slide in Slides %}
+                        {% if loop.index0 == 0 %}
+                            <li data-target="#myCarousel" data-slide-to="{{ loop.index0 }}" class="active"></li>
+                        {% else %}
+                            <li data-target="#myCarousel" data-slide-to="{{ loop.index0 }}" class=""></li>
+                        {% endif %}
+                    {% endfor %}
                 </ol>
                 <!-- Wrapper for carousel items -->
                 <div class="carousel-inner ">
-                    <div class="item active">
-                        <img src="img/slajdy/slide0.jpg" alt="slajd 1"/>
-
-                        <div class="carousel-caption">
-                            <h3>Największy patriota w hostorii Polski</h3>
-                            <a class="button" href="#"><span>ZOBACZ RANKING</span></a>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <a href="#"><img class="img-responsive" src="img/slajdy/slide1.jpg" alt="slajd 2"/></a>
-
-                        <div class="carousel-caption">
-                            <h3>Polak, który najbardziej przyczynił się do rozwoju polski</h3>
-                            <a class="button" href="#"><span>ZOBACZ RANKING</span></a>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <a href="#"><img src="img/slajdy/slide2.jpg" alt="slajd 3"/></a>
-
-                        <div class="carousel-caption">
-                            <h3>Najpiękniejsza polska aktorka</h3>
-                            <a class="button" href="#"><span>ZOBACZ RANKING</span></a>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <a href="#"><img src="img/slajdy/slide3.jpg" alt="slajd 3"/></a>
-
-                        <div class="carousel-caption">
-                            <h3>Najlepszy polski olimpijczyk w Rio [2016]</h3>
-                            <a class="button" href="#"><span>ZOBACZ RANKING</span></a>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <a href="#"><img src="img/slajdy/slide4.jpg" alt="slajd 4"/></a>
-
-                        <div class="carousel-caption">
-                            <h3>Kto w 2016 roku rządzi polską?</h3>
-                            <a class="button" href="#"><span>ZOBACZ RANKING</span></a>
-                        </div>
-                    </div>
+                    {% for slide in Slides %}
+                        {% if loop.index0 == 0 %}
+                            <div class="item active">
+                                <img src="{{ slide.thumbnail }}" alt="{{ slide.slug }}"/>
+                                <div class="carousel-caption">
+                                    <h3>{{ slide.title }}</h3>
+                                    <a class="button" href="#"><span>ZOBACZ RANKING</span></a>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="item">
+                                <img src="{{ slide.thumbnail }}" alt="{{ slide.slug }}"/>
+                                <div class="carousel-caption">
+                                    <h3>{{ slide.title }}</h3>
+                                    <a class="button" href="#"><span>ZOBACZ RANKING</span></a>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
                 </div>
             </div>
         </div>
@@ -74,7 +55,7 @@
 
     <!--nav bar under carouse-->
     <div class="page-title">
-        <h1><i class="fa fa-users" aria-hidden="true"></i> LUDZIE</h1>
+        <h1>{#<i class="fa fa-users" aria-hidden="true"></i> #}{{ ListTitle }} </h1>
     </div>
 
 {% endblock %}

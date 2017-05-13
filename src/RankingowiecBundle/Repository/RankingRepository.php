@@ -36,6 +36,15 @@ class RankingRepository extends EntityRepository{
             $qb->orderBy($params['orderBy'], $orderDir);
         }
 
+        if(!empty($params['categorySlug'])){
+            $qb->andWhere('c.slug = :categorySlug')
+                ->setParameter('categorySlug', $params['categorySlug']);
+        }
+
+        if(!empty($params['slider']) && $params['slider'] == true){
+            $qb->andWhere('r.main_slider = true');
+        }
+
         return $qb;
 
     }

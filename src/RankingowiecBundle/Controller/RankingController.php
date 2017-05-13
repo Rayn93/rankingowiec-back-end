@@ -55,29 +55,45 @@ class RankingController extends Controller{
 
     /**
      * @Route(
-     *     "/kategoria/{page}",
+     *     "/kategoria/{slug}/{page}",
      *      name="ranking_category",
      *     defaults = {"page" = 1},
      *     requirements = {"page" = "\d+"}
      * )
-     * @Template()
+     * @Template("RankingowiecBundle:Ranking:rankingList.html.twig")
      */
-    public function categoryAction($page){
+    public function categoryAction($slug, $page){
 
 
         $RankRepo = $this->getDoctrine()->getRepository('RankingowiecBundle:Ranking');
-        $qb = $RankRepo->getQueryBuilder(array(
+        $qb_all = $RankRepo->getQueryBuilder(array(
             'status' => 'published',
             'orderBy' => 'r.published_date',
-            'orderDir' => 'DESC'
+            'orderDir' => 'DESC',
+            'categorySlug' => $slug
         ));
 
-        $paginator = $this->get('knp_paginator');
-        $pagination = $paginator->paginate($qb, $page, $this->itemsLimit);
+        $qb_slider = $RankRepo->getQueryBuilder(array(
+            'status' => 'published',
+            'orderBy' => 'r.published_date',
+            'orderDir' => 'DESC',
+            'categorySlug' => $slug,
+            'slider' => true
+        ));
 
+        $CategoryRepo = $this->getDoctrine()->getRepository('RankingowiecBundle:Category');
+        $Category = $CategoryRepo->findOneBySlug($slug);
+
+        $paginator = $this->get('knp_paginator');
+        $pagination_all = $paginator->paginate($qb_all, $page, $this->itemsLimit);
+
+        $slide_query = $qb_slider->getQuery();
+        $slides = $slide_query->getResult();
 
         return array(
-            'Pagination' => $pagination
+            'Pagination' => $pagination_all,
+            'Slides' => $slides,
+            'ListTitle' => sprintf('Rankingi z kategori: %s', $Category->getName() )
         );
 
 
@@ -85,12 +101,12 @@ class RankingController extends Controller{
 
     /**
      * @Route(
-     *     "/tag",
+     *     "/tag/{slug}/{page}",
      *      name="ranking_tag"
      * )
-     * @Template()
+     * @Template("RankingowiecBundle:Ranking:rankingList.html.twig")
      */
-    public function tagAction()
+    public function tagAction($slug, $page)
     {
         return array();
     }
