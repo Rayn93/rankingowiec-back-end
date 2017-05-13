@@ -6,8 +6,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-class RankingController extends Controller
-{
+class RankingController extends Controller{
+
+    protected $itemsLimit = 3;
+
+
     /**
      * @Route(
      *     "/",
@@ -16,10 +19,13 @@ class RankingController extends Controller
      *
      * @Template()
      */
-    public function indexAction()
-    {
+    public function indexAction(){
 
-        return array();
+
+
+        return array(
+
+        );
     }
 
     /**
@@ -49,14 +55,32 @@ class RankingController extends Controller
 
     /**
      * @Route(
-     *     "/kategoria",
-     *      name="ranking_category"
+     *     "/kategoria/{page}",
+     *      name="ranking_category",
+     *     defaults = {"page" = 1},
+     *     requirements = {"page" = "\d+"}
      * )
      * @Template()
      */
-    public function categoryAction()
-    {
-        return array();
+    public function categoryAction($page){
+
+
+        $RankRepo = $this->getDoctrine()->getRepository('RankingowiecBundle:Ranking');
+        $qb = $RankRepo->getQueryBuilder(array(
+            'status' => 'published',
+            'orderBy' => 'r.published_date',
+            'orderDir' => 'DESC'
+        ));
+
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate($qb, $page, $this->itemsLimit);
+
+
+        return array(
+            'Pagination' => $pagination
+        );
+
+
     }
 
     /**

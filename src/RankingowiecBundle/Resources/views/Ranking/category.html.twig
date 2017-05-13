@@ -7,6 +7,7 @@
 {% block bodyId %} rank-list {% endblock %}
 
 {% block topImage %}
+
     <!--Carousel top-->
     <div class="container-fluid">
         <div class="row">
@@ -102,16 +103,19 @@
                 </header>
 
                 <!--Category rankings-->
+
+                {% for ranking in Pagination %}
+
                 <div class="ranking-list-squere col-md-4 col-sm-6">
                     <div class="thumbnail">
-                        <a href="#">
+                        <a href="{{ path('single_ranking', {'slug': ranking.slug }) }}">
                             <div class="thumbnail-img">
-                                <img class="img-responsive" src="img/ranking_photos/rank4.jpg" alt="...">
+                                <img class="img-responsive" src="{{ ranking.thumbnail }}" alt="...">
                             </div>
                             <div class="caption">
-                                <h3>Najlepszy polski olimpijczyk w Rio  polski olimpijczyk w Rio </h3>
+                                <h3>{{ ranking.title }} </h3>
                                 <span class="badge"><i class="fa fa-thumbs-up" aria-hidden="true"></i> Głosów: 42 tyś</span>
-                                <span class="badge"><i class="fa fa-eye" aria-hidden="true"></i> Wizyt: 4.2 mil</span>
+                                <span class="badge"><i class="fa fa-eye" aria-hidden="true"></i> Wizyt: {{ ranking.id }}</span>
                                 <p>Bootstrap-select is a jQuery plugin that utilizes Bootstrap's dropdown.js to style and bring additional functionality to standard select elements. Bootstrap-select is a jQuery plugin that utilizes [...] </p>
                             </div>
                         </a>
@@ -119,195 +123,14 @@
                     </div>
                 </div>
 
-                <div class="ranking-list-squere col-md-4 col-sm-6">
-                    <div class="thumbnail">
-                        <a href="#">
-                            <div class="thumbnail-img">
-                                <img class="img-responsive" src="img/ranking_photos/rank5.jpg" alt="...">
-                            </div>
-                            <div class="caption">
-                                <h3>Najlepszy polski olimpijczyk w Rio </h3>
-                                <span class="badge"><i class="fa fa-thumbs-up" aria-hidden="true"></i> Głosów: 42 tyś</span>
-                                <span class="badge"><i class="fa fa-eye" aria-hidden="true"></i> Wizyt: 4.2 mil</span>
-                                <p>Tekst lorem ipsum Tekst lorem ipsum Tekst lorem ipsum Tekst lorem ipsum Tekst lorem </p>
-                            </div>
-                        </a>
+                {% endfor %}
 
-                    </div>
-                </div>
 
-                <div class="ranking-list-squere col-md-4 col-sm-6">
-                    <div class="thumbnail">
-                        <a href="#">
-                            <div class="thumbnail-img">
-                                <img class="img-responsive" src="img/ranking_photos/rank6.jpg" alt="...">
-                            </div>
-                            <div class="caption">
-                                <h3>Najlepszy polski olimpijczyk w Rio  </h3>
-                                <span class="badge"><i class="fa fa-thumbs-up" aria-hidden="true"></i> Głosów: 42 tyś</span>
-                                <span class="badge"><i class="fa fa-eye" aria-hidden="true"></i> Wizyt: 4.2 mil</span>
-                                <p>Tekst lorem ipsum Tekst lorem ipsum Tekst lorem ipsum Tekst lorem ipsum Tekst lorem ipsum Tekst lorem ipsum Tekst lorem ipsum Tekst lorem ipsum Tekst lorem ipsum Tekst lorem ipsum </p>
-                            </div>
-                        </a>
-
-                    </div>
-                </div>
-
-                <div class="ranking-list-squere col-md-4 col-sm-6">
-                    <div class="thumbnail">
-                        <a href="#">
-                            <div class="thumbnail-img">
-                                <img class="img-responsive" src="img/ranking_photos/rank4.jpg" alt="...">
-                            </div>
-                            <div class="caption">
-                                <h3>Najlepszy polski olimpijczyk w Rio  polski olimpijczyk w Rio </h3>
-                                <span class="badge"><i class="fa fa-thumbs-up" aria-hidden="true"></i> Głosów: 42 tyś</span>
-                                <span class="badge"><i class="fa fa-eye" aria-hidden="true"></i> Wizyt: 4.2 mil</span>
-                                <p>Bootstrap-select is a jQuery plugin that utilizes Bootstrap's dropdown.js to style and bring additional functionality to standard select elements. Bootstrap-select is a jQuery plugin that utilizes [...] </p>
-                            </div>
-                        </a>
-
-                    </div>
-                </div>
-
-                <div class="ranking-list-squere col-md-4 col-sm-6">
-                    <div class="thumbnail">
-                        <a href="#">
-                            <div class="thumbnail-img">
-                                <img class="img-responsive" src="img/ranking_photos/rank5.jpg" alt="...">
-                            </div>
-                            <div class="caption">
-                                <h3>Najlepszy polski olimpijczyk w Rio </h3>
-                                <span class="badge"><i class="fa fa-thumbs-up" aria-hidden="true"></i> Głosów: 42 tyś</span>
-                                <span class="badge"><i class="fa fa-eye" aria-hidden="true"></i> Wizyt: 4.2 mil</span>
-                                <p>Tekst lorem ipsum Tekst lorem ipsum Tekst lorem ipsum Tekst lorem ipsum Tekst lorem </p>
-                            </div>
-                        </a>
-
-                    </div>
-                </div>
-
-                <div class="ranking-list-squere col-md-4 col-sm-6">
-                    <div class="thumbnail">
-                        <a href="#">
-                            <div class="thumbnail-img">
-                                <img class="img-responsive" src="img/ranking_photos/rank6.jpg" alt="...">
-                            </div>
-                            <div class="caption">
-                                <h3>Najlepszy polski olimpijczyk w Rio  </h3>
-                                <span class="badge"><i class="fa fa-thumbs-up" aria-hidden="true"></i> Głosów: 42 tyś</span>
-                                <span class="badge"><i class="fa fa-eye" aria-hidden="true"></i> Wizyt: 4.2 mil</span>
-                                <p>Tekst lorem ipsum Tekst lorem ipsum Tekst lorem ipsum Tekst lorem ipsum Tekst lorem ipsum Tekst lorem ipsum Tekst lorem ipsum Tekst lorem ipsum Tekst lorem ipsum Tekst lorem ipsum </p>
-                            </div>
-                        </a>
-
-                    </div>
-                </div>
-
-                <div class="ranking-list-squere col-md-4 col-sm-6">
-                    <div class="thumbnail">
-                        <a href="#">
-                            <div class="thumbnail-img">
-                                <img class="img-responsive" src="img/ranking_photos/rank4.jpg" alt="...">
-                            </div>
-                            <div class="caption">
-                                <h3>Najlepszy polski olimpijczyk w Rio  polski olimpijczyk w Rio </h3>
-                                <span class="badge"><i class="fa fa-thumbs-up" aria-hidden="true"></i> Głosów: 42 tyś</span>
-                                <span class="badge"><i class="fa fa-eye" aria-hidden="true"></i> Wizyt: 4.2 mil</span>
-                                <p>Bootstrap-select is a jQuery plugin that utilizes Bootstrap's dropdown.js to style and bring additional functionality to standard select elements. Bootstrap-select is a jQuery plugin that utilizes [...] </p>
-                            </div>
-                        </a>
-
-                    </div>
-                </div>
-
-                <div class="ranking-list-squere col-md-4 col-sm-6">
-                    <div class="thumbnail">
-                        <a href="#">
-                            <div class="thumbnail-img">
-                                <img class="img-responsive" src="img/ranking_photos/rank5.jpg" alt="...">
-                            </div>
-                            <div class="caption">
-                                <h3>Najlepszy polski olimpijczyk w Rio </h3>
-                                <span class="badge"><i class="fa fa-thumbs-up" aria-hidden="true"></i> Głosów: 42 tyś</span>
-                                <span class="badge"><i class="fa fa-eye" aria-hidden="true"></i> Wizyt: 4.2 mil</span>
-                                <p>Tekst lorem ipsum Tekst lorem ipsum Tekst lorem ipsum Tekst lorem ipsum Tekst lorem </p>
-                            </div>
-                        </a>
-
-                    </div>
-                </div>
-
-                <div class="ranking-list-squere col-md-4 col-sm-6">
-                    <div class="thumbnail">
-                        <a href="#">
-                            <div class="thumbnail-img">
-                                <img class="img-responsive" src="img/ranking_photos/rank6.jpg" alt="...">
-                            </div>
-                            <div class="caption">
-                                <h3>Najlepszy polski olimpijczyk w Rio  </h3>
-                                <span class="badge"><i class="fa fa-thumbs-up" aria-hidden="true"></i> Głosów: 42 tyś</span>
-                                <span class="badge"><i class="fa fa-eye" aria-hidden="true"></i> Wizyt: 4.2 mil</span>
-                                <p>Tekst lorem ipsum Tekst lorem ipsum Tekst lorem ipsum Tekst lorem ipsum Tekst lorem ipsum Tekst lorem ipsum Tekst lorem ipsum Tekst lorem ipsum Tekst lorem ipsum Tekst lorem ipsum </p>
-                            </div>
-                        </a>
-
-                    </div>
-                </div>
-
-                <div class="ranking-list-squere col-md-4 col-sm-6">
-                    <div class="thumbnail">
-                        <a href="#">
-                            <div class="thumbnail-img">
-                                <img class="img-responsive" src="img/ranking_photos/rank4.jpg" alt="...">
-                            </div>
-                            <div class="caption">
-                                <h3>Najlepszy polski olimpijczyk w Rio  polski olimpijczyk w Rio </h3>
-                                <span class="badge"><i class="fa fa-thumbs-up" aria-hidden="true"></i> Głosów: 42 tyś</span>
-                                <span class="badge"><i class="fa fa-eye" aria-hidden="true"></i> Wizyt: 4.2 mil</span>
-                                <p>Bootstrap-select is a jQuery plugin that utilizes Bootstrap's dropdown.js to style and bring additional functionality to standard select elements. Bootstrap-select is a jQuery plugin that utilizes [...] </p>
-                            </div>
-                        </a>
-
-                    </div>
-                </div>
-
-                <div class="ranking-list-squere col-md-4 col-sm-6">
-                    <div class="thumbnail">
-                        <a href="#">
-                            <div class="thumbnail-img">
-                                <img class="img-responsive" src="img/ranking_photos/rank5.jpg" alt="...">
-                            </div>
-                            <div class="caption">
-                                <h3>Najlepszy polski olimpijczyk w Rio </h3>
-                                <span class="badge"><i class="fa fa-thumbs-up" aria-hidden="true"></i> Głosów: 42 tyś</span>
-                                <span class="badge"><i class="fa fa-eye" aria-hidden="true"></i> Wizyt: 4.2 mil</span>
-                                <p>Tekst lorem ipsum Tekst lorem ipsum Tekst lorem ipsum Tekst lorem ipsum Tekst lorem </p>
-                            </div>
-                        </a>
-
-                    </div>
-                </div>
-
-                <div class="ranking-list-squere col-md-4 col-sm-6">
-                    <div class="thumbnail">
-                        <a href="#">
-                            <div class="thumbnail-img">
-                                <img class="img-responsive" src="img/ranking_photos/rank6.jpg" alt="...">
-                            </div>
-                            <div class="caption">
-                                <h3>Najlepszy polski olimpijczyk w Rio  </h3>
-                                <span class="badge"><i class="fa fa-thumbs-up" aria-hidden="true"></i> Głosów: 42 tyś</span>
-                                <span class="badge"><i class="fa fa-eye" aria-hidden="true"></i> Wizyt: 4.2 mil</span>
-                                <p>Tekst lorem ipsum Tekst lorem ipsum Tekst lorem ipsum Tekst lorem ipsum Tekst lorem ipsum Tekst lorem ipsum Tekst lorem ipsum Tekst lorem ipsum Tekst lorem ipsum Tekst lorem ipsum </p>
-                            </div>
-                        </a>
-
-                    </div>
-                </div>
 
             </div>
         </div>
     </section>
+
+    {{ knp_pagination_render(Pagination) }} }
 
 {% endblock %}

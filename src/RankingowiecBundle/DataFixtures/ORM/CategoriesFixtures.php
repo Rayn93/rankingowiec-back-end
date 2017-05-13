@@ -20,7 +20,8 @@ class CategoriesFixtures extends AbstractFixture implements OrderedFixtureInterf
             'tv' => 'TV',
             'sport' => 'Sport',
             'funny' => 'Zabawne',
-            'food' => 'Jedzenie & Napoje'
+            'food' => 'Jedzenie & Napoje',
+            'popular' => 'Popularne'
         );
 
         foreach($category_list as $key => $name){
