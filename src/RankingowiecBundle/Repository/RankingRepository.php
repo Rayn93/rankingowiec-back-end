@@ -41,8 +41,17 @@ class RankingRepository extends EntityRepository{
                 ->setParameter('categorySlug', $params['categorySlug']);
         }
 
+        if(!empty($params['tagSlug'])){
+            $qb->andWhere('t.slug = :tagSlug')
+                ->setParameter('tagSlug', $params['tagSlug']);
+        }
+
         if(!empty($params['slider']) && $params['slider'] == true){
             $qb->andWhere('r.main_slider = true');
+        }
+
+        if(!empty($params['limit'])){
+            $qb->setMaxResults($params['limit']);
         }
 
         return $qb;

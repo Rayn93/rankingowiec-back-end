@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class RankingController extends Controller{
 
     protected $itemsLimit = 3;
+    protected $slideLimit = 8;
 
 
     /**
@@ -78,7 +79,8 @@ class RankingController extends Controller{
             'orderBy' => 'r.published_date',
             'orderDir' => 'DESC',
             'categorySlug' => $slug,
-            'slider' => true
+            'slider' => true,
+            'limit' => $this->slideLimit
         ));
 
         $CategoryRepo = $this->getDoctrine()->getRepository('RankingowiecBundle:Category');
@@ -102,14 +104,48 @@ class RankingController extends Controller{
     /**
      * @Route(
      *     "/tag/{slug}/{page}",
-     *      name="ranking_tag"
+     *      name="ranking_tag",
+     *     defaults = {"page" = 1},
+     *     requirements = {"page" = "\d+"}
      * )
      * @Template("RankingowiecBundle:Ranking:rankingList.html.twig")
      */
     public function tagAction($slug, $page)
     {
-        return array();
+        $RankRepo = $this->getDoctrine()->getRepository('RankingowiecBundle:Ranking');
+        $qb_all = $RankRepo->getQueryBuilder(array(
+            'status' => 'published',
+            'orderBy' => 'r.published_date',
+            'orderDir' => 'DESC',
+            'tagSlug' => $slug
+        ));
+
+        $qb_slider = $RankRepo->getQueryBuilder(array(
+            'status' => 'published',
+            'orderBy' => 'r.published_date',
+            'orderDir' => 'DESC',
+            'tagSlug' => $slug,
+            'slider' => true,
+            'limit' => $this->slideLimit
+        ));
+
+        $TagRepo = $this->getDoctrine()->getRepository('RankingowiecBundle:Tag');
+        $Tag = $TagRepo->findOneBySlug($slug);
+
+        $paginator = $this->get('knp_paginator');
+        $pagination_all = $paginator->paginate($qb_all, $page, $this->itemsLimit);
+
+        $slide_query = $qb_slider->getQuery();
+        $slides = $slide_query->getResult();
+
+        return array(
+            'Pagination' => $pagination_all,
+            'Slides' => $slides,
+            'ListTitle' => sprintf('Rankingi z tagiem: %s', $Tag->getName() )
+        );
     }
+
+
 
     /**
      * @Route(
