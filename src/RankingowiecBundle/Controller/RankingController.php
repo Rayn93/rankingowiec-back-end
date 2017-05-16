@@ -22,10 +22,59 @@ class RankingController extends Controller{
      */
     public function indexAction(){
 
+        $RankRepo = $this->getDoctrine()->getRepository('RankingowiecBundle:Ranking');
+
+        $qb_popular = $RankRepo->getQueryBuilder(array(
+            'status' => 'published',
+            'categorySlug' => 'popularne',
+            'home_page' => true,
+            'random' => true,
+            'limit' => '10'
+        ));
+
+        $popular_query = $qb_popular->getQuery();
+        $papular = $popular_query->getResult();
+
+        $qb_new = $RankRepo->getQueryBuilder(array(
+            'status' => 'published',
+            'orderBy' => 'r.published_date',
+            'orderDir' => 'DESC',
+            'home_page' => true,
+            'limit' => '20'
+
+        ));
+
+        $newest_query = $qb_new->getQuery();
+        $newest = $newest_query->getResult();
+
+        $qb_sport = $RankRepo->getQueryBuilder(array(
+            'status' => 'published',
+            'categorySlug' => 'sport',
+            'home_page' => true,
+            'random' => true,
+            'limit' => '10'
+        ));
+
+        $sport_query = $qb_sport->getQuery();
+        $sport = $sport_query->getResult();
+
+        $qb_people = $RankRepo->getQueryBuilder(array(
+            'status' => 'published',
+            'categorySlug' => 'ludzie',
+            'home_page' => true,
+            'random' => true,
+            'limit' => '10'
+        ));
+
+        $people_query = $qb_people->getQuery();
+        $people = $people_query->getResult();
 
 
         return array(
-
+            'Popular' => $papular,
+            'Newest' => $newest,
+            'Sport' => $sport,
+            'People' => $people
         );
     }
 

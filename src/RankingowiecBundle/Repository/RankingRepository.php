@@ -54,6 +54,14 @@ class RankingRepository extends EntityRepository{
             $qb->setMaxResults($params['limit']);
         }
 
+        if(!empty($params['home_page']) && $params['home_page'] == true){
+            $qb->andWhere('r.home_page = true');
+        }
+
+        if(!empty($params['random']) && $params['random'] == true){
+            $qb->addSelect('RAND() as HIDDEN rand')->orderBy('rand');
+        }
+
         return $qb;
 
     }
