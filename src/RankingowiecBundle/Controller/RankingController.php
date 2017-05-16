@@ -40,7 +40,7 @@ class RankingController extends Controller{
             'orderBy' => 'r.published_date',
             'orderDir' => 'DESC',
             'home_page' => true,
-            'limit' => '20'
+            'limit' => '30'
 
         ));
 
@@ -69,12 +69,23 @@ class RankingController extends Controller{
         $people_query = $qb_people->getQuery();
         $people = $people_query->getResult();
 
+        $qb_slider = $RankRepo->getQueryBuilder(array(
+            'status' => 'published',
+            'random' => true,
+            'slider' => true,
+            'home_page' => true,
+            'limit' => '5'
+        ));
+
+        $slide_query = $qb_slider->getQuery();
+        $slides = $slide_query->getResult();
 
         return array(
             'Popular' => $papular,
             'Newest' => $newest,
             'Sport' => $sport,
-            'People' => $people
+            'People' => $people,
+            'Slides' => $slides
         );
     }
 

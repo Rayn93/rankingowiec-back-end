@@ -14,10 +14,9 @@
                 <!-- Carousel indicators -->
                 <ol class="carousel-indicators">
                     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#myCarousel" data-slide-to="1"></li>
-                    <li data-target="#myCarousel" data-slide-to="2"></li>
-                    <li data-target="#myCarousel" data-slide-to="3"></li>
-                    <li data-target="#myCarousel" data-slide-to="4"></li>
+                    {% for slide in Slides %}
+                        <li data-target="#myCarousel" data-slide-to="{{ loop.index }}" class=""></li>
+                    {% endfor %}
                 </ol>
                 <!-- Wrapper for carousel items -->
                 <div class="carousel-inner ">
@@ -32,38 +31,15 @@
                                 Miej realny wpływ na rankingi i głosuj! Oceniaj wszystko i wszystkij!</p>
                         </div>
                     </div>
-                    <div class="item">
-                        <a href="#"><img class="img-responsive" src="{{ asset('img/slajdy/slide1.jpg') }}" alt="slajd 2"/></a>
-
-                        <div class="carousel-caption">
-                            <h3>Polak, który najbardziej przyczynił się do rozwoju polski</h3>
-                            <a class="button" href="#"><span>ZOBACZ RANKING</span></a>
+                    {% for slide in Slides %}
+                        <div class="item">
+                            <img src="{{ slide.thumbnail }}" alt="{{ slide.slug }}"/>
+                            <div class="carousel-caption">
+                                <h3>{{ slide.title }}</h3>
+                                <a class="button" href="#"><span>ZOBACZ RANKING</span></a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="item">
-                        <a href="#"><img src="{{ asset('img/slajdy/slide2.jpg') }}" alt="slajd 3"/></a>
-
-                        <div class="carousel-caption">
-                            <h3>Najpiękniejsza polska aktorka</h3>
-                            <a class="button" href="#"><span>ZOBACZ RANKING</span></a>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <a href="#"><img src="{{ asset('img/slajdy/slide3.jpg') }}" alt="slajd 3"/></a>
-
-                        <div class="carousel-caption">
-                            <h3>Najlepsza uczelnia wyższa w Polsce</h3>
-                            <a class="button" href="#"><span>ZOBACZ RANKING</span></a>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <a href="#"><img src="{{ asset('img/slajdy/slide4.jpg') }}" alt="slajd 4"/></a>
-
-                        <div class="carousel-caption">
-                            <h3>Polskie piwo o najlepszym smaku</h3>
-                            <a class="button" href="#"><span>ZOBACZ RANKING</span></a>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
