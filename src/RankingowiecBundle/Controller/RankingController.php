@@ -143,19 +143,26 @@ class RankingController extends Controller{
             'limit' => $this->slideLimit
         ));
 
+
+
         $CategoryRepo = $this->getDoctrine()->getRepository('RankingowiecBundle:Category');
         $Category = $CategoryRepo->findOneBySlug($slug);
 
         $paginator = $this->get('knp_paginator');
         $pagination_all = $paginator->paginate($qb_all, $page, $this->itemsLimit);
 
+        $count_row = count($qb_all->getQuery()->getResult());
+
         $slide_query = $qb_slider->getQuery();
         $slides = $slide_query->getResult();
+
+
 
         return array(
             'Pagination' => $pagination_all,
             'Slides' => $slides,
-            'ListTitle' => sprintf('Rankingi z kategori: %s', $Category->getName() )
+            'ListTitle' => sprintf('Rankingi z kategori: %s', $Category->getName() ),
+            'Count' => $count_row
         );
 
 
@@ -198,10 +205,13 @@ class RankingController extends Controller{
         $slide_query = $qb_slider->getQuery();
         $slides = $slide_query->getResult();
 
+        $count_row = count($qb_all->getQuery()->getResult());
+
         return array(
             'Pagination' => $pagination_all,
             'Slides' => $slides,
-            'ListTitle' => sprintf('Rankingi z tagiem: %s', $Tag->getName() )
+            'ListTitle' => sprintf('Rankingi z tagiem: %s', $Tag->getName() ),
+            'Count' => $count_row
         );
     }
 
