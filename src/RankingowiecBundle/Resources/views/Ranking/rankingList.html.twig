@@ -85,28 +85,35 @@
 
                 <!--Category rankings-->
 
-                {% for ranking in Pagination %}
-
-                <div class="ranking-list-squere col-md-4 col-sm-6">
-                    <div class="thumbnail">
-                        <a href="{{ path('single_ranking', {'slug': ranking.slug }) }}">
-                            <div class="thumbnail-img">
-                                <img class="img-responsive" src="{{ ranking.thumbnail }}" alt="...">
-                            </div>
-                            <div class="caption">
-                                <h3>{{ ranking.title }} </h3>
-                                <span class="badge"><i class="fa fa-thumbs-up" aria-hidden="true"></i> Głosów: 42 tyś</span>
-                                <span class="badge"><i class="fa fa-eye" aria-hidden="true"></i> Wizyt: {{ ranking.id }}</span>
-                                <p>Bootstrap-select is a jQuery plugin that utilizes Bootstrap's dropdown.js to style and bring additional functionality to standard select elements. Bootstrap-select is a jQuery plugin that utilizes [...] </p>
-                            </div>
-                        </a>
-
+                {% if Pagination is empty %}
+                    <div class="col-xs-12">
+                        <h2 class="huge_heading">Brak rankingów w tej taksonomi</h2>
                     </div>
-                </div>
 
-                {% endfor %}
+                {% else %}
 
+                    {% for ranking in Pagination %}
 
+                        <div class="ranking-list-squere col-md-4 col-sm-6">
+                            <div class="thumbnail">
+                                <a href="{{ path('single_ranking', {'slug': ranking.slug }) }}">
+                                    <div class="thumbnail-img">
+                                        <img class="img-responsive" src="{{ ranking.thumbnail }}" alt="...">
+                                    </div>
+                                    <div class="caption">
+                                        <h3>{{ ranking.title }} </h3>
+                                        <span class="badge"><i class="fa fa-thumbs-up" aria-hidden="true"></i> Głosów: 42 tyś</span>
+                                        <span class="badge"><i class="fa fa-eye" aria-hidden="true"></i> Wizyt: {{ ranking.id }}</span>
+                                        <p>Bootstrap-select is a jQuery plugin that utilizes Bootstrap's dropdown.js to style and bring additional functionality to standard select elements. Bootstrap-select is a jQuery plugin that utilizes [...] </p>
+                                    </div>
+                                </a>
+
+                            </div>
+                        </div>
+
+                    {% endfor %}
+
+                {% endif %}
 
             </div>
         </div>

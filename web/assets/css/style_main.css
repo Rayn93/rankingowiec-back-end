@@ -206,6 +206,12 @@ img.avatar:hover{
     transform: scale(1.05);
 }
 
+.huge_heading{
+    font-size: 90px;
+    color: #fff;
+    padding: 150px 0;
+}
+
 
 /*::::::::::::::
 HOME PAGE

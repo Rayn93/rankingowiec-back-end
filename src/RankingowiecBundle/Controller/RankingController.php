@@ -22,9 +22,7 @@ class RankingController extends Controller{
      */
     public function indexAction(){
 
-        $RankRepo = $this->getDoctrine()->getRepository('RankingowiecBundle:Ranking');
-
-        $qb_popular = $RankRepo->getQueryBuilder(array(
+        $popular = $this->getRankingQueryResult(array(
             'status' => 'published',
             'categorySlug' => 'popularne',
             'home_page' => true,
@@ -32,10 +30,7 @@ class RankingController extends Controller{
             'limit' => '10'
         ));
 
-        $popular_query = $qb_popular->getQuery();
-        $papular = $popular_query->getResult();
-
-        $qb_new = $RankRepo->getQueryBuilder(array(
+        $newest = $this->getRankingQueryResult(array(
             'status' => 'published',
             'orderBy' => 'r.published_date',
             'orderDir' => 'DESC',
@@ -44,10 +39,7 @@ class RankingController extends Controller{
 
         ));
 
-        $newest_query = $qb_new->getQuery();
-        $newest = $newest_query->getResult();
-
-        $qb_sport = $RankRepo->getQueryBuilder(array(
+        $sport = $this->getRankingQueryResult(array(
             'status' => 'published',
             'categorySlug' => 'sport',
             'home_page' => true,
@@ -55,10 +47,7 @@ class RankingController extends Controller{
             'limit' => '10'
         ));
 
-        $sport_query = $qb_sport->getQuery();
-        $sport = $sport_query->getResult();
-
-        $qb_people = $RankRepo->getQueryBuilder(array(
+        $people = $this->getRankingQueryResult(array(
             'status' => 'published',
             'categorySlug' => 'ludzie',
             'home_page' => true,
@@ -66,10 +55,7 @@ class RankingController extends Controller{
             'limit' => '10'
         ));
 
-        $people_query = $qb_people->getQuery();
-        $people = $people_query->getResult();
-
-        $qb_slider = $RankRepo->getQueryBuilder(array(
+        $slides = $this->getRankingQueryResult(array(
             'status' => 'published',
             'random' => true,
             'slider' => true,
@@ -77,11 +63,8 @@ class RankingController extends Controller{
             'limit' => '5'
         ));
 
-        $slide_query = $qb_slider->getQuery();
-        $slides = $slide_query->getResult();
-
         return array(
-            'Popular' => $papular,
+            'Popular' => $popular,
             'Newest' => $newest,
             'Sport' => $sport,
             'People' => $people,
@@ -134,7 +117,7 @@ class RankingController extends Controller{
             'categorySlug' => $slug
         ));
 
-        $qb_slider = $RankRepo->getQueryBuilder(array(
+        $slides = $this->getRankingQueryResult(array(
             'status' => 'published',
             'orderBy' => 'r.published_date',
             'orderDir' => 'DESC',
@@ -143,8 +126,6 @@ class RankingController extends Controller{
             'limit' => $this->slideLimit
         ));
 
-
-
         $CategoryRepo = $this->getDoctrine()->getRepository('RankingowiecBundle:Category');
         $Category = $CategoryRepo->findOneBySlug($slug);
 
@@ -152,11 +133,6 @@ class RankingController extends Controller{
         $pagination_all = $paginator->paginate($qb_all, $page, $this->itemsLimit);
 
         $count_row = count($qb_all->getQuery()->getResult());
-
-        $slide_query = $qb_slider->getQuery();
-        $slides = $slide_query->getResult();
-
-
 
         return array(
             'Pagination' => $pagination_all,
@@ -187,7 +163,7 @@ class RankingController extends Controller{
             'tagSlug' => $slug
         ));
 
-        $qb_slider = $RankRepo->getQueryBuilder(array(
+        $slides = $this->getRankingQueryResult(array(
             'status' => 'published',
             'orderBy' => 'r.published_date',
             'orderDir' => 'DESC',
@@ -202,9 +178,6 @@ class RankingController extends Controller{
         $paginator = $this->get('knp_paginator');
         $pagination_all = $paginator->paginate($qb_all, $page, $this->itemsLimit);
 
-        $slide_query = $qb_slider->getQuery();
-        $slides = $slide_query->getResult();
-
         $count_row = count($qb_all->getQuery()->getResult());
 
         return array(
@@ -212,6 +185,7 @@ class RankingController extends Controller{
             'Slides' => $slides,
             'ListTitle' => sprintf('Rankingi z tagiem: %s', $Tag->getName() ),
             'Count' => $count_row
+
         );
     }
 
@@ -239,6 +213,19 @@ class RankingController extends Controller{
     public function pageMapAction()
     {
         return array();
+    }
+
+
+
+    //Return a Query Results of Rankings
+    protected function getRankingQueryResult(array $params = array()){
+        $RankRepo = $this->getDoctrine()->getRepository('RankingowiecBundle:Ranking');
+        $qb = $RankRepo->getQueryBuilder($params);
+
+        $query = $qb->getQuery();
+        $result = $query->getResult();
+
+        return $result;
     }
 
 
