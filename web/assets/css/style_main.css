@@ -212,6 +212,30 @@ img.avatar:hover{
     padding: 150px 0;
 }
 
+/*Pagination*/
+
+.pagination span{
+    display: inline-block;
+    padding: 0px 5px;
+    background: #ff5146;
+    border-radius: 5px;
+}
+
+.pagination span a{
+    color: #fff;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.pagination span.current,
+.pagination span:hover{
+    background: #141212;
+    color: #fff;
+}
+
+
+
 
 /*::::::::::::::
 HOME PAGE
