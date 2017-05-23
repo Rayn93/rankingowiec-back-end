@@ -5,6 +5,7 @@ namespace RankingowiecBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\Request;
 
 class RankingController extends Controller{
 
@@ -193,15 +194,37 @@ class RankingController extends Controller{
 
     /**
      * @Route(
-     *     "/szukaj",
-     *      name="ranking_search"
+     *     "/szukaj/{page}",
+     *      name="ranking_search",
+     *      defaults = {"page" = 1},
+     *      requirements = {"page" = "\d+"}
      * )
      * @Template()
      */
-    public function searchAction()
-    {
-        return array();
+    public function searchAction( \Symfony\Component\HttpFoundation\Request $reguest, $page){
+        
+        $search_param = $reguest->query->get('search');
+
+        $RankRepo = $this->getDoctrine()->getRepository('RankingowiecBundle:Ranking');
+        $qb_all = $RankRepo->getQueryBuilder(array(
+            'status' => 'published',
+            'orderBy' => 'r.published_date',
+            'orderDir' => 'DESC',
+            'search_param' => $search_param
+        ));
+
+        $paginator = $this->get('knp_paginator');
+        $pagination_all = $paginator->paginate($qb_all, $page, $this->itemsLimit);
+
+        $count_row = count($qb_all->getQuery()->getResult());
+
+        return array(
+            'Pagination' => $pagination_all,
+            'Search_phrase' => $search_param,
+            'Count' => $count_row
+        );
     }
+
 
     /**
      * @Route(

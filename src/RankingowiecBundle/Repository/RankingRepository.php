@@ -62,6 +62,12 @@ class RankingRepository extends EntityRepository{
             $qb->addSelect('RAND() as HIDDEN rand')->orderBy('rand');
         }
 
+        if(!empty($params['search_param'])) {
+            $searchParameter = '%'.$params['search_param'].'%';
+            $qb->andWhere('r.title LIKE :searchParameter OR r.description LIKE :searchParameter')
+                ->setParameter('searchParameter', $searchParameter);
+        }
+
         return $qb;
 
     }

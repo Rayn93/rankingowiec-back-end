@@ -175,13 +175,12 @@
                 </div>
                 <div class="modal-body">
 
-                    <form class="form-inline">
+                    <form class="form-inline" action="{{ path('ranking_search') }}" method="get">
                         <div class="form-group">
-                            <label class="sr-only" for="search-input">Amount (in dollars)</label>
+                            <label class="sr-only" for="search-input">Szukaj:</label>
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></div>
-                                <input type="text" class="form-control" id="search-input"
-                                       placeholder="Szukana fraza...">
+                                <input type="text" class="form-control" id="search-input" name="search" placeholder="Szukana fraza...">
                             </div>
                         </div>
                         <button type="submit" class="btn btn-success btn-lg">Szukaj</button>
