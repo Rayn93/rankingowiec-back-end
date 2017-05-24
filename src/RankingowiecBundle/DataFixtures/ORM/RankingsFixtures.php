@@ -75,7 +75,7 @@ class RankingsFixtures extends AbstractFixture implements OrderedFixtureInterfac
                     'Sami Swoi [1986]' => array('plus' => 102, 'minus' => 2301),
                     'Bogowie [2015]' => array('plus' => 302, 'minus' => 4201),
                     'Pianista [2000]' => array('plus' => 202, 'minus' => 1101),
-                    'Wołyń [2016]' => array('plus' => 2021, 'minus' => 341),
+                    'Wołyń [2016]' => array('plus' => 8021, 'minus' => 2341),
                     'Amator [1999]' => array('plus' => 102, 'minus' => 2301),
                     'Twardowski 2.0 [2014]' => array('plus' => 302, 'minus' => 4201),
                     'Pora umierać [1982]' => array('plus' => 202, 'minus' => 1101),

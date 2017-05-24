@@ -1,8 +1,8 @@
 {% extends "RankingowiecBundle::base.html.twig" %}
 
-{% block pageTitle %} Tytuł rankingu {% endblock %}
+{% block pageTitle %} Ranking.title {% endblock %}
 
-{% block pageDescription %} Skrócony opis danego rankingu {% endblock %}
+{% block pageDescription %} Ranking.description {% endblock %}
 
 {% block bodyId %} ranking {% endblock %}
 
@@ -12,7 +12,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="ranking-photo">
-                <img src="{{ asset('img/slajdy/slide3.jpg') }}" alt="ranking title">
+                <img src="{{ Ranking.thumbnail }}" alt="{{ Ranking.slug }}">
                 <div class="rank-caption">
                     <h1 class="rank-title">{{ Ranking.title }}</h1>
                     <p class="rank-desc">
@@ -35,12 +35,12 @@
             <div class="row">
                 <div class="col-md-12 nopadding">
                     <ul>
-                        <li><i class="fa fa-user" aria-hidden="true"></i>Autor: <a href="#">Kazik887</a></li>
-                        <li><i class="fa fa-calendar" aria-hidden="true"></i>Data: 15.05.2017</li>
+                        <li><i class="fa fa-user" aria-hidden="true"></i>Autor: <a href="#">{{ Ranking.author }}</a></li>
+                        <li><i class="fa fa-calendar" aria-hidden="true"></i>Data: {{ Ranking.publishedDate|date('d-m-Y') }}</li>
                         <li><i class="fa fa-thumbs-up" aria-hidden="true"></i> Głosów: 42 tyś</li>
-                        <li><i class="fa fa-users" aria-hidden="true"></i> Głosujących: 12 tyś</li>
-                        <li><i class="fa fa-eye" aria-hidden="true"></i> Wyświetleń: 4.1 mil</li>
-                        <li><i class="fa fa-cubes" aria-hidden="true"></i> Pozycji: 28</li>
+                        {#<li><i class="fa fa-users" aria-hidden="true"></i> Głosujących: 12 tyś</li>#}
+                        <li><i class="fa fa-eye" aria-hidden="true"></i> Wyświetleń: {{ Ranking.numbVisits }}</li>
+                        <li><i class="fa fa-cubes" aria-hidden="true"></i> Pozycji: {{ Ranking.items|length }}</li>
                     </ul>
                 </div>
             </div>
@@ -48,8 +48,20 @@
             <div class="row">
                 <div class="col-md-12 nopadding">
                     <ul>
-                        <li><i class="fa fa-folder-open" aria-hidden="true"></i>Kategoria: <a href="#">Film</a>, <a href="#">Ludzie</a></li>
-                        <li><i class="fa fa-tags" aria-hidden="true"></i>Tagi: <a href="#">Najlepszy film</a>, <a href="#">Hity filmowe</a>, <a href="#">2016</a></li>
+                        <li><i class="fa fa-folder-open" aria-hidden="true"></i>Kategoria:
+
+                            {% for category in Ranking.categories %}
+                                <a href="{{ path('ranking_category', {'slug': category.slug }) }}">{{ category.name }}</a>,
+                            {% endfor %}
+
+                        </li>
+                        <li><i class="fa fa-tags" aria-hidden="true"></i>Tagi:
+
+                            {% for tag in Ranking.tags %}
+                                <a href="{{ path('ranking_tag', {'slug': tag.slug }) }}">{{ tag.name }}</a>,
+                            {% endfor %}
+
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -129,7 +141,7 @@
                                             <div class="result"><i class="fa fa-retweet" aria-hidden="true"></i> Wynik: {{ object.result }}</div>
                                         </div>
                                         <div class="col-sm-7 col-xs-6 item-name">
-                                            <h4><a href="#">{{ object.title }}</a> </h4>
+                                            <h4><a href="{{ path('single_object', {'slug': object.slug }) }}">{{ object.title }}</a> </h4>
                                             <p>Tom Henks, Ali bab, Coś tam jeszcze Tom Henks, Ali bab, Coś tam jeszcze Tom Henks, Ali bab, Coś tam jeszcze...</p>
                                         </div>
                                     </li>
@@ -137,221 +149,12 @@
 
                             {% endfor %} }
 
-                            {#<ol>#}
-                                {#<li>#}
-                                    {#<div class="col-sm-1 col-xs-1 rank-number nopadding">#}
-                                        {#<span>1</span>#}
-                                    {#</div>#}
-                                    {#<div class="col-sm-2 col-xs-2 item-photo nopadding">#}
-                                        {#<a href="#"><img class="img-thumbnail" src="{{ asset('img/items-photo/forest.jpg') }}" alt=""></a>#}
-                                    {#</div>#}
-                                    {#<div class="col-sm-2 col-xs-3 thumbns nopadding">#}
-                                        {#<ul>#}
-                                            {#<li class="up"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span>1234</span></li>#}
-                                            {#<li class="down"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span>1234</span></li>#}
-                                        {#</ul>#}
-                                        {#<div class="result"><i class="fa fa-retweet" aria-hidden="true"></i> Wynik: 392</div>#}
-                                    {#</div>#}
-                                    {#<div class="col-sm-7 col-xs-6 item-name">#}
-                                        {#<h4><a href="#">Forest Gump [1993]</a> </h4>#}
-                                        {#<p>Tom Henks, Ali bab, Coś tam jeszcze Tom Henks, Ali bab, Coś tam jeszcze Tom Henks, Ali bab, Coś tam jeszcze...</p>#}
-                                    {#</div>#}
-                                {#</li>#}
-                            {#</ol>#}
-
-                            {#<ol>#}
-                                {#<li>#}
-                                    {#<div class="col-sm-1 col-xs-1 rank-number nopadding">#}
-                                        {#<span>1</span>#}
-                                    {#</div>#}
-                                    {#<div class="col-sm-2 col-xs-2 item-photo nopadding">#}
-                                        {#<a href="#"><img class="img-thumbnail" src="{{ asset('img/items-photo/forest.jpg') }}" alt=""></a>#}
-                                    {#</div>#}
-                                    {#<div class="col-sm-2 col-xs-3 thumbns nopadding">#}
-                                        {#<ul>#}
-                                            {#<li class="up"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span>1234</span></li>#}
-                                            {#<li class="down"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span>1234</span></li>#}
-                                        {#</ul>#}
-                                        {#<div class="result"><i class="fa fa-retweet" aria-hidden="true"></i> Wynik: 392</div>#}
-                                    {#</div>#}
-                                    {#<div class="col-sm-7 col-xs-6 item-name">#}
-                                        {#<h4><a href="#">Forest Gump [1993]</a> </h4>#}
-                                        {#<p>Tom Henks, Ali bab, Coś tam jeszcze Tom Henks, Ali bab, Coś tam jeszcze Tom Henks, Ali bab, Coś tam jeszcze...</p>#}
-                                    {#</div>#}
-                                {#</li>#}
-                            {#</ol>#}
-
-                            {#<ol>#}
-                                {#<li>#}
-                                    {#<div class="col-sm-1 col-xs-1 rank-number nopadding">#}
-                                        {#<span>1</span>#}
-                                    {#</div>#}
-                                    {#<div class="col-sm-2 col-xs-2 item-photo nopadding">#}
-                                        {#<a href="#"><img class="img-thumbnail" src="{{ asset('img/items-photo/forest.jpg') }}" alt=""></a>#}
-                                    {#</div>#}
-                                    {#<div class="col-sm-2 col-xs-3 thumbns nopadding">#}
-                                        {#<ul>#}
-                                            {#<li class="up"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span>1234</span></li>#}
-                                            {#<li class="down"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span>1234</span></li>#}
-                                        {#</ul>#}
-                                        {#<div class="result"><i class="fa fa-retweet" aria-hidden="true"></i> Wynik: 392</div>#}
-                                    {#</div>#}
-                                    {#<div class="col-sm-7 col-xs-6 item-name">#}
-                                        {#<h4><a href="#">Forest Gump [1993]</a> </h4>#}
-                                        {#<p>Tom Henks, Ali bab, Coś tam jeszcze Tom Henks, Ali bab, Coś tam jeszcze Tom Henks, Ali bab, Coś tam jeszcze...</p>#}
-                                    {#</div>#}
-                                {#</li>#}
-                            {#</ol>#}
-
-                            {#<ol>#}
-                                {#<li>#}
-                                    {#<div class="col-sm-1 col-xs-1 rank-number nopadding">#}
-                                        {#<span>1</span>#}
-                                    {#</div>#}
-                                    {#<div class="col-sm-2 col-xs-2 item-photo nopadding">#}
-                                        {#<a href="#"><img class="img-thumbnail" src="{{ asset('img/items-photo/forest.jpg') }}" alt=""></a>#}
-                                    {#</div>#}
-                                    {#<div class="col-sm-2 col-xs-3 thumbns nopadding">#}
-                                        {#<ul>#}
-                                            {#<li class="up"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span>1234</span></li>#}
-                                            {#<li class="down"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span>1234</span></li>#}
-                                        {#</ul>#}
-                                        {#<div class="result"><i class="fa fa-retweet" aria-hidden="true"></i> Wynik: 392</div>#}
-                                    {#</div>#}
-                                    {#<div class="col-sm-7 col-xs-6 item-name">#}
-                                        {#<h4><a href="#">Forest Gump [1993]</a> </h4>#}
-                                        {#<p>Tom Henks, Ali bab, Coś tam jeszcze Tom Henks, Ali bab, Coś tam jeszcze Tom Henks, Ali bab, Coś tam jeszcze...</p>#}
-                                    {#</div>#}
-                                {#</li>#}
-                            {#</ol>#}
-
-                            {#<ol>#}
-                                {#<li>#}
-                                    {#<div class="col-sm-1 col-xs-1 rank-number nopadding">#}
-                                        {#<span>1</span>#}
-                                    {#</div>#}
-                                    {#<div class="col-sm-2 col-xs-2 item-photo nopadding">#}
-                                        {#<a href="#"><img class="img-thumbnail" src="{{ asset('img/items-photo/forest.jpg') }}" alt=""></a>#}
-                                    {#</div>#}
-                                    {#<div class="col-sm-2 col-xs-3 thumbns nopadding">#}
-                                        {#<ul>#}
-                                            {#<li class="up"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span>1234</span></li>#}
-                                            {#<li class="down"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span>1234</span></li>#}
-                                        {#</ul>#}
-                                        {#<div class="result"><i class="fa fa-retweet" aria-hidden="true"></i> Wynik: 392</div>#}
-                                    {#</div>#}
-                                    {#<div class="col-sm-7 col-xs-6 item-name">#}
-                                        {#<h4><a href="#">Forest Gump [1993]</a> </h4>#}
-                                        {#<p>Tom Henks, Ali bab, Coś tam jeszcze Tom Henks, Ali bab, Coś tam jeszcze Tom Henks, Ali bab, Coś tam jeszcze...</p>#}
-                                    {#</div>#}
-                                {#</li>#}
-                            {#</ol>#}
-
-                            {#<ol>#}
-                                {#<li>#}
-                                    {#<div class="col-sm-1 col-xs-1 rank-number nopadding">#}
-                                        {#<span>1</span>#}
-                                    {#</div>#}
-                                    {#<div class="col-sm-2 col-xs-2 item-photo nopadding">#}
-                                        {#<a href="#"><img class="img-thumbnail" src="{{ asset('img/items-photo/forest.jpg') }}" alt=""></a>#}
-                                    {#</div>#}
-                                    {#<div class="col-sm-2 col-xs-3 thumbns nopadding">#}
-                                        {#<ul>#}
-                                            {#<li class="up"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span>1234</span></li>#}
-                                            {#<li class="down"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span>1234</span></li>#}
-                                        {#</ul>#}
-                                        {#<div class="result"><i class="fa fa-retweet" aria-hidden="true"></i> Wynik: 392</div>#}
-                                    {#</div>#}
-                                    {#<div class="col-sm-7 col-xs-6 item-name">#}
-                                        {#<h4><a href="#">Forest Gump [1993]</a> </h4>#}
-                                        {#<p>Tom Henks, Ali bab, Coś tam jeszcze Tom Henks, Ali bab, Coś tam jeszcze Tom Henks, Ali bab, Coś tam jeszcze...</p>#}
-                                    {#</div>#}
-                                {#</li>#}
-                            {#</ol>#}
-
-                            {#<ol>#}
-                                {#<li>#}
-                                    {#<div class="col-sm-1 col-xs-1 rank-number nopadding">#}
-                                        {#<span>1</span>#}
-                                    {#</div>#}
-                                    {#<div class="col-sm-2 col-xs-2 item-photo nopadding">#}
-                                        {#<a href="#"><img class="img-thumbnail" src="{{ asset('img/items-photo/forest.jpg') }}" alt=""></a>#}
-                                    {#</div>#}
-                                    {#<div class="col-sm-2 col-xs-3 thumbns nopadding">#}
-                                        {#<ul>#}
-                                            {#<li class="up"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span>1234</span></li>#}
-                                            {#<li class="down"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span>1234</span></li>#}
-                                        {#</ul>#}
-                                        {#<div class="result"><i class="fa fa-retweet" aria-hidden="true"></i> Wynik: 392</div>#}
-                                    {#</div>#}
-                                    {#<div class="col-sm-7 col-xs-6 item-name">#}
-                                        {#<h4><a href="#">Forest Gump [1993]</a> </h4>#}
-                                        {#<p>Tom Henks, Ali bab, Coś tam jeszcze Tom Henks, Ali bab, Coś tam jeszcze Tom Henks, Ali bab, Coś tam jeszcze...</p>#}
-                                    {#</div>#}
-                                {#</li>#}
-                            {#</ol>#}
-
-                            {#<ol>#}
-                                {#<li>#}
-                                    {#<div class="col-sm-1 col-xs-1 rank-number nopadding">#}
-                                        {#<span>1</span>#}
-                                    {#</div>#}
-                                    {#<div class="col-sm-2 col-xs-2 item-photo nopadding">#}
-                                        {#<a href="#"><img class="img-thumbnail" src="{{ asset('img/items-photo/forest.jpg') }}" alt=""></a>#}
-                                    {#</div>#}
-                                    {#<div class="col-sm-2 col-xs-3 thumbns nopadding">#}
-                                        {#<ul>#}
-                                            {#<li class="up"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span>1234</span></li>#}
-                                            {#<li class="down"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span>1234</span></li>#}
-                                        {#</ul>#}
-                                        {#<div class="result"><i class="fa fa-retweet" aria-hidden="true"></i> Wynik: 392</div>#}
-                                    {#</div>#}
-                                    {#<div class="col-sm-7 col-xs-6 item-name">#}
-                                        {#<h4><a href="#">Forest Gump [1993]</a> </h4>#}
-                                        {#<p>Tom Henks, Ali bab, Coś tam jeszcze Tom Henks, Ali bab, Coś tam jeszcze Tom Henks, Ali bab, Coś tam jeszcze...</p>#}
-                                    {#</div>#}
-                                {#</li>#}
-                            {#</ol>#}
-
-                            {#<ol>#}
-                                {#<li>#}
-                                    {#<div class="col-sm-1 col-xs-1 rank-number nopadding">#}
-                                        {#<span>1</span>#}
-                                    {#</div>#}
-                                    {#<div class="col-sm-2 col-xs-2 item-photo nopadding">#}
-                                        {#<a href="#"><img class="img-thumbnail" src="{{ asset('img/items-photo/forest.jpg') }}" alt=""></a>#}
-                                    {#</div>#}
-                                    {#<div class="col-sm-2 col-xs-3 thumbns nopadding">#}
-                                        {#<ul>#}
-                                            {#<li class="up"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span>1234</span></li>#}
-                                            {#<li class="down"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span>1234</span></li>#}
-                                        {#</ul>#}
-                                        {#<div class="result"><i class="fa fa-retweet" aria-hidden="true"></i> Wynik: 392</div>#}
-                                    {#</div>#}
-                                    {#<div class="col-sm-7 col-xs-6 item-name">#}
-                                        {#<h4><a href="#">Forest Gump [1993]</a> </h4>#}
-                                        {#<p>Tom Henks, Ali bab, Coś tam jeszcze Tom Henks, Ali bab, Coś tam jeszcze Tom Henks, Ali bab, Coś tam jeszcze...</p>#}
-                                    {#</div>#}
-                                {#</li>#}
-                            {#</ol>#}
-
 
                         </div>
 
                         <div role="tabpanel" class="tab-pane fade" id="rank-desc">
-                            <h1>Najlepszy film w 2016 roku</h1>
-                            <p>The best movies of all time, ranked by movie experts and film fans alike. What are the greatest movies of all time? This list of
-                                the top films ever made was created by taking best movie suggestions from Ranker users and letting them vote to determine which
-                                films are the best ever made.</p>
-                            <p>The best movies of all time, ranked by movie experts and film fans alike. What are the greatest movies of all time? This list of
-                                the top films ever made was created by taking best movie suggestions from Ranker users and letting them vote to determine which
-                                films are the best ever made. The best movies of all time, ranked by movie experts and film fans alike. What are the greatest movies of all time? This list of the top films ever made was created by taking best movie suggestions from Ranker users and letting them vote to determine which films are the best ever made.</p>
-                            <p>The best movies of all time, ranked by movie experts and film fans alike. What are the greatest movies of all time? This list of
-                                the top films ever made was created by taking best movie suggestions from Ranker users and letting them vote to determine which
-                                films are the best ever made.</p>
-                            <p>The best movies of all time, ranked by movie experts and film fans alike. What are the greatest movies of all time? This list of
-                                the top films ever made was created by taking best movie suggestions from Ranker users and letting them vote to determine which
-                                films are the best ever made.</p>
+                            <h1>{{ Ranking.title }}</h1>
+                            {{ Ranking.description|raw }}
                         </div>
 
                         <div role="tabpanel" class="tab-pane fade" id="comments">

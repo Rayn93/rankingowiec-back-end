@@ -142,6 +142,22 @@ class RankObjectsFixtures extends AbstractFixture implements OrderedFixtureInter
                 'create_date' => '2017-02-01 12:12:12',
                 'published_date' => '2017-02-01 12:12:12',
                 'author' => 'Robert Saternus'
+            ),
+
+            array(
+                'title' => 'Wołyń [2016]',
+                'slug' => 'Wołyń [2016]',
+                'description' => ' polski film fabularny z 2016 w reżyserii Macieja Pieprzycy, inspirowany historią Zdzisława Marchwickiego, domniemanego „wampira z Zagłębia”, ukazaną w realiach Polski Ludowej lat 70. Film jest inspirowany prawdziwymi wydarzeniami z początku lat 70. XX w. Główny bohater filmu, Janusz Jasiński, jest młodym porucznikiem milicji. Po kolejnych niepowodzeniach dotychczasowego śledztwa w sprawie brutalnych zabójstw kobiet zostaje mianowany nowym szefem grupy dochodzeniowej. Stara się zrobić wszystko, by wykorzystać życiową szansę i złapać seryjnego mordercę. Jak wiele będzie w stanie poświęcić dla śledztwa?',
+                'thumbnail' => 'http://rankingowiec.dev/img/items-photo/forest.jpg',
+                'more_link' => 'https://pl.wikipedia.org/wiki/Jestem_morderc%C4%85',
+                'category' => 'films',
+                'total_result' => array(
+                    'plus' => 8762,
+                    'minus' => 1462
+                ),
+                'create_date' => '2017-02-01 12:12:12',
+                'published_date' => '2017-02-01 12:12:12',
+                'author' => 'Robert Saternus'
             )
 
 

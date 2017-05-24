@@ -89,59 +89,38 @@ class RankingController extends Controller{
 
         $Ranking = $RankRepo->getPublishedRanking($slug);
 
-        $RankingItems = $Ranking->getItems();
-        $Objects = $ObjectRepo->getRankingObjects($RankingItems);
-
-
-//        foreach ($Objects as $object){
-//            $titles[] = $object->getTitle();
-//            $thumbnails[] = $object->getThumbnail();
-//        }
-
-        $results = $Ranking->getItemsResult();
-
-
-        foreach($results as $title => $innerArray){
-            $wyniki[] = array(
-                $title => $innerArray['plus'] - $innerArray['minus']
-            );
-        }
-
-//        $my_object_list = array(
-//            'titles' => $titles,
-//            '$thumbnails' => $thumbnails,
-//            'wyniki' => $wyniki
-//        );
-
-
-        foreach ($Objects as $object){
-
-            $my_object_list[] = array(
-                'title' => $object->getTitle(),
-                'thumbnail' => $object->getThumbnail(),
-                'plus' => $results[$object->getTitle()]['plus'],
-                'minus' => $results[$object->getTitle()]['minus'],
-                'result' => $results[$object->getTitle()]['plus'] - $results[$object->getTitle()]['minus']
-            );
-
-        }
-
-        $results2 = array();
-        foreach ($my_object_list as $key => $row)
-        {
-            $results2[$key] = $row['result'];
-        }
-        array_multisort($results2, SORT_DESC, $my_object_list);
-
-
-//        var_dump($my_object_list);
-
-
         if($Ranking === NULL){
             throw $this->createNotFoundException('Ranking nie został odnaleziony');
         }
+        else{
 
+            $RankingItems = $Ranking->getItems();
+            $Objects = $ObjectRepo->getRankingObjects($RankingItems);
+            $results = $Ranking->getItemsResult();
 
+            //Tworzenie tablicy z listą pozycji w rankingu
+            $my_object_list = array();
+            foreach ($Objects as $object){
+
+                $my_object_list[] = array(
+                    'title' => $object->getTitle(),
+                    'slug' => $object->getSlug(),
+                    'thumbnail' => $object->getThumbnail(),
+                    'plus' => $results[$object->getTitle()]['plus'],
+                    'minus' => $results[$object->getTitle()]['minus'],
+                    'result' => $results[$object->getTitle()]['plus'] - $results[$object->getTitle()]['minus']
+                );
+            }
+
+            //Sortowanie listy ze względu na ilośc zdobytych punktów
+            $final_result = array();
+            foreach ($my_object_list as $key => $row){
+
+                $final_result[$key] = $row['result'];
+            }
+            array_multisort($final_result, SORT_DESC, $my_object_list);
+
+        }
 
         return array(
             'Ranking' => $Ranking,
@@ -151,12 +130,12 @@ class RankingController extends Controller{
 
     /**
      * @Route(
-     *     "/obiekt",
+     *     "/obiekt/{slug}",
      *      name="single_object"
      * )
      * @Template()
      */
-    public function objectAction()
+    public function objectAction($slug)
     {
         return array();
     }

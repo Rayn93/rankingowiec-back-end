@@ -8,7 +8,7 @@ use Doctrine\ORM\EntityRepository;
 class RankObjectRepository extends EntityRepository{
 
 
-    //Z
+    //Zwraca liste obiektow dla konkretnego rankingu
     public function getRankingObjects(array $objectList = array()){
 
         $qb = $this->getQueryBuilder(array());
@@ -19,19 +19,17 @@ class RankObjectRepository extends EntityRepository{
 
         }
 
-
-
-
         return $qb->getQuery()->getResult();
 
     }
 
 
-    //Tworzy zapytania DQL dla encji Ranking z przekazanymi parametrami
+    //Tworzy zapytania DQL dla encji Obiektow rankiongowych z przekazanymi parametrami
     public function getQueryBuilder(array $params = array()){
 
         $qb = $this->createQueryBuilder('o')
-            ->select('o');
+            ->select('o, c')
+            ->leftJoin('o.category', 'c');
 
 
 //        //Sprawdza status rankingu w zależności od przekazanego parametru published / unpublished

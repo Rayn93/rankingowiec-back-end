@@ -67,15 +67,15 @@
             <div class="row">
                 <header>
                     <div class="col-xs-6">
-                        <form action="#" method="get" class="form-inline filter-search" role="form">
+                        {#<form action="#" method="get" class="form-inline filter-search" role="form">#}
 
-                            <select name="category" class="select-block">
-                                <option value="dev">Popularne</option>
-                                <option value="des">Najnowsze</option>
-                                <option value="tech">Najw. ocen</option>
-                            </select>
+                            {#<select name="category" class="select-block">#}
+                                {#<option value="dev">Popularne</option>#}
+                                {#<option value="des">Najnowsze</option>#}
+                                {#<option value="tech">Najw. ocen</option>#}
+                            {#</select>#}
 
-                        </form>
+                        {#</form>#}
                     </div>
 
                     <div class="col-xs-6">
@@ -103,7 +103,7 @@
                                     <div class="caption">
                                         <h3>{{ ranking.title }} </h3>
                                         <span class="badge"><i class="fa fa-thumbs-up" aria-hidden="true"></i> Głosów: 42 tyś</span>
-                                        <span class="badge"><i class="fa fa-eye" aria-hidden="true"></i> Wizyt: {{ ranking.numb_visits }}</span>
+                                        <span class="badge"><i class="fa fa-eye" aria-hidden="true"></i> Wizyt: {{ ranking.numbVisits }}</span>
                                         <p>Bootstrap-select is a jQuery plugin that utilizes Bootstrap's dropdown.js to style and bring additional functionality to standard select elements. Bootstrap-select is a jQuery plugin that utilizes [...] </p>
                                     </div>
                                 </a>
