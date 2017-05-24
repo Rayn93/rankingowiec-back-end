@@ -93,7 +93,48 @@ class RankingController extends Controller{
         $Objects = $ObjectRepo->getRankingObjects($RankingItems);
 
 
-//        var_dump($Objects);
+//        foreach ($Objects as $object){
+//            $titles[] = $object->getTitle();
+//            $thumbnails[] = $object->getThumbnail();
+//        }
+
+        $results = $Ranking->getItemsResult();
+
+
+        foreach($results as $title => $innerArray){
+            $wyniki[] = array(
+                $title => $innerArray['plus'] - $innerArray['minus']
+            );
+        }
+
+//        $my_object_list = array(
+//            'titles' => $titles,
+//            '$thumbnails' => $thumbnails,
+//            'wyniki' => $wyniki
+//        );
+
+
+        foreach ($Objects as $object){
+
+            $my_object_list[] = array(
+                'title' => $object->getTitle(),
+                'thumbnail' => $object->getThumbnail(),
+                'plus' => $results[$object->getTitle()]['plus'],
+                'minus' => $results[$object->getTitle()]['minus'],
+                'result' => $results[$object->getTitle()]['plus'] - $results[$object->getTitle()]['minus']
+            );
+
+        }
+
+        $results2 = array();
+        foreach ($my_object_list as $key => $row)
+        {
+            $results2[$key] = $row['result'];
+        }
+        array_multisort($results2, SORT_DESC, $my_object_list);
+
+
+//        var_dump($my_object_list);
 
 
         if($Ranking === NULL){
@@ -104,7 +145,7 @@ class RankingController extends Controller{
 
         return array(
             'Ranking' => $Ranking,
-            'Objects' => $Objects
+            'Objects' => $my_object_list
         );
     }
 
