@@ -75,15 +75,37 @@ class RankingController extends Controller{
 
     /**
      * @Route(
-     *     "/ranking",
+     *     "/ranking/{slug}",
      *      name="single_ranking"
      * )
      *
      * @Template()
      */
-    public function rankingAction()
-    {
-        return array();
+    public function rankingAction($slug){
+
+
+        $RankRepo = $this->getDoctrine()->getRepository('RankingowiecBundle:Ranking');
+        $ObjectRepo = $this->getDoctrine()->getRepository('RankingowiecBundle:RankObject');
+
+        $Ranking = $RankRepo->getPublishedRanking($slug);
+
+        $RankingItems = $Ranking->getItems();
+        $Objects = $ObjectRepo->getRankingObjects($RankingItems);
+
+
+//        var_dump($Objects);
+
+
+        if($Ranking === NULL){
+            throw $this->createNotFoundException('Ranking nie został odnaleziony');
+        }
+
+
+
+        return array(
+            'Ranking' => $Ranking,
+            'Objects' => $Objects
+        );
     }
 
     /**

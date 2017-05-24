@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="RankingowiecBundle\Repository\RankObjectRepository")
  * @ORM\Table(name="ranking_objects")
  * @ORM\HasLifecycleCallbacks()
  */

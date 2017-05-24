@@ -69,7 +69,7 @@ class RankingsFixtures extends AbstractFixture implements OrderedFixtureInterfac
                 'title' => 'Najlepszy polski film wszechczasów',
                 'slug' => 'Najlepszy polski film wszechczasów',
                 'description' => 'W tym rankingu głosujemy na najlepszy polski film wszechczasów. Sprawa nie jest łatwa ponieważ polskie kindo od dziesiątek lat wypuszcza świetne produkcje. Jesteśmy niezmiernie ciekawi który film wygra w tym rankingu.',
-                'items' => array('Jestem Mordercą', 'Bogowie', 'Pianista', 'Przesłuchanie', 'Wołyń', 'Amator', 'Twardowski 2.0', 'Pora umierać', 'Sami swoi'),
+                'items' => array('Jestem mordercą [2016]', 'Sami Swoi [1986]', 'Bogowie [2015]', 'Pianista [2000]', 'Wołyń [2016]', 'Amator [1999]', 'Twardowski 2.0 [2014]', 'Pora umierać [1982]', 'Sami swoi [1972]'),
                 'items_result' => array(
                     'id1' => array('plus' => 2021, 'minus' => 341),
                     'id302' => array('plus' => 102, 'minus' => 2301),

@@ -8,6 +8,23 @@ use Doctrine\ORM\EntityRepository;
 class RankingRepository extends EntityRepository{
 
 
+
+
+    //Zwraca ranking o konkretnym slugu
+    public function getPublishedRanking($slug){
+
+        $qb = $this->getQueryBuilder(array(
+            'status' => 'published'
+        ));
+
+        $qb->andWhere('r.slug = :slug')
+            ->setParameter('slug', $slug);
+
+        return $qb->getQuery()->getOneOrNullResult();
+
+    }
+
+
     //Tworzy zapytania DQL dla encji Ranking z przekazanymi parametrami
     public function getQueryBuilder(array $params = array()){
 

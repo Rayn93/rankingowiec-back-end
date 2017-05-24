@@ -24,8 +24,8 @@ class RankObjectsFixtures extends AbstractFixture implements OrderedFixtureInter
                 'more_link' => 'https://pl.wikipedia.org/wiki/Jestem_morderc%C4%85',
                 'category' => 'films',
                 'total_result' => array(
-                    'plus' => 2091,
-                    'minus' => 126
+                    'plus' => 9891,
+                    'minus' => 2126
                 ),
                 'create_date' => '2017-02-01 12:12:12',
                 'published_date' => '2017-02-01 12:12:12',
@@ -40,8 +40,8 @@ class RankObjectsFixtures extends AbstractFixture implements OrderedFixtureInter
                 'more_link' => 'https://pl.wikipedia.org/wiki/Jestem_morderc%C4%85',
                 'category' => 'films',
                 'total_result' => array(
-                    'plus' => 2091,
-                    'minus' => 126
+                    'plus' => 8091,
+                    'minus' => 1226
                 ),
                 'create_date' => '2017-02-01 12:12:12',
                 'published_date' => '2017-02-01 12:12:12',
@@ -49,15 +49,15 @@ class RankObjectsFixtures extends AbstractFixture implements OrderedFixtureInter
             ),
 
             array(
-                'title' => 'Bogowie',
+                'title' => 'Bogowie [2015]',
                 'slug' => 'Bogowie [2015]',
                 'description' => ' polski film fabularny z 2016 w reżyserii Macieja Pieprzycy, inspirowany historią Zdzisława Marchwickiego, domniemanego „wampira z Zagłębia”, ukazaną w realiach Polski Ludowej lat 70. Film jest inspirowany prawdziwymi wydarzeniami z początku lat 70. XX w. Główny bohater filmu, Janusz Jasiński, jest młodym porucznikiem milicji. Po kolejnych niepowodzeniach dotychczasowego śledztwa w sprawie brutalnych zabójstw kobiet zostaje mianowany nowym szefem grupy dochodzeniowej. Stara się zrobić wszystko, by wykorzystać życiową szansę i złapać seryjnego mordercę. Jak wiele będzie w stanie poświęcić dla śledztwa?',
                 'thumbnail' => 'http://rankingowiec.dev/img/items-photo/forest.jpg',
                 'more_link' => 'https://pl.wikipedia.org/wiki/Jestem_morderc%C4%85',
                 'category' => 'films',
                 'total_result' => array(
-                    'plus' => 2091,
-                    'minus' => 126
+                    'plus' => 691,
+                    'minus' => 1226
                 ),
                 'create_date' => '2017-02-01 12:12:12',
                 'published_date' => '2017-02-01 12:12:12',
@@ -65,20 +65,86 @@ class RankObjectsFixtures extends AbstractFixture implements OrderedFixtureInter
             ),
 
             array(
-                'title' => 'Pianista',
+                'title' => 'Pianista [2000]',
                 'slug' => 'Pianista [2000]',
                 'description' => ' polski film fabularny z 2016 w reżyserii Macieja Pieprzycy, inspirowany historią Zdzisława Marchwickiego, domniemanego „wampira z Zagłębia”, ukazaną w realiach Polski Ludowej lat 70. Film jest inspirowany prawdziwymi wydarzeniami z początku lat 70. XX w. Główny bohater filmu, Janusz Jasiński, jest młodym porucznikiem milicji. Po kolejnych niepowodzeniach dotychczasowego śledztwa w sprawie brutalnych zabójstw kobiet zostaje mianowany nowym szefem grupy dochodzeniowej. Stara się zrobić wszystko, by wykorzystać życiową szansę i złapać seryjnego mordercę. Jak wiele będzie w stanie poświęcić dla śledztwa?',
                 'thumbnail' => 'http://rankingowiec.dev/img/items-photo/forest.jpg',
                 'more_link' => 'https://pl.wikipedia.org/wiki/Jestem_morderc%C4%85',
                 'category' => 'films',
                 'total_result' => array(
-                    'plus' => 2091,
-                    'minus' => 126
+                    'plus' => 611,
+                    'minus' => 986
+                ),
+                'create_date' => '2017-02-01 12:12:12',
+                'published_date' => '2017-02-01 12:12:12',
+                'author' => 'Robert Saternus'
+            ),
+
+            array(
+                'title' => 'Amator [1999]',
+                'slug' => 'Amator [1999]',
+                'description' => ' polski film fabularny z 2016 w reżyserii Macieja Pieprzycy, inspirowany historią Zdzisława Marchwickiego, domniemanego „wampira z Zagłębia”, ukazaną w realiach Polski Ludowej lat 70. Film jest inspirowany prawdziwymi wydarzeniami z początku lat 70. XX w. Główny bohater filmu, Janusz Jasiński, jest młodym porucznikiem milicji. Po kolejnych niepowodzeniach dotychczasowego śledztwa w sprawie brutalnych zabójstw kobiet zostaje mianowany nowym szefem grupy dochodzeniowej. Stara się zrobić wszystko, by wykorzystać życiową szansę i złapać seryjnego mordercę. Jak wiele będzie w stanie poświęcić dla śledztwa?',
+                'thumbnail' => 'http://rankingowiec.dev/img/items-photo/forest.jpg',
+                'more_link' => 'https://pl.wikipedia.org/wiki/Jestem_morderc%C4%85',
+                'category' => 'films',
+                'total_result' => array(
+                    'plus' => 1011,
+                    'minus' => 836
+                ),
+                'create_date' => '2017-02-01 12:12:12',
+                'published_date' => '2017-02-01 12:12:12',
+                'author' => 'Robert Saternus'
+            ),
+
+            array(
+                'title' => 'Twardowski 2.0 [2014]',
+                'slug' => 'Twardowski 2.0 [2014]',
+                'description' => ' polski film fabularny z 2016 w reżyserii Macieja Pieprzycy, inspirowany historią Zdzisława Marchwickiego, domniemanego „wampira z Zagłębia”, ukazaną w realiach Polski Ludowej lat 70. Film jest inspirowany prawdziwymi wydarzeniami z początku lat 70. XX w. Główny bohater filmu, Janusz Jasiński, jest młodym porucznikiem milicji. Po kolejnych niepowodzeniach dotychczasowego śledztwa w sprawie brutalnych zabójstw kobiet zostaje mianowany nowym szefem grupy dochodzeniowej. Stara się zrobić wszystko, by wykorzystać życiową szansę i złapać seryjnego mordercę. Jak wiele będzie w stanie poświęcić dla śledztwa?',
+                'thumbnail' => 'http://rankingowiec.dev/img/items-photo/forest.jpg',
+                'more_link' => 'https://pl.wikipedia.org/wiki/Jestem_morderc%C4%85',
+                'category' => 'films',
+                'total_result' => array(
+                    'plus' => 9891,
+                    'minus' => 2816
+                ),
+                'create_date' => '2017-02-01 12:12:12',
+                'published_date' => '2017-02-01 12:12:12',
+                'author' => 'Robert Saternus'
+            ),
+
+            array(
+                'title' => 'Pora umierać [1982]',
+                'slug' => 'Pora umierać [1982]',
+                'description' => ' polski film fabularny z 2016 w reżyserii Macieja Pieprzycy, inspirowany historią Zdzisława Marchwickiego, domniemanego „wampira z Zagłębia”, ukazaną w realiach Polski Ludowej lat 70. Film jest inspirowany prawdziwymi wydarzeniami z początku lat 70. XX w. Główny bohater filmu, Janusz Jasiński, jest młodym porucznikiem milicji. Po kolejnych niepowodzeniach dotychczasowego śledztwa w sprawie brutalnych zabójstw kobiet zostaje mianowany nowym szefem grupy dochodzeniowej. Stara się zrobić wszystko, by wykorzystać życiową szansę i złapać seryjnego mordercę. Jak wiele będzie w stanie poświęcić dla śledztwa?',
+                'thumbnail' => 'http://rankingowiec.dev/img/items-photo/forest.jpg',
+                'more_link' => 'https://pl.wikipedia.org/wiki/Jestem_morderc%C4%85',
+                'category' => 'films',
+                'total_result' => array(
+                    'plus' => 2591,
+                    'minus' => 686
+                ),
+                'create_date' => '2017-02-01 12:12:12',
+                'published_date' => '2017-02-01 12:12:12',
+                'author' => 'Robert Saternus'
+            ),
+
+            array(
+                'title' => 'Sami swoi [1972]',
+                'slug' => 'Sami swoi [1972]',
+                'description' => ' polski film fabularny z 2016 w reżyserii Macieja Pieprzycy, inspirowany historią Zdzisława Marchwickiego, domniemanego „wampira z Zagłębia”, ukazaną w realiach Polski Ludowej lat 70. Film jest inspirowany prawdziwymi wydarzeniami z początku lat 70. XX w. Główny bohater filmu, Janusz Jasiński, jest młodym porucznikiem milicji. Po kolejnych niepowodzeniach dotychczasowego śledztwa w sprawie brutalnych zabójstw kobiet zostaje mianowany nowym szefem grupy dochodzeniowej. Stara się zrobić wszystko, by wykorzystać życiową szansę i złapać seryjnego mordercę. Jak wiele będzie w stanie poświęcić dla śledztwa?',
+                'thumbnail' => 'http://rankingowiec.dev/img/items-photo/forest.jpg',
+                'more_link' => 'https://pl.wikipedia.org/wiki/Jestem_morderc%C4%85',
+                'category' => 'films',
+                'total_result' => array(
+                    'plus' => 2191,
+                    'minus' => 326
                 ),
                 'create_date' => '2017-02-01 12:12:12',
                 'published_date' => '2017-02-01 12:12:12',
                 'author' => 'Robert Saternus'
             )
+
+
         );
 
         foreach($object_list as $details){
