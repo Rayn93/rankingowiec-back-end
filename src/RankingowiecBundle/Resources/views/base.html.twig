@@ -58,25 +58,25 @@
             <i class="fa fa-times-circle close" aria-hidden="true"></i>
 
             <div class="logo">
-                <h1><a href="#">RANKING <br/> - owiec</a></h1>
+                <h1><a href="{{ path('ranking_index') }}">RANKING <br/> - owiec</a></h1>
             </div>
 
             <nav>
                 <ul>
-                    <li><a href="#"><i class="fa fa-users" aria-hidden="true"></i> LUDZIE </a></li>
-                    <li><a href="#"><i class="fa fa-video-camera" aria-hidden="true"></i> FILM </a></li>
-                    <li><a href="#"><i class="fa fa-television" aria-hidden="true"></i> TELEWIZJA </a></li>
-                    <li><a href="#"><i class="fa fa-music" aria-hidden="true"></i> MUZYKA </a></li>
-                    <li><a href="#"><i class="fa fa-futbol-o" aria-hidden="true"></i> SPORT </a></li>
-                    <li><a href="#"><i class="fa fa-gamepad" aria-hidden="true"></i> GRY </a></li>
-                    <li><a href="#"><i class="fa fa-laptop" aria-hidden="true"></i> INTERNET </a></li>
-                    <li><a href="#"><i class="fa fa-smile-o" aria-hidden="true"></i> ZABAWNE </a></li>
-                    <li><a href="#"><i class="fa fa-flask" aria-hidden="true"></i> NAUKA </a></li>
-                    <li><a href="#"><i class="fa fa-book" aria-hidden="true"></i> KSIĄŻKI </a></li>
-                    <li><a href="#"><i class="fa fa-newspaper-o" aria-hidden="true"></i> WYDARZENIA </a></li>
-                    <li><a href="#"><i class="fa fa-rocket" aria-hidden="true"></i> TECHNOLOGIA </a></li>
-                    <li><a href="#"><i class="fa fa-fort-awesome" aria-hidden="true"></i> POLITYKA I HISTORIA </a></li>
-                    <li><a href="#"><i class="fa fa-cutlery" aria-hidden="true"></i> JEDZENIE I NAPOJE </a></li>
+                    <li><a href="{{ path('ranking_category', {'slug': 'ludzie' }) }}"><i class="fa fa-users" aria-hidden="true"></i> LUDZIE </a></li>
+                    <li><a href="{{ path('ranking_category', {'slug': 'film' }) }}"><i class="fa fa-video-camera" aria-hidden="true"></i> FILM </a></li>
+                    <li><a href="{{ path('ranking_category', {'slug': 'telewizja' }) }}"><i class="fa fa-television" aria-hidden="true"></i> TELEWIZJA </a></li>
+                    <li><a href="{{ path('ranking_category', {'slug': 'muzyka' }) }}"><i class="fa fa-music" aria-hidden="true"></i> MUZYKA </a></li>
+                    <li><a href="{{ path('ranking_category', {'slug': 'sport' }) }}"><i class="fa fa-futbol-o" aria-hidden="true"></i> SPORT </a></li>
+                    <li><a href="{{ path('ranking_category', {'slug': 'gry' }) }}"><i class="fa fa-gamepad" aria-hidden="true"></i> GRY </a></li>
+                    <li><a href="{{ path('ranking_category', {'slug': 'internet' }) }}"><i class="fa fa-laptop" aria-hidden="true"></i> INTERNET </a></li>
+                    <li><a href="{{ path('ranking_category', {'slug': 'zabawne' }) }}"><i class="fa fa-smile-o" aria-hidden="true"></i> ZABAWNE </a></li>
+                    <li><a href="{{ path('ranking_category', {'slug': 'nauka' }) }}"><i class="fa fa-flask" aria-hidden="true"></i> NAUKA </a></li>
+                    <li><a href="{{ path('ranking_category', {'slug': 'ksiazki' }) }}"><i class="fa fa-book" aria-hidden="true"></i> KSIĄŻKI </a></li>
+                    <li><a href="{{ path('ranking_category', {'slug': 'wydarzenia' }) }}"><i class="fa fa-newspaper-o" aria-hidden="true"></i> WYDARZENIA </a></li>
+                    <li><a href="{{ path('ranking_category', {'slug': 'technologia' }) }}"><i class="fa fa-rocket" aria-hidden="true"></i> TECHNOLOGIA </a></li>
+                    <li><a href="{{ path('ranking_category', {'slug': 'polityka-i-historia' }) }}"><i class="fa fa-fort-awesome" aria-hidden="true"></i> POLITYKA I HISTORIA </a></li>
+                    <li><a href="{{ path('ranking_category', {'slug': 'jedzenie-i-napoje' }) }}"><i class="fa fa-cutlery" aria-hidden="true"></i> JEDZENIE I NAPOJE </a></li>
                     <li><a href="#"><i class="fa fa-sitemap" aria-hidden="true"></i> MAPA KATEGORI </a></li>
                 </ul>
             </nav>
@@ -214,7 +214,7 @@
                     wszystkich. Mamy dość opinii pojedyńczyć ludzi, dlatego stworzyliśmy serwis, gdzie rankingi bazują
                     opinii większości. Dopiero ruszamy, ale i tak dodajemy kilkanaście/kiladziesiąt rankingów dziennie.
                     {#Chcemy aby Rankingowiec był dla Was, dlatego zapraszamy do dyskucji w <a href="#">poczekalni</a>#}
-                    {#oraz <a href="#">listy to-do</a>#}.</p>
+                    {#oraz <a href="#">listy to-do</a>#}</p>
             </div>
 
             <div class="col-sm-4 nav-footer">

@@ -73,6 +73,9 @@ class RankingController extends Controller{
         );
     }
 
+
+
+
     /**
      * @Route(
      *     "/ranking/{slug}",
@@ -128,6 +131,8 @@ class RankingController extends Controller{
         );
     }
 
+
+
     /**
      * @Route(
      *     "/obiekt/{slug}",
@@ -135,10 +140,12 @@ class RankingController extends Controller{
      * )
      * @Template()
      */
-    public function objectAction($slug)
-    {
+    public function objectAction($slug){
         return array();
     }
+
+
+
 
     /**
      * @Route(
@@ -172,6 +179,14 @@ class RankingController extends Controller{
         $CategoryRepo = $this->getDoctrine()->getRepository('RankingowiecBundle:Category');
         $Category = $CategoryRepo->findOneBySlug($slug);
 
+        //Sprawdzenie czy kategoria istnieje i stworzenie odpowiednigo tytułu listy
+        if($Category === null){
+            $list_title = $slug;
+        }
+        else{
+            $list_title = $Category->getName();
+        }
+
         $paginator = $this->get('knp_paginator');
         $pagination_all = $paginator->paginate($qb_all, $page, $this->itemsLimit);
 
@@ -180,12 +195,13 @@ class RankingController extends Controller{
         return array(
             'Pagination' => $pagination_all,
             'Slides' => $slides,
-            'ListTitle' => sprintf('Rankingi z kategori: %s', $Category->getName() ),
+            'ListTitle' => sprintf('Rankingi z kategori: %s', $list_title ),
             'Count' => $count_row
         );
-
-
     }
+
+
+
 
     /**
      * @Route(
@@ -218,6 +234,14 @@ class RankingController extends Controller{
         $TagRepo = $this->getDoctrine()->getRepository('RankingowiecBundle:Tag');
         $Tag = $TagRepo->findOneBySlug($slug);
 
+        //Sprawdzenie czy kategoria istnieje i stworzenie odpowiednigo tytułu listy
+        if($Tag === null){
+            $list_title = $slug;
+        }
+        else{
+            $list_title = $Tag->getName();
+        }
+
         $paginator = $this->get('knp_paginator');
         $pagination_all = $paginator->paginate($qb_all, $page, $this->itemsLimit);
 
@@ -226,11 +250,12 @@ class RankingController extends Controller{
         return array(
             'Pagination' => $pagination_all,
             'Slides' => $slides,
-            'ListTitle' => sprintf('Rankingi z tagiem: %s', $Tag->getName() ),
+            'ListTitle' => sprintf('Rankingi z tagiem: %s', $list_title ),
             'Count' => $count_row
 
         );
     }
+
 
 
 
@@ -268,6 +293,7 @@ class RankingController extends Controller{
     }
 
 
+
     /**
      * @Route(
      *     "/mapa-strony",
@@ -275,8 +301,7 @@ class RankingController extends Controller{
      * )
      * @Template()
      */
-    public function pageMapAction()
-    {
+    public function pageMapAction(){
         return array();
     }
 
