@@ -1,5 +1,6 @@
 services:
     rankingowiec.twig.extension:
         class: RankingowiecBundle\Twig\Extension\RankingExtension
+        arguments: ["@doctrine"]
         tags:
             - { name: twig.extension }
