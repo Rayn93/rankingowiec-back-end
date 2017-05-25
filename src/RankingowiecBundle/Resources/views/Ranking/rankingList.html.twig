@@ -2,7 +2,7 @@
 
 {% block pageTitle %} {{ ListTitle }} {% endblock %}
 
-{% block pageDescription %} Portal z rankingami, oceniaj sławnych ludzi, filmy, youtuberów czy najlepsze piwo! Dowiedz się co inni myślą. {% endblock %}
+{% block pageDescription %} {{ ListTitle }} Rankingowiec to portal z rankingami. Oceniaj sławnych ludzi, filmy, youtuberów czy najlepsze piwo! Dowiedz się co inni myślą. {% endblock %}
 
 {% block bodyId %} rank-list {% endblock %}
 
@@ -30,7 +30,7 @@
                                 <img src="{{ slide.thumbnail }}" alt="{{ slide.slug }}"/>
                                 <div class="carousel-caption">
                                     <h3>{{ slide.title }}</h3>
-                                    <a class="button" href="#"><span>ZOBACZ RANKING</span></a>
+                                    <a class="button" href="{{ path('single_ranking', {'slug': slide.slug }) }}"><span>ZOBACZ RANKING</span></a>
                                 </div>
                             </div>
                         {% else %}
@@ -38,7 +38,7 @@
                                 <img src="{{ slide.thumbnail }}" alt="{{ slide.slug }}"/>
                                 <div class="carousel-caption">
                                     <h3>{{ slide.title }}</h3>
-                                    <a class="button" href="#"><span>ZOBACZ RANKING</span></a>
+                                    <a class="button" href="{{ path('single_ranking', {'slug': slide.slug }) }}"><span>ZOBACZ RANKING</span></a>
                                 </div>
                             </div>
                         {% endif %}

@@ -12,10 +12,10 @@ class RankingExtension extends \Twig_Extension {
      */
     private $doctrine;
 
-    /**
-     * @var \Twig_Environment
-     */
-    private $environment;
+//    /**
+//     * @var \Twig_Environment
+//     */
+//    private $environment;
 
     /**
      * RankingExtension constructor.
@@ -25,9 +25,6 @@ class RankingExtension extends \Twig_Extension {
         $this->doctrine = $doctrine;
     }
 
-//    public function initRuntime(\Twig_Environment $environment) {
-//        $this->environment = $environment;
-//    }
 
     public function getFunctions(){
         return [
@@ -38,29 +35,11 @@ class RankingExtension extends \Twig_Extension {
         ];
     }
 
-//    public function getFunctions()
-//    {
-//        return array(
-//            'printRankingSidebar' => new \Twig_SimpleFunction(
-//                $this,
-//                'printRankingSidebar',
-//                array('needs_environment' => true)
-//            ),
-//        );
-//    }
-
 
     public function getName(){
         return 'rankingowiec_extension';
     }
 
-
-    //Rejestracja rozszerzeń
-//    public function getFunctions(){
-//        return array(
-//            new \Twig_SimpleFunction('print_ranking_sidebar', array($this, 'printRankingSidebar'))
-//        );
-//    }
 
 
     public function printRankingSidebar(\Twig_Environment $environment){
@@ -82,6 +61,20 @@ class RankingExtension extends \Twig_Extension {
         ));
 
     }
+
+
+//    public function printFooterMenu(\Twig_Environment $environment){
+//
+//
+//
+//
+//        return $environment->render('RankingowiecBundle:Template:rankingSidebar.html.twig', array(
+//            'SidebarRankings' => ''
+//        ));
+//
+//    }
+
+
 
 
 

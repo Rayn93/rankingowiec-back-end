@@ -36,7 +36,7 @@
                             <img src="{{ slide.thumbnail }}" alt="{{ slide.slug }}"/>
                             <div class="carousel-caption">
                                 <h3>{{ slide.title }}</h3>
-                                <a class="button" href="{{ path('ranking_category', {'slug': 'ludzie' }) }}"><span>ZOBACZ RANKING</span></a>
+                                <a class="button" href="{{ path('single_ranking', {'slug': slide.slug }) }}"><span>ZOBACZ RANKING</span></a>
                             </div>
                         </div>
                     {% endfor %}
@@ -81,9 +81,8 @@
                     {% if loop.index0 < 2 %}
                         <div class="col-md-6 smallpadding">
                             <div class="ranking">
-                                <a href="#">
+                                <a href="{{ path('single_ranking', {'slug': ranking.slug }) }}">
                                     <img class="img-responsive myBackgroundImage" src="{{ ranking.thumbnail }}" alt="{{ ranking.slug }}">
-
                                     <div class="rank-title "><h3>{{ ranking.title }} </h3></div>
                                 </a>
                             </div>
@@ -91,9 +90,8 @@
                     {% else %}
                         <div class="col-md-4 smallpadding">
                             <div class="ranking">
-                                <a href="#">
+                                <a href="{{ path('single_ranking', {'slug': ranking.slug }) }}">
                                     <img class="img-responsive myBackgroundImage" src="{{ ranking.thumbnail }}" alt="1">
-
                                     <div class="rank-title "><h3>{{ ranking.title }}</h3></div>
                                 </a>
                             </div>
@@ -124,9 +122,8 @@
                     {% if loop.index0 < 2 %}
                         <div class="col-md-6 smallpadding">
                             <div class="ranking">
-                                <a href="#">
+                                <a href="{{ path('single_ranking', {'slug': ranking.slug }) }}">
                                     <img class="img-responsive myBackgroundImage" src="{{ ranking.thumbnail }}" alt="{{ ranking.slug }}">
-
                                     <div class="rank-title "><h3>{{ ranking.title }} </h3></div>
                                 </a>
                             </div>
@@ -134,9 +131,8 @@
                     {% else %}
                         <div class="col-md-4 smallpadding">
                             <div class="ranking">
-                                <a href="#">
+                                <a href="{{ path('single_ranking', {'slug': ranking.slug }) }}">
                                     <img class="img-responsive myBackgroundImage" src="{{ ranking.thumbnail }}" alt="1">
-
                                     <div class="rank-title "><h3>{{ ranking.title }}</h3></div>
                                 </a>
                             </div>
@@ -166,9 +162,8 @@
                     {% if loop.index0 < 2 %}
                         <div class="col-md-6 smallpadding">
                             <div class="ranking">
-                                <a href="#">
+                                <a href="#{{ path('single_ranking', {'slug': ranking.slug }) }}>
                                     <img class="img-responsive myBackgroundImage" src="{{ ranking.thumbnail }}" alt="{{ ranking.slug }}">
-
                                     <div class="rank-title "><h3>{{ ranking.title }} </h3></div>
                                 </a>
                             </div>
@@ -176,9 +171,8 @@
                     {% else %}
                         <div class="col-md-4 smallpadding">
                             <div class="ranking">
-                                <a href="#">
+                                <a href="{{ path('single_ranking', {'slug': ranking.slug }) }}">
                                     <img class="img-responsive myBackgroundImage" src="{{ ranking.thumbnail }}" alt="1">
-
                                     <div class="rank-title "><h3>{{ ranking.title }}</h3></div>
                                 </a>
                             </div>
@@ -209,9 +203,8 @@
                     {% if loop.index0 < 2 %}
                         <div class="col-md-6 smallpadding">
                             <div class="ranking">
-                                <a href="#">
+                                <a href="{{ path('single_ranking', {'slug': ranking.slug }) }}">
                                     <img class="img-responsive myBackgroundImage" src="{{ ranking.thumbnail }}" alt="{{ ranking.slug }}">
-
                                     <div class="rank-title "><h3>{{ ranking.title }} </h3></div>
                                 </a>
                             </div>
@@ -219,9 +212,8 @@
                     {% else %}
                         <div class="col-md-4 smallpadding">
                             <div class="ranking">
-                                <a href="#">
+                                <a href="{{ path('single_ranking', {'slug': ranking.slug }) }}">
                                     <img class="img-responsive myBackgroundImage" src="{{ ranking.thumbnail }}" alt="1">
-
                                     <div class="rank-title "><h3>{{ ranking.title }}</h3></div>
                                 </a>
                             </div>

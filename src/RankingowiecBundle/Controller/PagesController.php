@@ -36,12 +36,12 @@ class PagesController extends Controller
 
     /**
      * @Route(
-     *     "/jak-to-dziala",
+     *     "/{slug}",
      *      name="static_page"
      * )
-     * @Template()
+     * @Template("RankingowiecBundle:Pages:staticPage.html.twig")
      */
-    public function staticPageAction()
+    public function staticPageAction($slug)
     {
         return array();
     }

@@ -2,6 +2,7 @@
 
 namespace RankingowiecBundle\Controller;
 
+use RankingowiecBundle\RankingowiecBundle;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -63,6 +64,11 @@ class RankingController extends Controller{
             'home_page' => true,
             'limit' => '5'
         ));
+
+//        $bigint = 1233234231232;
+//        $convert = \RankingowiecBundle\Libs\Utils::restyle_text($bigint);
+
+       // var_dump($convert);
 
         return array(
             'Popular' => $popular,
