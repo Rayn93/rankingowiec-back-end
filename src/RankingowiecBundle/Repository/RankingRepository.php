@@ -85,6 +85,15 @@ class RankingRepository extends EntityRepository{
                 ->setParameter('searchParameter', $searchParameter);
         }
 
+        if(!empty($params['only_new']) && $params['only_new'] == true){
+
+            $next_month = new \DateTime('-30 days');
+            $qb->andWhere('r.published_date > :next_month')
+                ->setParameter('next_month', $next_month);
+        }
+
+
+
         return $qb;
 
     }

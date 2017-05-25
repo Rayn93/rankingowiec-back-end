@@ -36,7 +36,7 @@
                             <img src="{{ slide.thumbnail }}" alt="{{ slide.slug }}"/>
                             <div class="carousel-caption">
                                 <h3>{{ slide.title }}</h3>
-                                <a class="button" href="#"><span>ZOBACZ RANKING</span></a>
+                                <a class="button" href="{{ path('ranking_category', {'slug': 'ludzie' }) }}"><span>ZOBACZ RANKING</span></a>
                             </div>
                         </div>
                     {% endfor %}
@@ -53,13 +53,13 @@
     <!--nav bar under carouse-->
     <div class="nav-category">
         <ul>
-            <li><a href="#"><i class="fa fa-users" aria-hidden="true"></i> LUDZIE </a></li>
-            <li><a href="#"><i class="fa fa-video-camera" aria-hidden="true"></i> FILM </a></li>
-            <li><a href="#"><i class="fa fa-music" aria-hidden="true"></i> MUZYKA </a></li>
-            <li><a href="#"><i class="fa fa-futbol-o" aria-hidden="true"></i> SPORT </a></li>
-            <li><a href="#"><i class="fa fa-smile-o" aria-hidden="true"></i> ZABAWNE </a></li>
-            <li><a href="#"><i class="fa fa-newspaper-o" aria-hidden="true"></i> WYDARZENIA </a></li>
-            <li><a href="#"><i class="fa fa-laptop" aria-hidden="true"></i> INTERNET </a></li>
+            <li><a href="{{ path('ranking_category', {'slug': 'ludzie' }) }}"><i class="fa fa-users" aria-hidden="true"></i> LUDZIE </a></li>
+            <li><a href="{{ path('ranking_category', {'slug': 'film' }) }}"><i class="fa fa-video-camera" aria-hidden="true"></i> FILM </a></li>
+            <li><a href="{{ path('ranking_category', {'slug': 'muzyka' }) }}"><i class="fa fa-music" aria-hidden="true"></i> MUZYKA </a></li>
+            <li><a href="{{ path('ranking_category', {'slug': 'sport' }) }}"><i class="fa fa-futbol-o" aria-hidden="true"></i> SPORT </a></li>
+            <li><a href="{{ path('ranking_category', {'slug': 'zabawne' }) }}"><i class="fa fa-smile-o" aria-hidden="true"></i> ZABAWNE </a></li>
+            <li><a href="{{ path('ranking_category', {'slug': 'wydarzenia' }) }}"><i class="fa fa-newspaper-o" aria-hidden="true"></i> WYDARZENIA </a></li>
+            <li><a href="{{ path('ranking_category', {'slug': 'internet' }) }}"><i class="fa fa-laptop" aria-hidden="true"></i> INTERNET </a></li>
             <li><a href="#"><i class="fa fa-sitemap" aria-hidden="true"></i> WIĘCEJ </a></li>
         </ul>
     </div>
@@ -102,7 +102,7 @@
                     {% endif %}
                 {%  endfor %}
 
-                <a class="button" href="#"><span>WIĘCEJ POPULARNYCH</span></a>
+                <a class="button" href="{{ path('ranking_category', {'slug': 'popularne' }) }}"><span>WIĘCEJ POPULARNYCH</span></a>
 
             </div>
         </div>
@@ -145,7 +145,7 @@
                     {% endif %}
                 {%  endfor %}
 
-                <a class="button" href="#"><span>WIĘCEJ NAJNOWSZYCH</span></a>
+                <a class="button" href="{{ path('ranking_newest') }}"><span>WIĘCEJ NAJNOWSZYCH</span></a>
 
             </div>
         </div>
@@ -187,7 +187,7 @@
                     {% endif %}
                 {%  endfor %}
 
-                <a class="button" href="#"><span>WIĘCEJ</span></a>
+                <a class="button" href="{{ path('ranking_category', {'slug': 'sport' }) }}"><span>WIĘCEJ SPORTOWYCH</span></a>
 
             </div>
         </div>
@@ -230,7 +230,7 @@
                     {% endif %}
                 {%  endfor %}
 
-                <a class="button" href="#"><span>WIĘCEJ</span></a>
+                <a class="button" href="{{ path('ranking_category', {'slug': 'ludzie' }) }}"><span>WIĘCEJ O LUDZIACH</span></a>
 
             </div>
         </div>

@@ -307,6 +307,54 @@ class RankingController extends Controller{
 
 
 
+//Listowanie rankingów które nie są starsze niż 30 dni
+    /**
+     * @Route(
+     *     "/najnowsze/{page}",
+     *     name="ranking_newest",
+     *     defaults = {"page" = 1},
+     *     requirements = {"page" = "\d+"}
+     * )
+     *
+     * @Template("RankingowiecBundle:Ranking:rankingList.html.twig")
+     */
+    public function newestRankingAction($page){
+
+        $RankRepo = $this->getDoctrine()->getRepository('RankingowiecBundle:Ranking');
+        $qb_all = $RankRepo->getQueryBuilder(array(
+            'status' => 'published',
+            'orderBy' => 'r.published_date',
+            'orderDir' => 'DESC',
+            'only_new' => true
+        ));
+
+        $slides = $this->getRankingQueryResult(array(
+            'status' => 'published',
+            'orderBy' => 'r.published_date',
+            'orderDir' => 'DESC',
+            'only_new' => true,
+            'slider' => true,
+            'limit' => $this->slideLimit
+        ));
+
+        $paginator = $this->get('knp_paginator');
+        $pagination_all = $paginator->paginate($qb_all, $page, $this->itemsLimit);
+
+        $count_row = count($qb_all->getQuery()->getResult());
+
+        return array(
+            'Pagination' => $pagination_all,
+            'Slides' => $slides,
+            'ListTitle' => 'Najnowsze rankingi',
+            'Count' => $count_row
+
+        );
+
+
+    }
+
+
+
     //Return a Query Results of Rankings
     protected function getRankingQueryResult(array $params = array()){
         $RankRepo = $this->getDoctrine()->getRepository('RankingowiecBundle:Ranking');
