@@ -22,12 +22,20 @@ class RankingExtension extends \Twig_Extension {
 
 
     public function getFunctions(){
-        return [
-            new \Twig_SimpleFunction('printRankingSidebar', [$this, 'printRankingSidebar'], [
-                'needs_environment' => true,
-                'is_safe' => ['html']
-            ])
-        ];
+        return array(
+            new \Twig_SimpleFunction('printRankingSidebar', array($this, 'printRankingSidebar'),
+                array(
+                    'needs_environment' => true,
+                    'is_safe' => array('html')
+                ))
+        );
+    }
+
+    public function getFilters(){
+        return array(
+             new \Twig_SimpleFilter('cutText', array($this, 'cutText'), array('is_safe' => array('html'))),
+            new \Twig_SimpleFilter('restyleNumber', array($this, 'restyleNumber'), array('is_safe' => array('html'))),
+        );
     }
 
 
@@ -78,17 +86,38 @@ class RankingExtension extends \Twig_Extension {
 
     }
 
+    //Filtr twiga który skraca tekst o zadaną wartość znaków
+    public function cutText($text, $length = 200, $wrapTag = 'p'){
 
-//    public function printFooterMenu(\Twig_Environment $environment){
-//
-//
-//
-//
-//        return $environment->render('RankingowiecBundle:Template:rankingSidebar.html.twig', array(
-//            'SidebarRankings' => ''
-//        ));
-//
-//    }
+        $text = strip_tags($text);
+        $text = substr($text, 0, $length).' [...]';
+        $open_tag = '<'.$wrapTag.'>';
+        $close_tag = '</'.$wrapTag.'>';
+
+
+        return $open_tag.$text.$close_tag;
+
+    }
+
+    //Filtr który zmienia 1000 -> 1 tyś itd.
+    public function restyleNumber($input){
+        $input = number_format($input);
+        $input_count = substr_count($input, ',');
+
+        if($input_count != '0'){
+            if($input_count == '1'){
+                return substr($input, 0, -4).' tyś';
+            } else if($input_count == '2'){
+                return substr($input, 0, -8).' mil';
+            } else if($input_count == '3'){
+                return substr($input, 0,  -12).' mld';
+            } else {
+                return;
+            }
+        } else {
+            return $input;
+        }
+    }
 
 
 

@@ -16,7 +16,7 @@
                 <div class="rank-caption">
                     <h1 class="rank-title">{{ Ranking.title }}</h1>
                     <p class="rank-desc">
-                        {{ Ranking.description }}
+                        {{ Ranking.description|cutText(200) }}
                     </p>
                 </div>
             </div>
@@ -39,7 +39,7 @@
                         <li><i class="fa fa-calendar" aria-hidden="true"></i>Data: {{ Ranking.publishedDate|date('d-m-Y') }}</li>
                         <li><i class="fa fa-thumbs-up" aria-hidden="true"></i> Głosów: 42 tyś</li>
                         {#<li><i class="fa fa-users" aria-hidden="true"></i> Głosujących: 12 tyś</li>#}
-                        <li><i class="fa fa-eye" aria-hidden="true"></i> Wyświetleń: {{ Ranking.numbVisits }}</li>
+                        <li><i class="fa fa-eye" aria-hidden="true"></i> Wyświetleń: {{ Ranking.numbVisits|restyleNumber }}</li>
                         <li><i class="fa fa-cubes" aria-hidden="true"></i> Pozycji: {{ Ranking.items|length }}</li>
                     </ul>
                 </div>

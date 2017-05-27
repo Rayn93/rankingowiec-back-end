@@ -65,10 +65,6 @@ class RankingController extends Controller{
             'limit' => '5'
         ));
 
-//        $bigint = 1233234231232;
-//        $convert = \RankingowiecBundle\Libs\Utils::restyle_text($bigint);
-
-       // var_dump($convert);
 
         return array(
             'Popular' => $popular,
