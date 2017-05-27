@@ -3,7 +3,7 @@
 
 namespace RankingowiecBundle\Twig\Extension;
 
-//Rozszerzenia dla szablonów Twig
+//Developerskie Rozszerzenia dla szablonów Twig
 class RankingExtension extends \Twig_Extension {
 
 
@@ -11,11 +11,6 @@ class RankingExtension extends \Twig_Extension {
      * @var \Doctrine\Bundle\DoctrineBundle\Registry
      */
     private $doctrine;
-
-//    /**
-//     * @var \Twig_Environment
-//     */
-//    private $environment;
 
     /**
      * RankingExtension constructor.
@@ -41,7 +36,7 @@ class RankingExtension extends \Twig_Extension {
     }
 
 
-
+    // Renderuje sidebar dla stron z rankingiem
     public function printRankingSidebar(\Twig_Environment $environment){
 
         $RankRepo = $this->doctrine->getRepository('RankingowiecBundle:Ranking');
@@ -55,10 +50,31 @@ class RankingExtension extends \Twig_Extension {
         $query = $qb->getQuery();
         $RankingResult = $query->getResult();
 
+        $TagCload = $this->getTagCload(30);
+
 
         return $environment->render('RankingowiecBundle:Template:rankingSidebar.html.twig', array(
-            'SidebarRankings' => $RankingResult
+            'SidebarRankings' => $RankingResult,
+            'SidebarTags' => $TagCload
         ));
+
+    }
+
+
+    //Zwraca losową chmurę tagów
+    private function getTagCload($limit){
+
+        $TagRepo = $this->doctrine->getRepository('RankingowiecBundle:Tag');
+        $qb = $TagRepo->getQueryBuilder(array(
+            'random' => true,
+            'limit' => $limit
+        ));
+
+        $query = $qb->getQuery();
+        $TagList = $query->getResult();
+
+
+        return $TagList;
 
     }
 

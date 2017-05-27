@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="RankingowiecBundle\Repository\TagRepository")
  * @ORM\Table(name="tags")
  */
 class Tag extends AbstractTaxonomy {

@@ -20,14 +20,13 @@
 
     <section>
         <header>
-            <h3>Podobne tagi</h3>
+            <h3>Chmura tagów</h3>
         </header>
 
         <ul class="tag-cloud">
-            <li><a href="#">Najlepszy film</a></li>
-            <li><a href="#">Aktorzy</a></li>
-            <li><a href="#">Aktorki</a></li>
-            <li><a href="#">Nagrody filmowe</a></li>
+            {% for tag in SidebarTags %}
+                <li><a href="{{ path('ranking_tag', {'slug': tag.slug }) }}">{{ tag.name }}</a></li>
+            {% endfor %}
         </ul>
     </section>
 </aside>
