@@ -21,18 +21,6 @@ class PagesController extends Controller
         return array();
     }
 
-    /**
-     * @Route(
-     *     "/faq",
-     *      name="faq_page"
-     * )
-     *
-     * @Template()
-     */
-    public function faqAction()
-    {
-        return array();
-    }
 
     /**
      * @Route(
@@ -41,9 +29,18 @@ class PagesController extends Controller
      * )
      * @Template("RankingowiecBundle:Pages:staticPage.html.twig")
      */
-    public function staticPageAction($slug)
-    {
-        return array();
+    public function staticPageAction($slug){
+
+        $PageRepo = $this->getDoctrine()->getRepository('RankingowiecBundle:Page');
+        $Page = $PageRepo->findOneBySlug($slug);
+
+        if($Page === NULL){
+            throw $this->createNotFoundException('Taka strona nie istnieje');
+        }
+
+        return array(
+            'Page' => $Page
+        );
     }
 
 

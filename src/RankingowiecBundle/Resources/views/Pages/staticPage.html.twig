@@ -1,8 +1,8 @@
 {% extends "RankingowiecBundle::base.html.twig" %}
 
-{% block pageTitle %} Jak działa Rankingowiec {% endblock %}
+{% block pageTitle %} {{ Page.title }} {% endblock %}
 
-{% block pageDescription %} Description about static page {% endblock %}
+{% block pageDescription %} {{ Page.content|cutText(180, '') }} {% endblock %}
 
 {% block bodyId %} static {% endblock %}
 
@@ -12,9 +12,9 @@
     <div class="container-fluid nopadding">
         <div class="row nomargin">
             <div class="static-top">
-                <img class="img-background" src="{{ asset('img/static_backgroud.jpg') }}" alt="object_bq">
+                <img class="img-background" src="{{ Page.thumbnail }}" alt="object_bq">
 
-                <h1>Jak działa Rankingowiec?</h1>
+                <h1>{{ Page.title }}</h1>
 
             </div>
         </div>
@@ -26,20 +26,12 @@
 
 {% block pageContent %}
 
-    <section class="static-content">
+    <section class="static-content {{ Page.slug }}">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
 
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas mattis eget odio eget tincidunt. Nullam tincidunt turpis est, et tincidunt nisl malesuada vel. Praesent ornare dictum lectus, id molestie tellus feugiat eu. Suspendisse dictum massa quis erat pretium condimentum nec a quam. Phasellus ac turpis tincidunt, congue mi nec, malesuada erat. Aenean vel laoreet nisi. Sed tincidunt blandit vulputate. Sed pulvinar libero at mauris feugiat, lobortis ullamcorper erat eleifend. Nullam ultricies a nisi non accumsan. Integer dictum quam in tempus porta. Duis accumsan cursus ex nec sodales. Aenean dictum odio ipsum, dictum tincidunt magna suscipit quis. Donec auctor id purus vel maximus. Nullam porta eget magna sit amet semper. Maecenas sit amet pulvinar metus. Phasellus eu nisl nibh.</p>
-
-                    <p>Proin eu mauris ornare, finibus mi vitae, vestibulum eros. Curabitur pretium dolor et tellus hendrerit semper. Ut at ipsum eleifend, ullamcorper velit nec, malesuada ipsum. Duis iaculis pharetra mattis. Pellentesque malesuada ornare tellus, quis viverra nunc pretium ut. Ut venenatis venenatis suscipit. Nam in nunc mi. Etiam iaculis velit et ipsum tincidunt, non placerat arcu lobortis.</p>
-
-                    <p>Fusce pulvinar sem dolor, in scelerisque turpis tristique imperdiet. Fusce vitae nibh suscipit, convallis elit sed, pellentesque ex. Fusce cursus imperdiet augue nec facilisis. Fusce vel suscipit ex. Curabitur volutpat quam enim, at blandit dui vehicula sed. Ut laoreet sem id ex ornare eleifend quis a sem. Nulla venenatis placerat varius. Ut semper ligula eget lacus efficitur vehicula non in felis. Suspendisse sodales dui nec efficitur cursus. Pellentesque posuere, nisl sit amet laoreet dignissim, ante dolor consectetur lorem, sed congue erat nulla ut orci. In hac habitasse platea dictumst.</p>
-
-                    <p>Cras accumsan efficitur elementum. Donec porta est vitae fermentum convallis. Donec eleifend pretium sem. Integer nec est suscipit, pretium ipsum quis, rutrum libero. Proin tempor odio vitae vehicula consequat. Nunc placerat ante non urna egestas pellentesque et vel tellus. Pellentesque tempus neque arcu, eu viverra massa maximus at. Nullam a odio ex. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-
-                    <p> Maecenas elementum consequat nunc, nec tincidunt leo facilisis in. Proin dignissim maximus suscipit. Aenean dapibus eros non lorem ultricies, pulvinar posuere justo viverra. Vivamus rutrum purus varius, elementum ligula eget, facilisis purus. Vestibulum feugiat tempor maximus. Nunc ac sem et justo vulputate auctor sed quis est. Donec non felis vel libero egestas dapibus. Pellentesque porttitor convallis eros. Aliquam ornare, diam nec feugiat cursus, lorem tortor eleifend nulla, nec aliquet odio lacus commodo dui. Phasellus neque nisl, pharetra quis erat a, maximus accumsan velit. Donec tincidunt, sapien dignissim sollicitudin vestibulum, est mi bibendum metus, at congue erat velit id sem. Morbi et elementum mauris. Nullam nec libero scelerisque, ultrices nibh quis, egestas magna. Vestibulum convallis, tortor eleifend semper imperdiet, erat lacus ultricies odio, a posuere augue erat eget sapien. Quisque erat tellus, fermentum maximus facilisis vel, semper non justo.</p>
+                    {{ Page.content|raw }}
 
                 </div>
             </div>
