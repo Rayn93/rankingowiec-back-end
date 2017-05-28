@@ -56,39 +56,9 @@
 
 
                     <ul class="tag-list">
-                        <li><a href="#">Najlepszy film </a></li>
-                        <li><a href="#">Hity filmowe</a></li>
-                        <li><a href="#">Sławne osoby</a></li>
-                        <li><a href="#">2016</a></li>
-                        <li><a href="#">Najlepszy film </a></li>
-                        <li><a href="#">Hity filmowe</a></li>
-                        <li><a href="#">Sławne osoby</a></li>
-                        <li><a href="#">2016</a></li>
-                        <li><a href="#">Najlepszy film </a></li>
-                        <li><a href="#">Hity filmowe</a></li>
-                        <li><a href="#">Sławne osoby</a></li>
-                        <li><a href="#">2016</a></li>
-                        <li><a href="#">Najlepszy film </a></li>
-                        <li><a href="#">Hity filmowe</a></li>
-                        <li><a href="#">Sławne osoby</a></li>
-                        <li><a href="#">2016</a></li>
-                        <li><a href="#">2016</a></li>
-                        <li><a href="#">2016</a></li>
-                        <li><a href="#">Sławne osoby</a></li>
-                        <li><a href="#">2016</a></li>
-                        <li><a href="#">Sławne osoby</a></li>
-                        <li><a href="#">2016</a></li>
-                        <li><a href="#">2016</a></li>
-                        <li><a href="#">Najlepszy film </a></li>
-                        <li><a href="#">Hity filmowe</a></li>
-                        <li><a href="#">Sławne osoby</a></li>
-                        <li><a href="#">2016</a></li>
-                        <li><a href="#">2016</a></li>
-                        <li><a href="#">2016</a></li>
-                        <li><a href="#">Sławne osoby</a></li>
-                        <li><a href="#">2016</a></li>
-                        <li><a href="#">Sławne osoby</a></li>
-                        <li><a href="#">2016</a></li>
+                        {% for tag in TagList %}
+                            <li><a href="{{ path('ranking_tag', {'slug': tag.slug} ) }}">{{ tag.name }} </a></li>
+                        {% endfor %}
                     </ul>
                 </div>
             </div>

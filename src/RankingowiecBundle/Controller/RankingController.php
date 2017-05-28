@@ -339,9 +339,13 @@ class RankingController extends Controller{
         
         $PageRepo = $this->getDoctrine()->getRepository('RankingowiecBundle:Page');
         $Page = $PageRepo->findOneBySlug('mapa-strony');
+
+        $TagRepo = $this->getDoctrine()->getRepository('RankingowiecBundle:Tag');
+        $TagList = $TagRepo->findAll();
         
         return array(
-            'Page' => $Page
+            'Page' => $Page,
+            'TagList' => $TagList
         );
     }
 
