@@ -56,6 +56,16 @@ class PagesFixtures extends AbstractFixture implements OrderedFixtureInterface{
                 'author' => 'Robert Saternus'
             ),
 
+            array(
+                'title' => 'Mapa strony',
+                'slug' => 'mapa-strony',
+                'content' => ' polski film fabularny z 2016 w reżyserii Macieja Pieprzycy, inspirowany historią Zdzisława Marchwickiego, domniemanego „wampira z Zagłębia”, ukazaną w realiach Polski Ludowej lat 70. Film jest inspirowany prawdziwymi wydarzeniami z początku lat 70. XX w. Główny bohater filmu, Janusz Jasiński, jest młodym porucznikiem milicji. Po kolejnych niepowodzeniach dotychczasowego śledztwa w sprawie brutalnych zabójstw kobiet zostaje mianowany nowym szefem grupy dochodzeniowej. Stara się zrobić wszystko, by wykorzystać życiową szansę i złapać seryjnego mordercę. Jak wiele będzie w stanie poświęcić dla śledztwa?',
+                'thumbnail' => 'http://rankingowiec.dev/img/static_backgroud.jpg',
+                'create_date' => '2017-02-01 12:12:12',
+                'published_date' => '2017-02-01 12:12:12',
+                'author' => 'Robert Saternus'
+            ),
+
 
         );
 

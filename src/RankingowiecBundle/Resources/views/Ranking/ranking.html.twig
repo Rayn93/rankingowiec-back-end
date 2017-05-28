@@ -37,7 +37,7 @@
                     <ul>
                         <li><i class="fa fa-user" aria-hidden="true"></i>Autor: <a href="#">{{ Ranking.author }}</a></li>
                         <li><i class="fa fa-calendar" aria-hidden="true"></i>Data: {{ Ranking.publishedDate|date('d-m-Y') }}</li>
-                        <li><i class="fa fa-thumbs-up" aria-hidden="true"></i> Głosów: 42 tyś</li>
+                        <li><i class="fa fa-thumbs-up" aria-hidden="true"></i> Głosów: {{ TotalVotes|restyleNumber }}</li>
                         {#<li><i class="fa fa-users" aria-hidden="true"></i> Głosujących: 12 tyś</li>#}
                         <li><i class="fa fa-eye" aria-hidden="true"></i> Wyświetleń: {{ Ranking.numbVisits|restyleNumber }}</li>
                         <li><i class="fa fa-cubes" aria-hidden="true"></i> Pozycji: {{ Ranking.items|length }}</li>
@@ -81,12 +81,12 @@
                 <!--RANKING-->
                 <section class="ranking-result col-md-8 nopadding">
 
-                    <h4 class="share">Udostępnij:
-                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Udostępnij na Facebook-u"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
-                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Udostępnij na Goole+"><i class="fa fa-google-plus-square" aria-hidden="true"></i></a>
-                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Twittnij ranking"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
-                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Wyślij e-mail znajomemu"><i class="fa fa-envelope-square" aria-hidden="true"></i></a>
-                    </h4>
+                    {#<h4 class="share">Udostępnij:#}
+                        {#<a href="#" data-toggle="tooltip" data-placement="bottom" title="Udostępnij na Facebook-u"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>#}
+                        {#<a href="#" data-toggle="tooltip" data-placement="bottom" title="Udostępnij na Goole+"><i class="fa fa-google-plus-square" aria-hidden="true"></i></a>#}
+                        {#<a href="#" data-toggle="tooltip" data-placement="bottom" title="Twittnij ranking"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>#}
+                        {#<a href="#" data-toggle="tooltip" data-placement="bottom" title="Wyślij e-mail znajomemu"><i class="fa fa-envelope-square" aria-hidden="true"></i></a>#}
+                    {#</h4>#}
 
                     <ul id="rank-tabs" class="nav nav-tabs" role="tablist">
                         <li role="presentation" class="active">
@@ -142,7 +142,7 @@
                                         </div>
                                         <div class="col-sm-7 col-xs-6 item-name">
                                             <h4><a href="{{ path('single_object', {'slug': object.slug }) }}">{{ object.title }}</a> </h4>
-                                            <p>Tom Henks, Ali bab, Coś tam jeszcze Tom Henks, Ali bab, Coś tam jeszcze Tom Henks, Ali bab, Coś tam jeszcze...</p>
+                                            {{ object.description|cutText(160) }}
                                         </div>
                                     </li>
                                 </ol>

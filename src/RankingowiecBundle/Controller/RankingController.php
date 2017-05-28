@@ -110,11 +110,19 @@ class RankingController extends Controller{
                 $my_object_list[] = array(
                     'title' => $object->getTitle(),
                     'slug' => $object->getSlug(),
+                    'description' => $object->getDescription(),
                     'thumbnail' => $object->getThumbnail(),
                     'plus' => $results[$object->getTitle()]['plus'],
                     'minus' => $results[$object->getTitle()]['minus'],
                     'result' => $results[$object->getTitle()]['plus'] - $results[$object->getTitle()]['minus']
                 );
+            }
+
+            $total_votes = 0;
+
+            foreach ($my_object_list as $item){
+                $total_votes += $item['plus'];
+                $total_votes += $item['minus'];
             }
 
             //Sortowanie listy ze względu na ilośc zdobytych punktów
@@ -129,7 +137,8 @@ class RankingController extends Controller{
 
         return array(
             'Ranking' => $Ranking,
-            'Objects' => $my_object_list
+            'Objects' => $my_object_list,
+            'TotalVotes' => $total_votes
         );
     }
 
@@ -143,7 +152,30 @@ class RankingController extends Controller{
      * @Template()
      */
     public function objectAction($slug){
-        return array();
+
+
+        $ObjectRepo = $this->getDoctrine()->getRepository('RankingowiecBundle:RankObject');
+        $Object = $ObjectRepo->getPublishedObject($slug);
+
+
+        if($Object === NULL){
+            throw $this->createNotFoundException('Obiekt nie został odnaleziony');
+        }
+        else{
+
+            $RankRepo = $this->getDoctrine()->getRepository('RankingowiecBundle:Ranking');
+            $object_title = $Object->getTitle();
+
+            $RankingsWithObject = $RankRepo->getRankingsWithObject($object_title);
+
+        }
+
+
+
+        return array(
+            'Object' => $Object,
+            'Rankings' => $RankingsWithObject
+        );
     }
 
 
@@ -304,7 +336,13 @@ class RankingController extends Controller{
      * @Template()
      */
     public function pageMapAction(){
-        return array();
+        
+        $PageRepo = $this->getDoctrine()->getRepository('RankingowiecBundle:Page');
+        $Page = $PageRepo->findOneBySlug('mapa-strony');
+        
+        return array(
+            'Page' => $Page
+        );
     }
 
 

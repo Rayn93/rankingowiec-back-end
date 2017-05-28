@@ -102,7 +102,7 @@
                                     </div>
                                     <div class="caption">
                                         <h3>{{ ranking.title }} </h3>
-                                        <span class="badge"><i class="fa fa-thumbs-up" aria-hidden="true"></i> Głosów: 42 tyś</span>
+                                        <span class="badge"><i class="fa fa-cubes" aria-hidden="true"></i> Pozycji: {{ ranking.items|length }}</span>
                                         <span class="badge"><i class="fa fa-eye" aria-hidden="true"></i> Wizyt: {{ ranking.numbVisits|restyleNumber }}</span>
                                         {{ ranking.description|cutText(200) }}
                                     </div>

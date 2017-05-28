@@ -52,7 +52,7 @@ class RankingExtension extends \Twig_Extension {
             'status' => 'published',
             'categorySlug' => 'popularne',
             'random' => true,
-            'limit' => '10'
+            'limit' => '8'
         ));
 
         $query = $qb->getQuery();
@@ -91,11 +91,15 @@ class RankingExtension extends \Twig_Extension {
 
         $text = strip_tags($text);
         $text = substr($text, 0, $length).' [...]';
-        $open_tag = '<'.$wrapTag.'>';
-        $close_tag = '</'.$wrapTag.'>';
 
-
-        return $open_tag.$text.$close_tag;
+        if($wrapTag == ''){
+            return $text;
+        }
+        else{
+            $open_tag = '<'.$wrapTag.'>';
+            $close_tag = '</'.$wrapTag.'>';
+            return $open_tag.$text.$close_tag;
+        }
 
     }
 

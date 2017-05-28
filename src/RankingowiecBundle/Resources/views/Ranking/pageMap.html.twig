@@ -14,7 +14,7 @@
             <div class="static-top">
                 <img class="img-background" src="{{ asset('img/static_backgroud.jpg') }}" alt="object_bq">
 
-                <h1>MAPA STRONY</h1>
+                <h1>{{ Page.title }}</h1>
 
             </div>
         </div>
@@ -31,26 +31,25 @@
             <div class="row">
                 <div class="col-md-12">
 
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas mattis eget odio eget tincidunt. Nullam tincidunt turpis est, et tincidunt nisl malesuada vel. Praesent ornare dictum lectus, id molestie tellus feugiat eu. Suspendisse dictum massa quis erat pretium condimentum nec a quam. Phasellus ac turpis tincidunt, congue mi nec, malesuada erat. Aenean vel laoreet nisi. Sed tincidunt blandit vulputate. </p>
+                    <p>{{ Page.content }}</p>
 
                     <h2>Kategorie</h2>
 
                     <ul class="category-list">
-                        <li><a href="#"><i class="fa fa-users" aria-hidden="true"></i> LUDZIE </a></li>
-                        <li><a href="#"><i class="fa fa-video-camera" aria-hidden="true"></i> FILM </a></li>
-                        <li><a href="#"><i class="fa fa-television" aria-hidden="true"></i> TELEWIZJA </a></li>
-                        <li><a href="#"><i class="fa fa-music" aria-hidden="true"></i> MUZYKA </a></li>
-                        <li><a href="#"><i class="fa fa-futbol-o" aria-hidden="true"></i> SPORT </a></li>
-                        <li><a href="#"><i class="fa fa-gamepad" aria-hidden="true"></i> GRY </a></li>
-                        <li><a href="#"><i class="fa fa-laptop" aria-hidden="true"></i> INTERNET </a></li>
-                        <li><a href="#"><i class="fa fa-smile-o" aria-hidden="true"></i> ZABAWNE </a></li>
-                        <li><a href="#"><i class="fa fa-flask" aria-hidden="true"></i> NAUKA </a></li>
-                        <li><a href="#"><i class="fa fa-book" aria-hidden="true"></i> KSIĄŻKI </a></li>
-                        <li><a href="#"><i class="fa fa-newspaper-o" aria-hidden="true"></i> WYDARZENIA </a></li>
-                        <li><a href="#"><i class="fa fa-rocket" aria-hidden="true"></i> TECHNOLOGIA </a></li>
-                        <li><a href="#"><i class="fa fa-fort-awesome" aria-hidden="true"></i> POLITYKA I HISTORIA </a></li>
-                        <li><a href="#"><i class="fa fa-cutlery" aria-hidden="true"></i> JEDZENIE I NAPOJE </a></li>
-                        <li><a href="#"><i class="fa fa-sitemap" aria-hidden="true"></i> MAPA KATEGORI </a></li>
+                        <li><a href="{{ path('ranking_category', {'slug': 'ludzie' }) }}"><i class="fa fa-users" aria-hidden="true"></i> LUDZIE </a></li>
+                        <li><a href="{{ path('ranking_category', {'slug': 'film' }) }}"><i class="fa fa-video-camera" aria-hidden="true"></i> FILM </a></li>
+                        <li><a href="{{ path('ranking_category', {'slug': 'telewizja' }) }}"><i class="fa fa-television" aria-hidden="true"></i> TELEWIZJA </a></li>
+                        <li><a href="{{ path('ranking_category', {'slug': 'muzyka' }) }}"><i class="fa fa-music" aria-hidden="true"></i> MUZYKA </a></li>
+                        <li><a href="{{ path('ranking_category', {'slug': 'sport' }) }}"><i class="fa fa-futbol-o" aria-hidden="true"></i> SPORT </a></li>
+                        <li><a href="{{ path('ranking_category', {'slug': 'gry' }) }}"><i class="fa fa-gamepad" aria-hidden="true"></i> GRY </a></li>
+                        <li><a href="{{ path('ranking_category', {'slug': 'internet' }) }}"><i class="fa fa-laptop" aria-hidden="true"></i> INTERNET </a></li>
+                        <li><a href="{{ path('ranking_category', {'slug': 'zabawne' }) }}"><i class="fa fa-smile-o" aria-hidden="true"></i> ZABAWNE </a></li>
+                        <li><a href="{{ path('ranking_category', {'slug': 'nauka' }) }}"><i class="fa fa-flask" aria-hidden="true"></i> NAUKA </a></li>
+                        <li><a href="{{ path('ranking_category', {'slug': 'ksiazki' }) }}"><i class="fa fa-book" aria-hidden="true"></i> KSIĄŻKI </a></li>
+                        <li><a href="{{ path('ranking_category', {'slug': 'wydarzenia' }) }}"><i class="fa fa-newspaper-o" aria-hidden="true"></i> WYDARZENIA </a></li>
+                        <li><a href="{{ path('ranking_category', {'slug': 'technologia' }) }}"><i class="fa fa-rocket" aria-hidden="true"></i> TECHNOLOGIA </a></li>
+                        <li><a href="{{ path('ranking_category', {'slug': 'polityka-i-historia' }) }}"><i class="fa fa-fort-awesome" aria-hidden="true"></i> POLITYKA I HISTORIA </a></li>
+                        <li><a href="{{ path('ranking_category', {'slug': 'jedzenie-i-napoje' }) }}"><i class="fa fa-cutlery" aria-hidden="true"></i> JEDZENIE I NAPOJE </a></li>
                     </ul>
 
                     <h2>Tagi</h2>
