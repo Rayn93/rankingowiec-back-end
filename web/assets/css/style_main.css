@@ -1443,11 +1443,38 @@ footer .copyright{
 
 
 
+/*FOSUserBundle style for views*/
 
 
+.user_system{
+     color: #fff;
+}
 
+.user_system .log-in{
+    text-align: left;
+    font-size: 25px;
+    padding-bottom: 50px;
+}
 
+.user_system .checkbox,
+.user_system .login-btn{
+    text-align: left;
+}
 
+.user_system .checkbox{
+    margin-left: 21px;
+}
+
+.user_system .control-label{
+    line-height: 30px;
+    font-size: 27px;
+    padding-top: 0;
+}
+
+.user_system .alert{
+    font-size: 30px;
+    margin-bottom: 50px;
+}
 
 
 
