@@ -1468,12 +1468,17 @@ footer .copyright{
 .user_system .control-label{
     line-height: 30px;
     font-size: 27px;
-    padding-top: 0;
 }
 
 .user_system .alert{
     font-size: 30px;
     margin-bottom: 50px;
+}
+
+.user_system .form-control {
+    height: 45px;
+    font-size: 25px;
+    font-weight: bold;
 }
 
 
