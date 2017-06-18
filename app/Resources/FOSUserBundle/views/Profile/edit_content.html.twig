@@ -1,6 +1,10 @@
-<form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
+{% form_theme form 'form/bootstrap-form-field.html.twig' %}
+
+<form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit form-horizontal">
     {{ form_widget(form) }}
-    <div>
-        <input type="submit" value="{{ 'profile.edit.submit'|trans({}, 'FOSUserBundle') }}" />
+    <div class="form-group">
+        <div class="col-xs-offset-3 col-xs-10 login-btn">
+            <input class="btn btn-lg btn-success" type="submit" value="{{ 'profile.edit.submit'|trans({}, 'FOSUserBundle') }}" />
+        </div>
     </div>
 </form>

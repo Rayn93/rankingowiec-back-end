@@ -1,5 +1,13 @@
 {% extends "FOSUserBundle::layout.html.twig" %}
 
+{% block pageTitle %} Rejestracja nowego użytkownika {% endblock %}
+
+{% block pageDescription %} Rejestracja nowego użytkownika w serwisie Rankingowiec.pl. Załóż konto i miej wpływ na rankingi. {% endblock %}
+
+{% block user_bundle_title %}
+    <h1>Załóż konto na <br /> Rankingowcu </h1>
+{% endblock %}
+
 {% block fos_user_content %}
 {% include "FOSUserBundle:Registration:register_content.html.twig" %}
 {% endblock fos_user_content %}

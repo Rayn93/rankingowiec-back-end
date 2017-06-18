@@ -136,6 +136,14 @@ input.button:hover{
     color:#f35f4a;
 }
 
+.font25{
+    font-size: 25px;
+}
+
+.big_header{
+    font-size: 50px;
+    font-weight: bold;
+}
 
 /*SOCIAL MEDIA WIDGETS*/
 
