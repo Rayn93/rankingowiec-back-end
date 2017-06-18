@@ -7,7 +7,7 @@ imports:
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    locale: en
+    locale: pl
 
 framework:
     #esi: ~
@@ -81,3 +81,6 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: RankingowiecBundle\Entity\User
+    from_email:
+        address:        robert.saternus@gmail.com
+        sender_name:    Rankingowiec.pl
