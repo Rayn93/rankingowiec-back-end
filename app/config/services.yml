@@ -4,6 +4,10 @@ parameters:
     #parameter_name: value
 
 services:
-    #service_name:
-    #    class: AppBundle\Directory\ClassName
-    #    arguments: ['@another_service_name', 'plain_value', '%parameter_name%']
+    rankingowiec_user_login_route_listener:
+        class: RankingowiecBundle\Event\UserLoginRouteListener
+        arguments:
+            - @security.token_storage
+            - @router
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
