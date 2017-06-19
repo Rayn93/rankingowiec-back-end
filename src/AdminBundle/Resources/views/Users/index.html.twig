@@ -1,17 +1,161 @@
 {% extends "AdminBundle::base.html.twig" %}
 
-{% block pageTitle %} Kokpit {% endblock %}
+{% block pageTitle %} Lista użytkowników {% endblock %}
 
-{% block pageDescription %} Kokpit panelu administracyjnego serwisu Rankingowiec.pl {% endblock %}
+{% block pageDescription %} Lista użytkowników serwisu Rankingowiec.pl {% endblock %}
 
 {% block pageContent %}
 
+    <!-- content container -->
     <div class="container">
-        <div class="jumbotron">
-            <h1>Witaj na Rankingowcu!</h1>
-            <p>Użyj górnego menu, aby poruszać się po Panelu lub użyj przycisków poniżej, aby przyspieszyć swoją pracę.</p>
-            <p><a class="btn btn-primary btn-lg">Dodaj nowy ranking</a></p>
-        </div>
-    </div>
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Wyszukiwanie i filtracja
+                    </div>
+                    <div class="panel-body">
+                        <form action="#" method="get" class="form-inline filter-search" role="form">
+                            <div class="form-group">
+                                <input type="text" name="title" class="form-control" placeholder="Wyszukaj po nicku">
+                            </div>
+
+                            <div class="form-group">
+                                <button class="btn btn-primary">Filtruj</button>
+                            </div>
+
+                            <div class="form-group pull-right limit">
+                                <label for="limit" class="col-lg-5 control-label">Wyników</label>
+                                <div class="col-lg-7">
+                                    <select name="limit" class="select-block" id="limit" placeholder="Pokaż">
+                                        <option value="10">10</option>
+                                        <option value="25">25</option>
+                                        <option value="50">50</option>
+                                        <option value="100">100</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">Użytkownicy</div>
+                    <div class="panel-body">
+
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered table-hover">
+                                <thead>
+                                <tr>
+                                    <th><a class="sortable" href="#">ID</a></th>
+                                    <th><a class="sortable sort-desc" href="#">Nick</a></th>
+                                    <th><a class="sortable sort-asc" href="#">Email</a></th>
+                                    <th><a class="sortable" href="#">Data rejestracji</a></th>
+                                    <th>Akcje</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td><a href="#">Macq</a></td>
+                                    <td>maciek@eduweb.pl</td>
+                                    <td>15.10.2013, 14:23:12</td>
+                                    <td>
+                                        <a href="#" class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span></a>
+                                        <a href="#" class="btn btn-danger" data-confirmAction=""><span class="glyphicon glyphicon-trash"></span></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Macq</td>
+                                    <td>maciek@eduweb.pl</td>
+                                    <td>15.10.2013, 14:23:12</td>
+                                    <td>
+                                        <a href="#" class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span></a>
+                                        <a href="#" class="btn btn-danger" data-confirmAction=""><span class="glyphicon glyphicon-trash"></span></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Macq</td>
+                                    <td>maciek@eduweb.pl</td>
+                                    <td>15.10.2013, 14:23:12</td>
+                                    <td>
+                                        <a href="#" class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span></a>
+                                        <a href="#" class="btn btn-danger" data-confirmAction=""><span class="glyphicon glyphicon-trash"></span></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Macq</td>
+                                    <td>maciek@eduweb.pl</td>
+                                    <td>15.10.2013, 14:23:12</td>
+                                    <td>
+                                        <a href="#" class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span></a>
+                                        <a href="#" class="btn btn-danger" data-confirmAction=""><span class="glyphicon glyphicon-trash"></span></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Macq</td>
+                                    <td>maciek@eduweb.pl</td>
+                                    <td>15.10.2013, 14:23:12</td>
+                                    <td>
+                                        <a href="#" class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span></a>
+                                        <a href="#" class="btn btn-danger" data-confirmAction=""><span class="glyphicon glyphicon-trash"></span></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Macq</td>
+                                    <td>maciek@eduweb.pl</td>
+                                    <td>15.10.2013, 14:23:12</td>
+                                    <td>
+                                        <a href="#" class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span></a>
+                                        <a href="#" class="btn btn-danger" data-confirmAction=""><span class="glyphicon glyphicon-trash"></span></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Macq</td>
+                                    <td>maciek@eduweb.pl</td>
+                                    <td>15.10.2013, 14:23:12</td>
+                                    <td>
+                                        <a href="#" class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span></a>
+                                        <a href="#" class="btn btn-danger" data-confirmAction=""><span class="glyphicon glyphicon-trash"></span></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Macq</td>
+                                    <td>maciek@eduweb.pl</td>
+                                    <td>15.10.2013, 14:23:12</td>
+                                    <td>
+                                        <a href="#" class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span></a>
+                                        <a href="#" class="btn btn-danger" data-confirmAction=""><span class="glyphicon glyphicon-trash"></span></a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <ul class="pagination pull-right">
+                            <li><a href="#">&laquo;</a></li>
+                            <li class="active"><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li><a href="#">&raquo;</a></li>
+                        </ul>
+                    </div> <!-- .panel-body -->
+                </div> <!-- .panel -->
+            </div> <!-- .col-md-12 -->
+        </div> <!-- .row -->
+    </div> <!-- .container -->
+    <!-- /content container -->
 
 {% endblock %}

@@ -23,19 +23,21 @@ class UsersController extends Controller{
         return array();
     }
 
-    /**
-     * @Route(
-     *      "/formularz/{id}",
-     *      name="admin_userForm",
-     *      requirements={"id"="\d+"},
-     *      defaults={"id"=NULL}
-     * )
-     *
-     * @Template()
-     */
-    public function formAction(){
-        return array();
-    }
+
+
+//    /**
+//     * @Route(
+//     *      "/formularz/{id}",
+//     *      name="admin_userForm",
+//     *      requirements={"id"="\d+"},
+//     *      defaults={"id"=NULL}
+//     * )
+//     *
+//     * @Template()
+//     */
+//    public function formAction(){
+//        return array();
+//    }
 
 
 
