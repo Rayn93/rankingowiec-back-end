@@ -8,12 +8,12 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 
-class KokpitController extends Controller{
+class DashboardController extends Controller{
 
     /**
      * @Route(
      *      "/",
-     *      name="admin_kokpit"
+     *      name="admin_dashboard"
      * )
      *
      * @Template()

@@ -1,0 +1,35 @@
+admin_dashboard:
+    resource: "@AdminBundle/Controller/DashboardController.php"
+    type: annotation
+    prefix: /kokpit
+
+admin_rankings:
+    resource: "@AdminBundle/Controller/RankingsController.php"
+    type: annotation
+    prefix: /ranking
+
+admin_objects:
+    resource: "@AdminBundle/Controller/ObjectsController.php"
+    type: annotation
+    prefix: /obiekt
+
+admin_pages:
+    resource: "@AdminBundle/Controller/PagesController.php"
+    type: annotation
+    prefix: /strona
+
+admin_users:
+    resource: "@AdminBundle/Controller/UsersController.php"
+    type: annotation
+    prefix: /uzytkownik
+
+admin_categories:
+    resource: "@AdminBundle/Controller/CategoriesController.php"
+    type: annotation
+    prefix: /kategoria
+
+admin_tags:
+    resource: "@AdminBundle/Controller/TagsController.php"
+    type: annotation
+    prefix: /tag
+
