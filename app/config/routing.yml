@@ -17,6 +17,11 @@ fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /profil
 
+admin:
+    resource: "@AdminBundle/Controller/"
+    type:     annotation
+    prefix:   /admin-panel
+
 rankingowiec:
     resource: "@RankingowiecBundle/Resources/config/routing.yml"
     prefix:   /

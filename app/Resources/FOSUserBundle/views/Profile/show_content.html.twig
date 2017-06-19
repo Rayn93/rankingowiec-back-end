@@ -8,6 +8,15 @@
             <a class="font25" href="{{ path("fos_user_change_password") }}">Zmień hasło</a> |
             <a class="font25" href="{{ path("fos_user_security_logout") }}">Wyloguj się</a>
         </p>
+
+
+
+    </div>
+
+    <div class="col-md-6">
+        {% if is_granted('ROLE_ADMIN') %}
+            <p><a class="btn btn-lg btn-success" href="#">Przejdź do panelu administracyjnego</a> </p>
+        {% endif %}
     </div>
 
 

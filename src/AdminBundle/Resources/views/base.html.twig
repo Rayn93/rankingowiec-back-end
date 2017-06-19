@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% spaceless %}{% block pageTitle %} {% endblock %}{% endspaceless %} | Rankingowiec.pl</title>
+    <meta name="description" content="{% spaceless %}{% block pageDescription %}{% endblock pageDescription %}{% endspaceless %}">
+
+    {#<link rel="icon" type="image/png" href="/favicon.png">#}
+
+    {% block stylesheets %}
+
+        {% stylesheets
+        'assets/css/bootstrap.min.css'
+        'assets/css/bootstrap-theme.css'
+        'assets/css/select2.min.css'
+        'assets/css/style-admin.css'
+        filter='cssrewrite'
+        output = 'css/admin_compiled.css'
+        %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+
+    {% endblock %}
+
+    {#<link href="css/bootstrap.css" rel="stylesheet">#}
+    {#<link href="css/bootstrap-theme.css" rel="stylesheet">#}
+    {#<link href="css/select2.css" rel="stylesheet">#}
+    {#<link href="css/style-admin.css" rel="stylesheet">#}
+
+
+</head>
+
+<body>
+
+<header>
+    <nav class="navbar navbar-inverse" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Rozwiń menu</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <a class="navbar-brand" href="#">Rankingowiec</a>
+        </div>
+
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Kokpit</a></li>
+                <li><a href="#">Moje konto</a></li>
+                <li><a href="#">Rankingi</a></li>
+                <li><a href="#">Obiekty</a></li>
+                <li><a href="#">Strony</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Taksonomie <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Kategorie</a></li>
+                        <li><a href="#">Tagi</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Użytkownicy</a></li>
+                {#<li><a href="#">Komentarze</a></li>#}
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Robert Saternus</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-log-out"></span></a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<section class="alerts">
+    <!-- alerts container -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-success alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <strong>Sukces!</strong> Poprawnie zalogowałeś się do Panelu!
+                </div>
+
+                <div class="alert alert-info alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <strong>Info!</strong> Przed zapisaniem sprawdź poprawność danych!
+                </div>
+
+                <div class="alert alert-warning alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <strong>Uwaga!</strong> Popraw błędy formularza
+                </div>
+
+                <div class="alert alert-danger alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <strong>Błąd!</strong> Coś poszło straszliwie nie tak...
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /alerts container -->
+</section>
+
+
+<main>
+    {% block pageContent %}{% endblock %}
+</main>
+
+
+{% block scripts %}
+
+    {% javascripts
+    'assets/js/jquery-2.1.3.min.js'
+    'assets/js/bootstrap.min.js'
+    'assets/js/select2.min.js'
+    'assets/js/script-admin.js'
+    output = 'js/admin_compiled.js'
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+{% endblock %}
+
+{#<script src="js/vendor/jquery-1.10.2.min.js"></script>#}
+{#<script src="js/vendor/bootstrap.js"></script>#}
+{#<script src="js/vendor/select2.min.js"></script>#}
+{#<script src="js/scripts.js"></script>#}
+
+</body>
+
+</html>
