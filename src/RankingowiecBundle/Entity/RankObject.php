@@ -3,14 +3,24 @@
 namespace RankingowiecBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
 
 
 /**
  * @ORM\Entity(repositoryClass="RankingowiecBundle\Repository\RankObjectRepository")
  * @ORM\Table(name="ranking_objects")
  * @ORM\HasLifecycleCallbacks()
+ *
+ * @UniqueEntity(fields={"title"})
+ * @UniqueEntity(fields={"slug"})
  */
 class RankObject{
+
+
+    const UPLOAD_DIR = 'uploads/thumbnails/';
 
     /**
      * @ORM\Column(type="integer")
@@ -22,27 +32,51 @@ class RankObject{
 
     /**
      * @ORM\Column(type="string", length=120, unique=true)
+     *
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *      max = 120
+     * )
      */
     private $title;
 
 
     /**
      * @ORM\Column(type="string", length=120, unique=true)
+     *
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *      max = 120
+     * )
      */
     private $slug;
 
 
     /**
      * @ORM\Column(type="text")
+     *
+     * @Assert\NotBlank
      */
     private $description;
 
 
     /**
      * @ORM\Column(type="string", length=80)
+     *
      */
     private $thumbnail;
 
+
+    /**
+     * @Assert\Image(
+     *      minWidth = 600,
+     *      minHeight = 480,
+     *      maxWidth = 1920,
+     *      maxHeight = 1080,
+     *      maxSize = "1M"
+     * )
+     */
+    private $thumbnailFile;
 
     /**
      * @ORM\Column(type="string", length=120)
@@ -70,6 +104,8 @@ class RankObject{
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     *
+     * @Assert\DateTime
      */
     private $published_date;
 

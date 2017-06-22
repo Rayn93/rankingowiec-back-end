@@ -10,7 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 
 use RankingowiecBundle\Entity\RankObject;
-//use Air\AdminBundle\Form\Type\PostType;
+use AdminBundle\Form\Type\RankObjectType;
 
 class ObjectsController extends Controller{
 
@@ -61,8 +61,39 @@ class ObjectsController extends Controller{
      *
      * @Template()
      */
-    public function formAction(){
-        return array();
+    public function formAction(Request $Request, $id = NULL){
+
+        if($id == null){
+            $RankObject = new RankObject();
+            $RankObject->setAuthor($this->getUser());
+            $newRankObjectForm = TRUE;
+        }else{
+            $RankObject = $this->getDoctrine()->getRepository('RankingowiecBundle:RankObject')->find($id);
+        }
+
+        $form = $this->createForm(new RankObjectType(), $RankObject);
+        $form->handleRequest($Request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+//            $file = $RankObject->getThumbnail();
+//            $fileName = $this->get('app.thumbnail_uploader')->upload($file);
+//            $RankObject->setThumbnail($fileName);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($RankObject);
+            $em->flush();
+
+            $message = (isset($newRankObjectForm)) ? 'Poprawnie dodano nowy obiekt!': 'Obiekt został poprawiony!';
+            $this->get('session')->getFlashBag()->add('success', $message);
+
+            return $this->redirect($this->generateUrl('admin_objectForm', array('id' => $RankObject->getId())));
+        }
+
+        return array(
+            'Form' => $form->createView(),
+            'RankObject' => $RankObject
+        );
     }
 
 
