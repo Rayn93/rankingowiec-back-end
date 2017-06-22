@@ -5,7 +5,8 @@ namespace RankingowiecBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 
 
@@ -16,6 +17,8 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  *
  * @UniqueEntity(fields={"title"})
  * @UniqueEntity(fields={"slug"})
+ *
+ * @Vich\Uploadable
  */
 class RankObject{
 
@@ -68,15 +71,18 @@ class RankObject{
 
 
     /**
-     * @Assert\Image(
-     *      minWidth = 600,
-     *      minHeight = 480,
-     *      maxWidth = 1920,
-     *      maxHeight = 1080,
-     *      maxSize = "1M"
-     * )
+     * @Vich\UploadableField(mapping="thumbnail_image", fileNameProperty="thumbnail")
+     *
+     * @var File
      */
     private $thumbnailFile;
+
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     *
+     */
+    private $updatedAt;
 
     /**
      * @ORM\Column(type="string", length=120)
@@ -231,6 +237,30 @@ class RankObject{
         return $this->thumbnail;
     }
 
+
+    public function setThumbnailFile(File $image = null)
+    {
+        $this->thumbnailFile = $image;
+
+        if ($image) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return File|null
+     */
+    public function getThumbnailFile()
+    {
+        return $this->thumbnailFile;
+    }
+
+
+
     /**
      * Set moreLink
      *
@@ -383,6 +413,17 @@ class RankObject{
 
         if( $this->slug === NULL){
             $this->setSlug($this->getTitle());
+        }
+
+        if( $this->total_result === NULL){
+            $this->total_result =  array(
+                'plus' => 0,
+                'minus' => 0
+            );
+        }
+
+        if($this->create_date === NULL){
+            $this->create_date = new \DateTime();
         }
 
     }

@@ -50,7 +50,7 @@ class RankObjectType extends AbstractType
                     'placeholder' => 'Opis obiektu',
                 )
             ))
-            ->add('thumbnail', Type\FileType::class, array(
+            ->add('thumbnailFile', Type\FileType::class, array(
                 'label' => 'Miniaturka',
                 'data_class' => null,
             ))

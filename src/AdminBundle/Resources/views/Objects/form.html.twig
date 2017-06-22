@@ -80,11 +80,11 @@
                                     {% if RankObject.thumbnail is null %}
                                         <p>Brak miniaturki</p>
                                     {% else %}
-                                        <p><img src="{{ asset(RankObject.thumbnail) }}" alt="" class="img-thumbnail"></p>
+                                        <p><img src="{{ vich_uploader_asset(RankObject, 'thumbnailFile') }}" alt="" class="img-thumbnail"></p>
                                     {% endif %}
 
-                                    {{ form_widget(Form.thumbnail) }}
-                                    {{ form_errors(Form.thumbnail) }}
+                                    {{ form_widget(Form.thumbnailFile) }}
+                                    {{ form_errors(Form.thumbnailFile) }}
                                 </div>
                             </div>
                         </div> <!-- .col-md-12 -->
