@@ -35,7 +35,9 @@ class ObjectsController extends Controller{
 
         $qb = $ObjectRepository->getQueryBuilder($queryParams);
 
-        $paginationLimit = $this->container->getParameter('admin.pagination_limit');
+
+
+        $paginationLimit = $this->container->getParameter('admin_pagination_limit');
         $limits = array(2, 5, 10, 15);
 
         $limit = $request->query->get('limit', $paginationLimit);
@@ -75,10 +77,6 @@ class ObjectsController extends Controller{
         $form->handleRequest($Request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
-//            $file = $RankObject->getThumbnail();
-//            $fileName = $this->get('app.thumbnail_uploader')->upload($file);
-//            $RankObject->setThumbnail($fileName);
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($RankObject);

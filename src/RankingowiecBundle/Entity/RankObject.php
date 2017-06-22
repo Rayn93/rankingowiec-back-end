@@ -72,6 +72,7 @@ class RankObject{
 
     /**
      * @Vich\UploadableField(mapping="thumbnail_image", fileNameProperty="thumbnail")
+     * @Assert\NotBlank
      *
      * @var File
      */
@@ -86,6 +87,11 @@ class RankObject{
 
     /**
      * @ORM\Column(type="string", length=120)
+     *
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *      max = 120
+     * )
      */
     private $more_link;
 
@@ -417,8 +423,8 @@ class RankObject{
 
         if( $this->total_result === NULL){
             $this->total_result =  array(
-                'plus' => 0,
-                'minus' => 0
+                'plus' => 1,
+                'minus' => 1
             );
         }
 

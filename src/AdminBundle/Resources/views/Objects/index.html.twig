@@ -65,7 +65,7 @@
                         </ul>
 
                         <ul class="nav nav-pills pull-right">
-                            <li><a href="{{ path('admin_objectForm') }}">Dodaj nowy</a></li>
+                            <li><a class="btn btn-lg btn-primary" href="{{ path('admin_objectForm') }}">Dodaj nowy</a></li>
                         </ul>
 
                         <div class="clearfix"></div>
@@ -91,11 +91,11 @@
                                         <td>{{ object.id }}</td>
                                         <td><a href="{{ path('admin_objectForm', {'id': object.id }) }}">{{ object.title }}</a></td>
                                         <td>
-                                            {% for category in object.category %}
-                                                <span class="label label-info">{{ category.name }}</span>
+                                            {% if object.category.name is not null %}
+                                                <span class="label label-info">{{ object.category.name }}</span>
                                             {% else %}
                                                 Brak Kategori
-                                            {% endfor %}
+                                            {% endif %}
                                         </td>
                                         <td>{{ object.author }}</td>
                                         <td>{{ object.createDate|adminFormatDate }}</td>
