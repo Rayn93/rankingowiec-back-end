@@ -16,19 +16,18 @@
                         Wyszukiwanie i filtracja
                     </div>
                     <div class="panel-body">
-                        <form action="#" method="get" class="form-inline filter-search" role="form">
+                        <form action="{{ path('admin_objects') }}" method="get" class="form-inline filter-search" role="form">
                             <div class="form-group">
-                                <input type="text" name="title" class="form-control" placeholder="Wyszukaj po nazwie">
+                                <input type="text" name="titleLike" class="form-control" placeholder="Wyszukaj po nazwie" value="{{ queryParams['titleLike'] }}">
                             </div>
 
                             <div class="form-group">
-                                <select name="category" class="select-block" placeholder="Kategoria">
-                                    <option></option>
-                                    <option value="dev">Development</option>
-                                    <option value="des">Design</option>
-                                    <option value="tech">Technologie</option>
-                                    <option value="mob">Mobilne</option>
-                                    <option value="games">Gry</option>
+                                <select name="categoryId" class="select-block" placeholder="Kategoria">
+                                    <option value="">Wszystkie kategorie</option>
+                                    <option {{ queryParams['categoryId'] == 1 ? 'selected="selected"' : '' }} value="-1"> Brak Kategorii </option>
+                                    {% for category in categoryList %}
+                                        <option {{ queryParams['categoryId'] == category['id'] ? 'selected="selected"' : '' }} value="{{ category['id'] }}">{{ category['name'] }}</option>
+                                    {% endfor %}
                                 </select>
                             </div>
 
@@ -40,10 +39,9 @@
                                 <label for="limit" class="col-lg-5 control-label">Wyników</label>
                                 <div class="col-lg-7">
                                     <select name="limit" class="select-block" id="limit" placeholder="Pokaż">
-                                        <option value="10">10</option>
-                                        <option value="25">25</option>
-                                        <option value="50">50</option>
-                                        <option value="100">100</option>
+                                        {% for limit in limitList %}
+                                            <option {{ limit == currLimit ? 'selected="selected"' : '' }} value="{{ limit }}">{{ limit }}</option>
+                                        {% endfor %}
                                     </select>
                                 </div>
                             </div>
@@ -74,12 +72,12 @@
                             <table class="table table-striped table-bordered table-hover">
                                 <thead>
                                     <tr>
-                                        <th><a class="sortable" href="#">ID</a></th>
-                                        <th><a class="sortable" href="#">Nazwa</a></th>
-                                        <th><a class="sortable sort-desc" href="#">Kategoria</a></th>
-                                        <th><a class="sortable" href="#">Autor</a></th>
-                                        <th><a class="sortable" href="#">Data utworzenia</a></th>
-                                        <th><a class="sortable" href="#">Data publikacji</a></th>
+                                        <th>{{ knp_pagination_sortable(Pagination, 'ID', 'o.id' )}}</th>
+                                        <th>{{ knp_pagination_sortable(Pagination, 'Nazwa', 'o.title' ) }}</th>
+                                        <th>{{ knp_pagination_sortable(Pagination, 'Kategoria', 'c.name') }}</th>
+                                        <th>{{ knp_pagination_sortable(Pagination, 'Autor', 'o.author') }}</th>
+                                        <th>{{ knp_pagination_sortable(Pagination, 'Data utworzenia', 'o.create_date') }}</th>
+                                        <th>{{ knp_pagination_sortable(Pagination, 'Data publikacji', 'o.published_date') }}</th>
                                         <th>Akcje</th>
                                     </tr>
                                 </thead>
@@ -116,6 +114,10 @@
                                                 {% endif %}
                                             </div>
                                         </td>
+                                    </tr>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="8">Brak dopasowanych obiektów</td>
                                     </tr>
                                 {% endfor %}
 

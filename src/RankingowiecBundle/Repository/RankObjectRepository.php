@@ -58,6 +58,21 @@ class RankObjectRepository extends EntityRepository{
             }
         }
 
+        if(!empty($params['titleLike'])){
+            $titleLike = '%'.$params['titleLike'].'%';
+            $qb->andWhere('o.title LIKE :titleLike')
+                ->setParameter('titleLike', $titleLike);
+        }
+
+        if(!empty($params['categoryId'])){
+            if(-1 == $params['categoryId']){
+                $qb->andWhere($qb->expr()->isNull('o.category'));
+            }else{
+                $qb->andWhere('c.id = :categoryId')
+                    ->setParameter('categoryId', $params['categoryId']);
+            }
+        }
+
         return $qb;
 
     }

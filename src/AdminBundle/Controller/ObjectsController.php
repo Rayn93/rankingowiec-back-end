@@ -14,7 +14,6 @@ use AdminBundle\Form\Type\RankObjectType;
 
 class ObjectsController extends Controller{
 
-    private $delete_token_name = "delete-post-%d";
 
     /**
      * @Route(
@@ -28,27 +27,31 @@ class ObjectsController extends Controller{
     public function indexAction(Request $request, $page){
 
         $queryParams = array(
-
+            'titleLike' => $request->query->get('titleLike'),
+            'categoryId' => $request->query->get('categoryId')
         );
 
         $ObjectRepository = $this->getDoctrine()->getRepository('RankingowiecBundle:RankObject');
-
         $qb = $ObjectRepository->getQueryBuilder($queryParams);
 
-
-
         $paginationLimit = $this->container->getParameter('admin_pagination_limit');
-        $limits = array(2, 5, 10, 15);
+        $limitList = array(5, 10, 20, 50);
 
         $limit = $request->query->get('limit', $paginationLimit);
 
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate($qb, $page, $limit);
 
+        $CategoryList = $this->getDoctrine()->getRepository('RankingowiecBundle:Category')->getAsArray();
+
 
 
         return array(
             'Pagination' => $pagination,
+            'queryParams' => $queryParams,
+            'categoryList' => $CategoryList,
+            'currLimit' => $limit,
+            'limitList' => $limitList
         );
     }
 
