@@ -98,15 +98,25 @@ class ObjectsController extends Controller{
 
     /**
      * @Route(
-     *      "/usun/{id}/{token}",
+     *      "/usun/{id}",
      *      name="admin_objectDelete",
      *      requirements={"id"="\d+"}
      * )
      *
      * @Template()
      */
-    public function deleteAction(){
-        return array();
+    public function deleteAction($id){
+
+
+        $Object = $this->getDoctrine()->getRepository('RankingowiecBundle:RankObject')->find($id);
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($Object);
+        $em->flush();
+
+        $this->get('session')->getFlashBag()->add('success', 'Poprawnie usunięto obiekt');
+
+        return $this->redirect($this->generateUrl('admin_objects'));
+
     }
 
 }
