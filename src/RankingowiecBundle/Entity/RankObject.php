@@ -23,6 +23,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 class RankObject{
 
 
+    const DEFAULT_THUMBNAIL = 'default_thumbnail.jpg';
     const UPLOAD_DIR = 'uploads/thumbnails/';
 
     /**
@@ -47,10 +48,6 @@ class RankObject{
     /**
      * @ORM\Column(type="string", length=120, unique=true)
      *
-     * @Assert\NotBlank
-     * @Assert\Length(
-     *      max = 120
-     * )
      */
     private $slug;
 
@@ -72,7 +69,7 @@ class RankObject{
 
     /**
      * @Vich\UploadableField(mapping="thumbnail_image", fileNameProperty="thumbnail")
-     * @Assert\NotBlank
+     *
      *
      * @var File
      */
@@ -240,7 +237,14 @@ class RankObject{
      */
     public function getThumbnail()
     {
+//        return $this->thumbnail;
+
+        if($this->thumbnail == null ){
+            return RankObject::DEFAULT_THUMBNAIL;
+        }
+
         return $this->thumbnail;
+
     }
 
 
@@ -426,6 +430,10 @@ class RankObject{
                 'plus' => 1,
                 'minus' => 1
             );
+        }
+
+        if( $this->thumbnail === NULL){
+            $this->thumbnail = 'default_thumbnail.jpg';
         }
 
         if($this->create_date === NULL){

@@ -26,7 +26,7 @@
                 <div class="container object-wrapper nopadding">
                     <div class="background"></div>
                     <div class="col-md-4 hidden-sm hidden-xs nopadding">
-                        <img class="object-photo" src="{{ Object.thumbnail }}" alt="{{ Object.title }}">
+                        <img class="object-photo" src="{{ vich_uploader_asset(Object, 'thumbnailFile') }}" alt="{{ Object.title }}">
                     </div>
                     <div class="col-md-5 col-xs-7">
                         <h1 class="object-title">{{ Object.title }}</h1>

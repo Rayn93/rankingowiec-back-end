@@ -47,7 +47,7 @@ table th.actions{
  ********************/
 .sortable{
     padding-right: 15px;
-    background-image: url('../img/icon-arrow-ns-dark.png');
+    background-image: url('../../img/icon-arrow-ns-dark.png');
     background-repeat: no-repeat;
     background-position: right center;
 }
@@ -58,11 +58,11 @@ table th.actions{
 }
 
 .sortable.desc{
-    background-image: url('../img/icon-arrow-up-dark.png');
+    background-image: url('../../img/icon-arrow-up-dark.png');
 }
 
 .sortable.asc{
-    background-image: url('../img/icon-arrow-down-dark.png');
+    background-image: url('../../img/icon-arrow-down-dark.png');
 }
 
 

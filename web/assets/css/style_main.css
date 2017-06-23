@@ -1242,6 +1242,7 @@ OBJECT PAGE
 
 .object-info .object-wrapper .object-photo{
     height: 350px;
+    max-width: 470px;
 }
 
 .object-info .object-wrapper .object-title{
