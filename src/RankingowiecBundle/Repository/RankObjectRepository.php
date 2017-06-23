@@ -77,6 +77,25 @@ class RankObjectRepository extends EntityRepository{
 
     }
 
+    //Zwraca tablicę z liczbami obiektów (z rozdzieleniem na opublikowane / nieopublikowane)
+    public function getStatistics(){
+        $qb = $this->createQueryBuilder('o')
+            ->select('COUNT(o)');
+
+        $all = (int)$qb->getQuery()->getSingleScalarResult();
+
+        $published = (int)$qb->andWhere('o.published_date <= :currDate AND o.published_date IS NOT NULL')
+            ->setParameter('currDate', new \DateTime())
+            ->getQuery()
+            ->getSingleScalarResult();
+
+        return array(
+            'all' => $all,
+            'published' => $published,
+            'unpublished' => ($all - $published)
+        );
+    }
+
 
 
 

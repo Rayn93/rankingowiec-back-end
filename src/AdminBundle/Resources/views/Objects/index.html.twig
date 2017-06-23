@@ -57,9 +57,16 @@
                     <div class="panel-body">
 
                         <ul class="nav nav-pills pull-left">
-                            <li class="active"><a href="#">Wszystkie (123)</a></li>
-                            <li><a href="#">Opublikowane (100)</a></li>
-                            <li><a href="#">Nieopublikowane (23)</a></li>
+                            {% for key, var in statusList %}
+                                <li {{ currStatus == key ? 'class="active"' : ''}} >
+                                    <a href="{{ path('admin_objects', {'status': key }) }}">
+                                        {{ var }} ({{ statistic[key] }})
+                                    </a>
+                                </li>
+                            {% endfor %}
+                            {#<li class="active"><a href="#">Wszystkie (123)</a></li>#}
+                            {#<li><a href="#">Opublikowane (100)</a></li>#}
+                            {#<li><a href="#">Nieopublikowane (23)</a></li>#}
                         </ul>
 
                         <ul class="nav nav-pills pull-right">

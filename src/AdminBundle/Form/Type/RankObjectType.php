@@ -11,6 +11,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 
 class RankObjectType extends AbstractType
 {
@@ -43,7 +44,7 @@ class RankObjectType extends AbstractType
                     'placeholder' => 'Link np. do Wikipedii',
                 )
             ))
-            ->add('description', Type\TextareaType::class, array(
+            ->add('description', CKEditorType::class, array(
                 'label' => 'Opis',
                 'attr' => array(
                     'rows' => 10,

@@ -14,27 +14,30 @@ use AdminBundle\Form\Type\RankObjectType;
 
 class ObjectsController extends Controller{
 
+    const AdminPaginationLimit = 5;
 
     /**
      * @Route(
-     *      "/lista/{page}",
+     *      "/lista/{status}/{page}",
      *      name="admin_objects",
-     *      defaults={"page"=1}
+     *      defaults={"status"="all", "page"=1}
      * )
      *
      * @Template()
      */
-    public function indexAction(Request $request, $page){
+    public function indexAction(Request $request, $status, $page){
 
         $queryParams = array(
             'titleLike' => $request->query->get('titleLike'),
-            'categoryId' => $request->query->get('categoryId')
+            'categoryId' => $request->query->get('categoryId'),
+            'status' => $status
         );
 
         $ObjectRepository = $this->getDoctrine()->getRepository('RankingowiecBundle:RankObject');
         $qb = $ObjectRepository->getQueryBuilder($queryParams);
 
-        $paginationLimit = $this->container->getParameter('admin_pagination_limit');
+//        $paginationLimit = $this->container->getParameter('admin_pagination_limit');
+        $paginationLimit = self::AdminPaginationLimit;
         $limitList = array(5, 10, 20, 50);
 
         $limit = $request->query->get('limit', $paginationLimit);
@@ -44,14 +47,29 @@ class ObjectsController extends Controller{
 
         $CategoryList = $this->getDoctrine()->getRepository('RankingowiecBundle:Category')->getAsArray();
 
+        $statusList = array(
+            'all' => 'Wszystkie',
+            'published' => 'Opublikowane',
+            'unpublished' => 'Nieopublikowane'
+        );
+
+        $currStatus = $status;
+
+        $statistic = $ObjectRepository->getStatistics();
 
 
         return array(
             'Pagination' => $pagination,
+
             'queryParams' => $queryParams,
             'categoryList' => $CategoryList,
+
             'currLimit' => $limit,
-            'limitList' => $limitList
+            'limitList' => $limitList,
+
+            'statusList' => $statusList,
+            'currStatus' => $currStatus,
+            'statistic' => $statistic
         );
     }
 
