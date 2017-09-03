@@ -14,8 +14,6 @@ use AdminBundle\Form\Type\RankObjectType;
 
 class ObjectsController extends Controller{
 
-    //const AdminPaginationLimit = 5;
-
     /**
      * @Route(
      *      "/lista/{status}/{page}",
@@ -37,9 +35,7 @@ class ObjectsController extends Controller{
         $qb = $ObjectRepository->getQueryBuilder($queryParams);
 
         $paginationLimit = $this->container->getParameter('admin.pagination_limit');
-        //$paginationLimit = self::AdminPaginationLimit;
         $limitList = array(5, 10, 20, 50);
-
         $limit = $request->query->get('limit', $paginationLimit);
 
         $paginator = $this->get('knp_paginator');

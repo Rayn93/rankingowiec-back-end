@@ -23,19 +23,24 @@ class CategoriesController extends Controller{
      *
      * @Template()
      */
-    public function indexAction($page){
+    public function indexAction(Request $request, $page){
         
         $CategoryRepository = $this->getDoctrine()->getRepository('RankingowiecBundle:Category');
         $qb = $CategoryRepository->getQueryBuilder();
 
         $paginationLimit = $this->container->getParameter('admin.pagination_limit');
+        $limitList = array(5, 10, 20, 50);
+        $limit = $request->query->get('limit', $paginationLimit);
 
         $paginator = $this->get('knp_paginator');
-        $pagination = $paginator->paginate($qb, $page, $paginationLimit);
+        $pagination = $paginator->paginate($qb, $page, $limit);
 
         return array(
             'currPage' => 'taxonomies',
-            'Pagination' => $pagination
+            'Pagination' => $pagination,
+
+            'currLimit' => $limit,
+            'limitList' => $limitList,
         );
     }
 
@@ -49,8 +54,35 @@ class CategoriesController extends Controller{
      *
      * @Template()
      */
-    public function formAction(){
-        return array();
+    public function formAction(Request $Request, $id = NULL){
+
+        if($id === NULL){
+            $Category = new Category();
+            $newCategory = true;
+        }
+        else{
+            $Category = $this->getDoctrine()->getRepository('RankingowiecBundle:Category')->find($id);
+        }
+
+        $form = $this->createForm(new TaxonomyType(), $Category);
+        $form->handleRequest($Request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($Category);
+            $em->flush();
+
+            $message = (isset($newCategory)) ? 'Poprawnie dodano nową kategorię!': 'Kategoria została poprawiona!';
+            $this->get('session')->getFlashBag()->add('success', $message);
+
+            return $this->redirect($this->generateUrl('admin_categoryForm', array('id' => $Category->getId())));
+        }
+
+        return array(
+            'Category' => $Category,
+            'Form' => $form->createView(),
+        );
     }
 
 

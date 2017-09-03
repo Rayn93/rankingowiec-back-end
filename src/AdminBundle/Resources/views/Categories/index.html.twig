@@ -17,22 +17,21 @@
                     </div>
                     <div class="panel-body">
                         <form action="#" method="get" class="form-inline filter-search" role="form">
-                            <div class="form-group">
-                                <input type="text" name="title" class="form-control" placeholder="Wyszukaj po tytule">
-                            </div>
+                            {#<div class="form-group">#}
+                                {#<input type="text" name="title" class="form-control" placeholder="Wyszukaj po tytule">#}
+                            {#</div>#}
 
-                            <div class="form-group">
-                                <button class="btn btn-primary">Filtruj</button>
-                            </div>
+                            {#<div class="form-group">#}
+                                {#<button class="btn btn-primary">Filtruj</button>#}
+                            {#</div>#}
 
                             <div class="form-group pull-right limit">
                                 <label for="limit" class="col-lg-5 control-label">Wyników</label>
                                 <div class="col-lg-7">
                                     <select name="limit" class="select-block" id="limit" placeholder="Pokaż">
-                                        <option value="10">10</option>
-                                        <option value="25">25</option>
-                                        <option value="50">50</option>
-                                        <option value="100">100</option>
+                                        {% for limit in limitList %}
+                                            <option {{ limit == currLimit ? 'selected="selected"' : '' }} value="{{ limit }}">{{ limit }}</option>
+                                        {% endfor %}
                                     </select>
                                 </div>
                             </div>
