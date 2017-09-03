@@ -6,7 +6,11 @@ namespace AdminBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\Request;
 
+use RankingowiecBundle\Entity\Category;
+use AdminBundle\Form\Type\TaxonomyType;
+use AdminBundle\Form\Type\CategoryDeleteType;
 
 class CategoriesController extends Controller{
 
@@ -19,8 +23,20 @@ class CategoriesController extends Controller{
      *
      * @Template()
      */
-    public function indexAction(){
-        return array();
+    public function indexAction($page){
+        
+        $CategoryRepository = $this->getDoctrine()->getRepository('RankingowiecBundle:Category');
+        $qb = $CategoryRepository->getQueryBuilder();
+
+        $paginationLimit = $this->container->getParameter('admin.pagination_limit');
+
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate($qb, $page, $paginationLimit);
+
+        return array(
+            'currPage' => 'taxonomies',
+            'Pagination' => $pagination
+        );
     }
 
     /**
@@ -41,7 +57,7 @@ class CategoriesController extends Controller{
 
     /**
      * @Route(
-     *      "/usun/{id}/{token}",
+     *      "/usun/{id}",
      *      name="admin_categoryDelete",
      *      requirements={"id"="\d+"}
      * )

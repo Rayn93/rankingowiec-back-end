@@ -7,6 +7,54 @@ in 2.8 minor versions.
 To get the diff for a specific change, go to https://github.com/symfony/symfony/commit/XXX where XXX is the change hash
 To get the diff between two versions, go to https://github.com/symfony/symfony/compare/v2.8.0...v2.8.1
 
+* 2.8.22 (2017-06-07)
+
+ * bug #23073 [TwigBridge] Fix namespaced classes (ogizanagi)
+ * bug #22936 [Form] Mix attr option between guessed options and user options (yceruto)
+ * bug #22988 [PropertyInfo][DoctrineBridge] The bigint Doctrine's type must be converted to string (dunglas)
+ * bug #23014 Fix optional cache warmers are always instantiated whereas they should be lazy-loaded (romainneutron)
+ * bug #23024 [EventDispatcher] Fix ContainerAwareEventDispatcher::hasListeners(null) (nicolas-grekas)
+ * bug #22996 [Form] Fix \IntlDateFormatter timezone parameter usage to bypass PHP bug #66323 (romainneutron)
+ * bug #22994 Harden the debugging of Twig filters and functions (stof)
+
+* 2.8.21 (2017-05-29)
+
+ * bug #22847 [Console] ChoiceQuestion must have choices (ro0NL)
+ * bug #22900 [FrameworkBundle][Console] Fix the override of a command registered by the kernel (aaa2000)
+ * bug #22910 [Filesystem] improve error handling in lock() (xabbuh)
+ * bug #22718 [Console] Fixed different behaviour of key and value user inputs in multiple choice question (borNfreee)
+ * bug #22901 Fix missing abstract key in XmlDumper (weaverryan)
+ * bug #22817 [PhpUnitBridge] optional error handler arguments (xabbuh)
+ * bug #22752 Improved how profiler errors are displayed on small screens (javiereguiluz)
+ * bug #22647 [VarDumper] Fix dumping of non-nested stubs (nicolas-grekas)
+ * bug #22584 [Security] Avoid unnecessary route lookup for empty logout path (ro0NL)
+ * bug #22690 [Console] Fix errors not rethrown even if not handled by console.error listeners (chalasr)
+ * bug #22669 [FrameworkBundle] AbstractConfigCommand: do not try registering bundles twice (ogizanagi)
+ * bug #22676 [FrameworkBundle] Adding the extension XML (flug)
+
+* 2.8.20 (2017-05-01)
+
+ * bug #22550 Allow Upper Case property names in ObjectNormalizer (insekticid)
+ * bug #22528 [Asset] Starting slash should indicate no basePath wanted (weaverryan)
+ * bug #22541 [EventDispatcher] fix: unwrap listeners for correct info (dmaicher)
+ * bug #22526 [Asset] Preventing the base path or absolute URL from being prefixed incorrectly (weaverryan)
+ * bug #22523 [WebProfilerBundle] Fixed the flickering when loading complex profiler panels (javiereguiluz)
+ * bug #22435 [Console] Fix dispatching throwables from ConsoleEvents::COMMAND (nicolas-grekas)
+ * bug #22478 [Serializer] XmlEncoder: fix negative int and large numbers handling (dunglas)
+ * bug #22424 [Debug] Set exit status to 255 on error (nicolas-grekas)
+ * bug #22426 [PropertyInfo] Prevent returning int values in some cases (dunglas)
+ * bug #22399  Prevent double registrations related to tag priorities (nicolas-grekas)
+ * bug #22396 Prevent double registrations related to tag priorities (nicolas-grekas)
+ * bug #22352 [HttpFoundation] Add `use_strict_mode` in validOptions for session (sstok)
+ * bug #22351 [Yaml] don't keep internal state between parser runs (xabbuh)
+ * bug #22307 [Debug] Fix php notice (enumag)
+ * bug #22311 [DI] Fix second auto-registration (nicolas-grekas)
+ * bug #22109 [Validator] check for empty host when calling checkdnsrr() (apetitpa)
+ * bug #22280 [DI] Fix the xml schema (GuilhemN)
+ * bug #22282 [DI] Prevent AutowirePass from triggering irrelevant deprecations (chalasr)
+ * bug #22255 [Translation] avoid creating cache files for fallback locales. (aitboudad)
+ * bug #22292 Fixes #22264 - add support for Chrome headless (redthor)
+
 * 2.8.19 (2017-04-05)
 
  * bug #22265 Allow Upper Case property names (insekticid)

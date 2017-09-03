@@ -7,6 +7,36 @@ in 2.7 minor versions.
 To get the diff for a specific change, go to https://github.com/symfony/symfony/commit/XXX where XXX is the change hash
 To get the diff between two versions, go to https://github.com/symfony/symfony/compare/v2.7.0...v2.7.1
 
+* 2.7.28 (2017-05-29)
+
+ * bug #22847 [Console] ChoiceQuestion must have choices (ro0NL)
+ * bug #22900 [FrameworkBundle][Console] Fix the override of a command registered by the kernel (aaa2000)
+ * bug #22910 [Filesystem] improve error handling in lock() (xabbuh)
+ * bug #22718 [Console] Fixed different behaviour of key and value user inputs in multiple choice question (borNfreee)
+ * bug #22901 Fix missing abstract key in XmlDumper (weaverryan)
+ * bug #22817 [PhpUnitBridge] optional error handler arguments (xabbuh)
+ * bug #22647 [VarDumper] Fix dumping of non-nested stubs (nicolas-grekas)
+ * bug #22584 [Security] Avoid unnecessary route lookup for empty logout path (ro0NL)
+ * bug #22690 [Console] Fix errors not rethrown even if not handled by console.error listeners (chalasr)
+ * bug #22669 [FrameworkBundle] AbstractConfigCommand: do not try registering bundles twice (ogizanagi)
+ * bug #22676 [FrameworkBundle] Adding the extension XML (flug)
+
+* 2.7.27 (2017-05-01)
+
+ * bug #22528 [Asset] Starting slash should indicate no basePath wanted (weaverryan)
+ * bug #22526 [Asset] Preventing the base path or absolute URL from being prefixed incorrectly (weaverryan)
+ * bug #22435 [Console] Fix dispatching throwables from ConsoleEvents::COMMAND (nicolas-grekas)
+ * bug #22478 [Serializer] XmlEncoder: fix negative int and large numbers handling (dunglas)
+ * bug #22424 [Debug] Set exit status to 255 on error (nicolas-grekas)
+ * bug #22396 Prevent double registrations related to tag priorities (nicolas-grekas)
+ * bug #22352 [HttpFoundation] Add `use_strict_mode` in validOptions for session (sstok)
+ * bug #22351 [Yaml] don't keep internal state between parser runs (xabbuh)
+ * bug #22307 [Debug] Fix php notice (enumag)
+ * bug #22109 [Validator] check for empty host when calling checkdnsrr() (apetitpa)
+ * bug #22280 [DI] Fix the xml schema (GuilhemN)
+ * bug #22255 [Translation] avoid creating cache files for fallback locales. (aitboudad)
+ * bug #22292 Fixes #22264 - add support for Chrome headless (redthor)
+
 * 2.7.26 (2017-04-04)
 
  * bug #22229 [ExpressionLanguage] Provide the expression in syntax errors (k0pernikus, stof)

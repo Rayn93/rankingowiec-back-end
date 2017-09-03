@@ -14,7 +14,7 @@ use AdminBundle\Form\Type\RankObjectType;
 
 class ObjectsController extends Controller{
 
-    const AdminPaginationLimit = 5;
+    //const AdminPaginationLimit = 5;
 
     /**
      * @Route(
@@ -36,8 +36,8 @@ class ObjectsController extends Controller{
         $ObjectRepository = $this->getDoctrine()->getRepository('RankingowiecBundle:RankObject');
         $qb = $ObjectRepository->getQueryBuilder($queryParams);
 
-//        $paginationLimit = $this->container->getParameter('admin_pagination_limit');
-        $paginationLimit = self::AdminPaginationLimit;
+        $paginationLimit = $this->container->getParameter('admin.pagination_limit');
+        //$paginationLimit = self::AdminPaginationLimit;
         $limitList = array(5, 10, 20, 50);
 
         $limit = $request->query->get('limit', $paginationLimit);

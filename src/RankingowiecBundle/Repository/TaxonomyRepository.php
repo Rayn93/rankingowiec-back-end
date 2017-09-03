@@ -10,8 +10,8 @@ class TaxonomyRepository extends EntityRepository {
     public function getQueryBuilder(array $params = array()) {
         $qb = $this->createQueryBuilder('t');
         
-        $qb->select('t, COUNT(p.id) as postsCount')
-                ->leftJoin('t.posts', 'p')
+        $qb->select('t, COUNT(r.id) as rankingsCount')
+                ->leftJoin('t.rankings', 'r')
                 ->groupBy('t.id');
         
         return $qb;
