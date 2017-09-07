@@ -32,7 +32,7 @@ class CategoryDeleteType extends AbstractType {
 //                'label' => 'Ustaw wszystkie rankingi i obiekty bez kategorii'
 //            ))
             ->add('newCategory', EntityType::class, array(
-                'label' => 'Wybierz nową kategorię dla rankingów i obiektów',
+                'label' => 'Wybierz nową kategorię dla obiektów',
                 'empty_value' => 'Wybierz kategorię',
                 'class' => 'RankingowiecBundle\Entity\Category',
                 'property' => 'name',
