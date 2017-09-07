@@ -96,8 +96,50 @@ class CategoriesController extends Controller{
      *
      * @Template()
      */
-    public function deleteAction(){
-        return array();
+    public function deleteAction(Request $Request, Category $Category){
+    //Zastosowanie paramConverter (zamiast dawać id kategori podaje obiekt)
+
+        $form = $this->createForm(new CategoryDeleteType($Category));
+        $form->handleRequest($Request);
+
+        if($form->isValid()){
+
+            $chosen = false;
+
+            if(($NewCategory = $form->get('newCategory')->getData()) !== null){
+                $newCategoryId = $NewCategory->getId();
+                $chosen = true;
+            }
+
+            if($chosen){
+
+                $RankObjectRepo = $this->getDoctrine()->getRepository('RankingowiecBundle:RankObject');
+                $modifiedRankObject = $RankObjectRepo->moveToCategory($Category->getId(), $newCategoryId);
+
+                $em = $this->getDoctrine()->getManager();
+                $em->remove($Category);
+                $em->flush();
+
+                $Request->getSession()
+                    ->getFlashBag()
+                    ->add('success', sprintf('Kategoria została usunięta. %d Obiektów zostało zmodyfikowanych.', $modifiedRankObject));
+
+                return $this->redirect($this->generateUrl('admin_categories'));
+
+            }else{
+                $Request->getSession()
+                    ->getFlashBag()
+                    ->add('error', 'Musisz wybrać nowa kategorię!');
+            }
+
+
+        }
+
+
+        return array(
+            'Category' => $Category,
+            'Form' => $form->createView()
+        );
     }
 
 

@@ -1,10 +1,14 @@
 <?php
 
-namespace Air\AdminBundle\Form\Type;
+namespace AdminBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Doctrine\ORM\EntityRepository;
+
+use Symfony\Component\Form\Extension\Core\Type as Type;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 
 class CategoryDeleteType extends AbstractType {
@@ -24,13 +28,13 @@ class CategoryDeleteType extends AbstractType {
         $Category = $this->category;
         
         $builder
-            ->add('setNull', 'checkbox', array(
-                'label' => 'Ustaw wszystkie posty bez kategorii'
-            ))
-            ->add('newCategory', 'entity', array(
-                'label' => 'Wybierz nową kategorię dla postów',
+//            ->add('setNull', Type\CheckboxType::class, array(
+//                'label' => 'Ustaw wszystkie rankingi i obiekty bez kategorii'
+//            ))
+            ->add('newCategory', EntityType::class, array(
+                'label' => 'Wybierz nową kategorię dla rankingów i obiektów',
                 'empty_value' => 'Wybierz kategorię',
-                'class' => 'Air\BlogBundle\Entity\Category',
+                'class' => 'RankingowiecBundle\Entity\Category',
                 'property' => 'name',
                 'query_builder' => function(EntityRepository $er) use ($Category){
                     return $er->createQueryBuilder('c')
@@ -38,8 +42,7 @@ class CategoryDeleteType extends AbstractType {
                                     ->setParameter('categoryId', $Category->getId());
                 }
             ))
-            ->add('submit', 'submit', array(
-                    'label' => 'Usuń kategorię'
-            ));
+            ->add('submit', SubmitType::class, array('label' => 'Wykonaj'))
+            ->getForm();
     }
 }

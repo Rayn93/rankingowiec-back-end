@@ -97,6 +97,22 @@ class RankObjectRepository extends EntityRepository{
     }
 
 
+    //Funkcja zmieniająca kategorię obiektów (przy usuwaniu danej kategorii)
+    public function moveToCategory($oldCategoryId, $newCategoryId){
+
+        return $this->createQueryBuilder('o')
+            ->update()
+            ->set('o.category', ':newCategoryId')
+            ->where('o.category = :oldCategoryId')
+            ->setParameters(array(
+                'newCategoryId' => $newCategoryId,
+                'oldCategoryId' => $oldCategoryId
+            ))
+            ->getQuery()
+            ->execute();
+    }
+
+
 
 
 

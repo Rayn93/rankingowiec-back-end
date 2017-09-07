@@ -13,7 +13,7 @@ class TaxonomyRepository extends EntityRepository {
         $qb->select('t, COUNT(r.id) as rankingsCount')
                 ->leftJoin('t.rankings', 'r')
                 ->groupBy('t.id');
-        
+
         return $qb;
     }
     

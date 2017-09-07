@@ -115,7 +115,4 @@ class RankingRepository extends EntityRepository{
     }
 
 
-
-
-
 }
