@@ -25,6 +25,12 @@ class TagRepository extends EntityRepository{
             $qb->addSelect('RAND() as HIDDEN rand')->orderBy('rand');
         }
 
+        if(!empty($params['countRankings'])){
+            $qb->addSelect('t, COUNT(r.id) as rankingsCount')
+                ->leftJoin('t.rankings', 'r')
+                ->groupBy('t.id');
+        }
+
         return $qb;
 
     }
