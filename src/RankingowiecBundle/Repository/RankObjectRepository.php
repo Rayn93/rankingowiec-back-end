@@ -23,7 +23,7 @@ class RankObjectRepository extends EntityRepository{
 
     }
 
-    //Zwraca ranking o konkretnym slugu
+    //Zwraca obiekt o konkretnym slugu
     public function getPublishedObject($slug){
 
         $qb = $this->getQueryBuilder(array(

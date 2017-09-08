@@ -3,13 +3,25 @@
 namespace RankingowiecBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="RankingowiecBundle\Repository\PageRepository")
  * @ORM\Table(name="pages")
  * @ORM\HasLifecycleCallbacks
+ *
+ * @UniqueEntity(fields={"title"})
+ * @UniqueEntity(fields={"slug"})
+ *
+ * @Vich\Uploadable
  */
 class Page{
+
+    const DEFAULT_THUMBNAIL = 'default_thumbnail.jpg';
+    const UPLOAD_DIR = 'uploads/thumbnails/';
 
     /**
     * @ORM\Column(type="integer")
@@ -21,6 +33,11 @@ class Page{
 
     /**
      * @ORM\Column(type="string", length=120, unique=true)
+     *
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *      max = 120
+     * )
      */
     private $title;
 
@@ -33,6 +50,8 @@ class Page{
 
     /**
      * @ORM\Column(type="text")
+     *
+     * @Assert\NotBlank
      */
     private $content;
 
@@ -41,6 +60,22 @@ class Page{
      * @ORM\Column(type="string", length=80)
      */
     private $thumbnail;
+
+
+    /**
+     * @Vich\UploadableField(mapping="thumbnail_image", fileNameProperty="thumbnail")
+     *
+     *
+     * @var File
+     */
+    private $thumbnailFile;
+
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     *
+     */
+    private $updatedAt;
 
 
     /**
@@ -58,6 +93,8 @@ class Page{
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     *
+     * @Assert\DateTime
      */
     private $published_date;
 
@@ -168,7 +205,36 @@ class Page{
      */
     public function getThumbnail()
     {
+        //return $this->thumbnail;
+
+        if($this->thumbnail == null ){
+            return RankObject::DEFAULT_THUMBNAIL;
+        }
+
         return $this->thumbnail;
+    }
+
+
+
+    public function setThumbnailFile(File $image = null)
+    {
+        $this->thumbnailFile = $image;
+
+        if ($image) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return File|null
+     */
+    public function getThumbnailFile()
+    {
+        return $this->thumbnailFile;
     }
 
     /**
@@ -251,6 +317,14 @@ class Page{
 
         if( $this->slug === NULL){
             $this->setSlug($this->getTitle());
+        }
+
+        if( $this->thumbnail === NULL){
+            $this->thumbnail = 'default_thumbnail.jpg';
+        }
+
+        if($this->create_date === NULL){
+            $this->create_date = new \DateTime();
         }
 
     }
