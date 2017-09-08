@@ -12,7 +12,7 @@
     <div class="container-fluid nopadding">
         <div class="row nomargin">
             <div class="static-top">
-                <img class="img-background" src="{{ Page.thumbnail }}" alt="object_bq">
+                <img class="img-background" src="{{ vich_uploader_asset(Page, 'thumbnailFile') }}" alt="{{ Page.slug }}">
 
                 <h1>{{ Page.title }}</h1>
 

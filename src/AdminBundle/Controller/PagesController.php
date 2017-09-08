@@ -3,6 +3,7 @@
 
 namespace AdminBundle\Controller;
 
+use AdminBundle\Form\Type\PageType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -66,7 +67,6 @@ class PagesController extends Controller{
     }
 
 
-
     /**
      * @Route(
      *      "/formularz/{id}",
@@ -77,8 +77,36 @@ class PagesController extends Controller{
      *
      * @Template()
      */
-    public function formAction(){
-        return array();
+    public function formAction(Request $Request, $id = NULL){
+
+        if($id == null){
+            $Page = new Page();
+            $Page->setAuthor($this->getUser());
+            $newPageForm = TRUE;
+        }else{
+            $Page = $this->getDoctrine()->getRepository('RankingowiecBundle:Page')->find($id);
+        }
+
+        $form = $this->createForm(new PageType(), $Page);
+        $form->handleRequest($Request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($Page);
+            $em->flush();
+
+            $message = (isset($newPageForm)) ? 'Poprawnie dodano nową stronę!': 'Strona została zmodyfikowana!';
+            $this->get('session')->getFlashBag()->add('success', $message);
+
+            return $this->redirect($this->generateUrl('admin_pageForm', array('id' => $Page->getId())));
+        }
+
+        return array(
+            'Form' => $form->createView(),
+            'Page' => $Page,
+            'currPage' => 'pages',
+        );
     }
 
 

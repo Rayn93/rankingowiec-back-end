@@ -16,9 +16,18 @@ class PagesController extends Controller
      *
      * @Template()
      */
-    public function contactAction()
-    {
-        return array();
+    public function contactAction(){
+        
+        $PageRepo = $this->getDoctrine()->getRepository('RankingowiecBundle:Page');
+        $Page = $PageRepo->findOneBySlug('kontakt');
+
+        if($Page === NULL){
+            throw $this->createNotFoundException('Taka strona nie istnieje');
+        }
+
+        return array(
+            'Page' => $Page
+        );
     }
 
 
@@ -41,6 +50,7 @@ class PagesController extends Controller
         return array(
             'Page' => $Page
         );
+        
     }
 
 

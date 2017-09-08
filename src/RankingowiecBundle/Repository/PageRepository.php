@@ -7,9 +7,6 @@ use Doctrine\ORM\EntityRepository;
 
 class PageRepository extends EntityRepository{
 
-
-
-
     //Tworzy zapytania DQL dla encji Stron statycznych z przekazanymi parametrami
     public function getQueryBuilder(array $params = array()){
 
@@ -34,6 +31,11 @@ class PageRepository extends EntityRepository{
             $qb->andWhere('p.title LIKE :titleLike')
                 ->setParameter('titleLike', $titleLike);
         }
+
+//        if(!empty($params['slug'])){
+//            $qb->andWhere('p.slug = :slug')
+//                ->setParameter('slug', $params['slug']);
+//        }
 
         return $qb;
 
