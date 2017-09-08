@@ -120,8 +120,15 @@ class PagesController extends Controller{
      *
      * @Template()
      */
-    public function deleteAction(){
-        return array();
+    public function deleteAction($id){
+        $Page = $this->getDoctrine()->getRepository('RankingowiecBundle:Page')->find($id);
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($Page);
+        $em->flush();
+
+        $this->get('session')->getFlashBag()->add('success', 'Poprawnie usunięto stronę');
+
+        return $this->redirect($this->generateUrl('admin_pages'));
     }
 
 
