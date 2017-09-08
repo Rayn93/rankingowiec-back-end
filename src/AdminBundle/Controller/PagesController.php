@@ -52,7 +52,7 @@ class PagesController extends Controller{
 
         return array(
             'Pagination' => $pagination,
-
+            'currPage' => 'pages',
             'queryParams' => $queryParams,
 
             'currLimit' => $limit,

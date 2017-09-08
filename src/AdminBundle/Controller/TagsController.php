@@ -87,6 +87,7 @@ class TagsController extends Controller{
         return array(
             'Tag' => $Tag,
             'Form' => $form->createView(),
+            'currPage' => 'taxonomies',
         );
 
     }

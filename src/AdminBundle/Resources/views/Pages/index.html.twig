@@ -16,28 +16,7 @@
                         Wyszukiwanie i filtracja
                     </div>
                     <div class="panel-body">
-                        {#<form action="#" method="get" class="form-inline filter-search" role="form">#}
-                            {#<div class="form-group">#}
-                                {#<input type="text" name="title" class="form-control" placeholder="Wyszukaj po tytule">#}
-                            {#</div>#}
 
-                            {#<div class="form-group">#}
-                                {#<button class="btn btn-primary">Filtruj</button>#}
-                            {#</div>#}
-
-                            {#<div class="form-group pull-right limit">#}
-                                {#<label for="limit" class="col-lg-5 control-label">Wyników</label>#}
-                                {#<div class="col-lg-7">#}
-                                    {#<select name="limit" class="select-block" id="limit" placeholder="Pokaż">#}
-                                        {#<option value="10">10</option>#}
-                                        {#<option value="25">25</option>#}
-                                        {#<option value="50">50</option>#}
-                                        {#<option value="100">100</option>#}
-                                    {#</select>#}
-                                {#</div>#}
-                            {#</div>#}
-
-                        {#</form>#}
                         <form action="{{ path('admin_pages') }}" method="get" class="form-inline filter-search" role="form">
                             <div class="form-group">
                                 <input type="text" name="titleLike" class="form-control" placeholder="Wyszukaj po nazwie" value="{{ queryParams['titleLike'] }}">
@@ -97,16 +76,6 @@
                                 </tr>
                                 </thead>
 
-                                {#<thead>#}
-                                {#<tr>#}
-                                    {#<th><a class="sortable" href="#">ID</a></th>#}
-                                    {#<th><a class="sortable" href="#">Tytuł</a></th>#}
-                                    {#<th><a class="sortable" href="#">Autor</a></th>#}
-                                    {#<th><a class="sortable" href="#">Data utworzenia</a></th>#}
-                                    {#<th><a class="sortable" href="#">Data publikacji</a></th>#}
-                                    {#<th>Akcje</th>#}
-                                {#</tr>#}
-                                {#</thead>#}
                                 <tbody>
 
                                 {% for page in Pagination %}

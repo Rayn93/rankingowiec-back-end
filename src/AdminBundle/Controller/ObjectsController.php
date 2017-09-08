@@ -56,7 +56,7 @@ class ObjectsController extends Controller{
 
         return array(
             'Pagination' => $pagination,
-
+            'currPage' => 'objects',
             'queryParams' => $queryParams,
             'categoryList' => $CategoryList,
 
@@ -107,7 +107,8 @@ class ObjectsController extends Controller{
 
         return array(
             'Form' => $form->createView(),
-            'RankObject' => $RankObject
+            'RankObject' => $RankObject,
+            'currPage' => 'objects',
         );
     }
 

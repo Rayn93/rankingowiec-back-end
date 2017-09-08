@@ -82,6 +82,7 @@ class CategoriesController extends Controller{
         return array(
             'Category' => $Category,
             'Form' => $form->createView(),
+            'currPage' => 'taxonomies'
         );
     }
 
@@ -138,7 +139,8 @@ class CategoriesController extends Controller{
 
         return array(
             'Category' => $Category,
-            'Form' => $form->createView()
+            'Form' => $form->createView(),
+            'currPage' => 'taxonomies'
         );
     }
 

@@ -24,11 +24,6 @@
 
     {% endblock %}
 
-    {#<link href="css/bootstrap.css" rel="stylesheet">#}
-    {#<link href="css/bootstrap-theme.css" rel="stylesheet">#}
-    {#<link href="css/select2.css" rel="stylesheet">#}
-    {#<link href="css/style-admin.css" rel="stylesheet">#}
-
 
 </head>
 
@@ -50,24 +45,32 @@
         <div class="collapse navbar-collapse navbar-ex1-collapse">
 
             <ul class="nav navbar-nav">
-                <li class="active"><a href="{{ path('admin_dashboard') }}">Kokpit</a></li>
+                {% if currPage is not defined %}{% set currPage = 'dashboard' %}{% endif %}
+
+                <li {% if currPage == 'dashboard' %} class="active"{% endif %}><a href="{{ path('admin_dashboard') }}">Kokpit</a></li>
                 <li><a href="{{ path('fos_user_profile_show') }}">Moje konto</a></li>
-                <li><a href="{{ path('admin_rankings') }}">Rankingi</a></li>
-                <li><a href="{{ path('admin_objects') }}">Obiekty</a></li>
-                <li><a href="{{ path('admin_pages') }}">Strony</a></li>
-                <li class="dropdown">
+                <li {% if currPage == 'rankings' %} class="active"{% endif %}><a href="{{ path('admin_rankings') }}">Rankingi</a></li>
+                <li {% if currPage == 'objects' %} class="active"{% endif %}><a href="{{ path('admin_objects') }}">Obiekty</a></li>
+                <li {% if currPage == 'pages' %} class="active"{% endif %}><a href="{{ path('admin_pages') }}">Strony</a></li>
+
+                <li class="dropdown {% if currPage == 'taxonomies' %} active {% endif %}">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Taksonomie <b class="caret"></b></a>
                     <ul class="dropdown-menu">
+                        {% if is_granted('ROLE_ADMIN') %}
                         <li><a href="{{ path('admin_categories') }}">Kategorie</a></li>
+                        {% endif %}
                         <li><a href="{{ path('admin_tags') }}">Tagi</a></li>
                     </ul>
                 </li>
-                <li><a href="{{ path('admin_users') }}">Użytkownicy</a></li>
+
+                {% if is_granted('ROLE_ADMIN') %}
+                <li {% if currPage == 'users' %} class="active"{% endif %}><a href="{{ path('admin_users') }}">Użytkownicy</a></li>
+                {% endif %}
                 {#<li><a href="#">Komentarze</a></li>#}
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="{{ path('fos_user_profile_show') }}">Robert Saternus</a></li>
+                <li><a href="{{ path('fos_user_profile_show') }}">{{ app.user.username }}</a></li>
                 <li><a href="{{ path('fos_user_security_logout') }}"><span class="glyphicon glyphicon-log-out"></span></a></li>
             </ul>
         </div>
@@ -81,22 +84,6 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-
-                    {#
-                    {% if app.session.flashBag.has('success') %}
-                    <div class="alert alert-success alert-dismissable">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                        <strong>Sukces!</strong> {{ app.session.flashBag.get('success')[0] }}
-                    </div>
-                    {% endif %}
-
-                    {% if app.session.flashBag.has('error') %}
-                    <div class="alert alert-danger alert-dismissable">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                        <strong>Błąd!</strong> {{ app.session.flashBag.get('error')[0] }}
-                    </div>
-                    {% endif %}
-                    #}
 
                     {% for success in app.session.flashBag.get('success') %}
                         <div class="alert alert-success alert-dismissable">
@@ -137,11 +124,6 @@
     {% endjavascripts %}
 
 {% endblock %}
-
-{#<script src="js/vendor/jquery-1.10.2.min.js"></script>#}
-{#<script src="js/vendor/bootstrap.js"></script>#}
-{#<script src="js/vendor/select2.min.js"></script>#}
-{#<script src="js/scripts.js"></script>#}
 
 </body>
 

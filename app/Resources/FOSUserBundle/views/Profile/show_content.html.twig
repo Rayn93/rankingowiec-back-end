@@ -14,7 +14,7 @@
     </div>
 
     <div class="col-md-6">
-        {% if is_granted('ROLE_ADMIN') %}
+        {% if is_granted('ROLE_EDITOR') %}
             <p><a class="btn btn-lg btn-success" href="{{ path('admin_dashboard') }}">Przejdź do panelu administracyjnego</a> </p>
         {% endif %}
     </div>
