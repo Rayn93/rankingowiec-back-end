@@ -4,7 +4,8 @@ namespace RankingowiecBundle\Libs;
 
 
 class Utils {
-    
+
+    //Metoda statyczna która z tekstu tworzy slug aby był poprawnym linkiem
     static public function sluggify($text) {
         // replace non letter or digits by -
         $text = preg_replace('~[^\\pL\d]+~u', '-', $text);
@@ -27,6 +28,10 @@ class Utils {
 
         return $text;
     }
+
+
+
+
 
 
     
