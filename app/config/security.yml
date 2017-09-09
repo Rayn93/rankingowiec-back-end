@@ -25,6 +25,8 @@ security:
                 default_target_path: fos_user_profile_show
             logout:       true
             anonymous:    true
+            switch_user:
+                provider:   fos_userbundle
             remember_me:
                 secret:   '%secret%'
                 lifetime: 604800 # 1 week in seconds

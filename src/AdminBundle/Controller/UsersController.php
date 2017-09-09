@@ -103,8 +103,16 @@ class UsersController extends Controller{
      *
      * @Template()
      */
-    public function deleteAction(){
-        return array();
+    public function deleteAction($id){
+
+        $User = $this->getDoctrine()->getRepository('RankingowiecBundle:User')->find($id);
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($User);
+        $em->flush();
+
+        $this->get('session')->getFlashBag()->add('success', 'Poprawnie usunięto użytkownika');
+
+        return $this->redirect($this->generateUrl('admin_users'));
     }
 
 

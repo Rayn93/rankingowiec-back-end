@@ -55,6 +55,7 @@ class UserType extends AbstractType
                     'Użytkownik' => 'ROLE_USER',
                     'Redaktor' => 'ROLE_EDITOR',
                     'Administrator' => 'ROLE_ADMIN',
+                    'Super Admin' => 'ROLE_SUPER_ADMIN',
                 ),
                 'choices_as_values' => true,
                 'multiple' => true,
