@@ -18,7 +18,7 @@ class AdminExtension extends \Twig_Extension {
 
     
     public function adminFormatDate(\DateTime $datetime) {
-        return $datetime->format('d.m.Y, H:i:s');
+        return $datetime->format('d.m.Y');
     }
 
 }

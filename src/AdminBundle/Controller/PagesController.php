@@ -11,7 +11,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 
 use RankingowiecBundle\Entity\Page;
-//use AdminBundle\Form\Type\RankObjectType;
 
 class PagesController extends Controller{
 

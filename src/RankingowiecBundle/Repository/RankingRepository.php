@@ -108,10 +108,44 @@ class RankingRepository extends EntityRepository{
                 ->setParameter('next_month', $next_month);
         }
 
+        if(!empty($params['titleLike'])){
+            $titleLike = '%'.$params['titleLike'].'%';
+            $qb->andWhere('r.title LIKE :titleLike')
+                ->setParameter('titleLike', $titleLike);
+        }
+
+        if(!empty($params['categoryId'])){
+            if(-1 == $params['categoryId']){
+                $qb->andWhere($qb->expr()->isNull('r.category'));
+            }else{
+                $qb->andWhere('c.id = :categoryId')
+                    ->setParameter('categoryId', $params['categoryId']);
+            }
+        }
+
 
 
         return $qb;
 
+    }
+
+    //Zwraca tablicę z liczbami rankingów (z rozdzieleniem na opublikowane / nieopublikowane)
+    public function getStatistics(){
+        $qb = $this->createQueryBuilder('r')
+            ->select('COUNT(r)');
+
+        $all = (int)$qb->getQuery()->getSingleScalarResult();
+
+        $published = (int)$qb->andWhere('r.published_date <= :currDate AND r.published_date IS NOT NULL')
+            ->setParameter('currDate', new \DateTime())
+            ->getQuery()
+            ->getSingleScalarResult();
+
+        return array(
+            'all' => $all,
+            'published' => $published,
+            'unpublished' => ($all - $published)
+        );
     }
 
 
