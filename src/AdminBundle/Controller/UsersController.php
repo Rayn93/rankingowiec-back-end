@@ -3,6 +3,7 @@
 
 namespace AdminBundle\Controller;
 
+use AdminBundle\Form\Type\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -27,8 +28,12 @@ class UsersController extends Controller{
      */
     public function indexAction(Request $request, $page){
 
-        $PageRepository = $this->getDoctrine()->getRepository('RankingowiecBundle:User');
-        $qb = $PageRepository->findAll();
+        $queryParams = array(
+            'usernameLike' => $request->query->get('usernameLike'),
+        );
+
+        $UserRepository = $this->getDoctrine()->getRepository('RankingowiecBundle:User');
+        $qb = $UserRepository->getQueryBuilder($queryParams);
 
         $paginationLimit = $this->container->getParameter('admin.pagination_limit');
         $limitList = array(5, 10, 20, 50);
@@ -41,6 +46,7 @@ class UsersController extends Controller{
         return array(
             'Pagination' => $pagination,
             'currPage' => 'users',
+            'queryParams' => $queryParams,
 
             'currLimit' => $limit,
             'limitList' => $limitList,
@@ -55,25 +61,35 @@ class UsersController extends Controller{
      *      "/formularz/{id}",
      *      name="admin_userForm",
      *      requirements={"id"="\d+"},
-     *      defaults={"id"=NULL}
      * )
      *
      * @Template()
      */
-    public function formAction(Request $Request, $id = NULL){
+    public function formAction(Request $Request, $id ){
 
-        if($id == null){
-            $User = new User();
-            $newUserForm = TRUE;
-        }else{
-            $User = $this->getDoctrine()->getRepository('RankingowiecBundle:User')->find($id);
-        }
+        $User = $this->getDoctrine()->getRepository('RankingowiecBundle:User')->find($id);
 
-        $form = $this->createForm(new PageType(), $User);
+        $form = $this->createForm(new UserType(), $User);
         $form->handleRequest($Request);
 
+        if ($form->isSubmitted() && $form->isValid()) {
 
-        return array();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($User);
+            $em->flush();
+
+            $message = 'Poprawnie zmodyfikowano użytkownika!';
+            $this->get('session')->getFlashBag()->add('success', $message);
+
+            return $this->redirect($this->generateUrl('admin_userForm', array('id' => $User->getId())));
+        }
+
+
+        return array(
+            'Form' => $form->createView(),
+            'User' => $User,
+            'currPage' => 'users',
+        );
     }
 
 

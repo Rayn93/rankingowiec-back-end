@@ -16,9 +16,9 @@
                         Wyszukiwanie i filtracja
                     </div>
                     <div class="panel-body">
-                        <form action="#" method="get" class="form-inline filter-search" role="form">
+                        <form action="{{ path('admin_users') }}" method="get" class="form-inline filter-search" role="form">
                             <div class="form-group">
-                                <input type="text" name="title" class="form-control" placeholder="Wyszukaj po nicku">
+                                <input type="text" name="usernameLike" class="form-control" placeholder="Wyszukaj po nazwie" value="{{ queryParams['usernameLike'] }}">
                             </div>
 
                             <div class="form-group">
@@ -29,10 +29,9 @@
                                 <label for="limit" class="col-lg-5 control-label">Wyników</label>
                                 <div class="col-lg-7">
                                     <select name="limit" class="select-block" id="limit" placeholder="Pokaż">
-                                        <option value="10">10</option>
-                                        <option value="25">25</option>
-                                        <option value="50">50</option>
-                                        <option value="100">100</option>
+                                        {% for limit in limitList %}
+                                            <option {{ limit == currLimit ? 'selected="selected"' : '' }} value="{{ limit }}">{{ limit }}</option>
+                                        {% endfor %}
                                     </select>
                                 </div>
                             </div>
@@ -53,7 +52,7 @@
                                     <th>{{ knp_pagination_sortable(Pagination, 'ID', 'u.id' )}}</th>
                                     <th>{{ knp_pagination_sortable(Pagination, 'Nazwa', 'u.username' ) }}</th>
                                     <th>{{ knp_pagination_sortable(Pagination, 'Email', 'u.email') }}</th>
-                                    <th>{{ knp_pagination_sortable(Pagination, 'Ostatnie logowanie', 'u.roles') }}</th>
+                                    <th>Rola</th>
                                     {#<th>{{ knp_pagination_sortable(Pagination, 'Data publikacji', 'p.published_date') }}</th>#}
                                     <th>Akcje</th>
                                 </tr>
