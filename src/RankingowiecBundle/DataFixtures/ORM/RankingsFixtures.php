@@ -21,17 +21,6 @@ class RankingsFixtures extends AbstractFixture implements OrderedFixtureInterfac
                 'slug' => 'Kto ma największy wpływ na rządy w 2017 roku polską?',
                 'description' => 'W tym rankingu głosujemy na najlepszy polski film wszechczasów. Sprawa nie jest łatwa ponieważ polskie kindo od dziesiątek lat wypuszcza świetne produkcje. Jesteśmy niezmiernie ciekawi który film wygra w tym rankingu.',
                 'items' => array('Jestem mordercą [2016]', 'Sami Swoi [1986]', 'Bogowie [2015]', 'Pianista [2000]', 'Wołyń [2016]', 'Amator [1999]', 'Twardowski 2.0 [2014]', 'Pora umierać [1982]', 'Sami swoi [1972]'),
-                'items_result' => array(
-                    'Jestem mordercą [2016]' => array('plus' => 2021, 'minus' => 341),
-                    'Sami Swoi [1986]' => array('plus' => 102, 'minus' => 2301),
-                    'Bogowie [2015]' => array('plus' => 302, 'minus' => 4201),
-                    'Pianista [2000]' => array('plus' => 202, 'minus' => 1101),
-                    'Wołyń [2016]' => array('plus' => 8021, 'minus' => 2341),
-                    'Amator [1999]' => array('plus' => 102, 'minus' => 2301),
-                    'Twardowski 2.0 [2014]' => array('plus' => 302, 'minus' => 4201),
-                    'Pora umierać [1982]' => array('plus' => 202, 'minus' => 1101),
-                    'Sami swoi [1972]' => array('plus' => 102, 'minus' => 2301),
-                ),
                 'thumbnail' => 'http://rankingowiec.dev/img/slajdy/slide1.jpg',
                 'categories' => array('people', 'films', 'popular'),
                 'tags' => array('najlepszy', 'polskie'),
@@ -48,17 +37,6 @@ class RankingsFixtures extends AbstractFixture implements OrderedFixtureInterfac
                 'slug' => 'Teorie spiskowe w które wierzę.',
                 'description' => 'W tym rankingu głosujemy na najlepszy polski film wszechczasów. Sprawa nie jest łatwa ponieważ polskie kindo od dziesiątek lat wypuszcza świetne produkcje. Jesteśmy niezmiernie ciekawi który film wygra w tym rankingu.',
                 'items' => array('Jestem mordercą [2016]', 'Sami Swoi [1986]', 'Bogowie [2015]', 'Pianista [2000]', 'Wołyń [2016]', 'Amator [1999]', 'Twardowski 2.0 [2014]', 'Pora umierać [1982]', 'Sami swoi [1972]'),
-                'items_result' => array(
-                    'Jestem mordercą [2016]' => array('plus' => 2021, 'minus' => 341),
-                    'Sami Swoi [1986]' => array('plus' => 102, 'minus' => 2301),
-                    'Bogowie [2015]' => array('plus' => 302, 'minus' => 4201),
-                    'Pianista [2000]' => array('plus' => 202, 'minus' => 1101),
-                    'Wołyń [2016]' => array('plus' => 8021, 'minus' => 2341),
-                    'Amator [1999]' => array('plus' => 102, 'minus' => 2301),
-                    'Twardowski 2.0 [2014]' => array('plus' => 302, 'minus' => 4201),
-                    'Pora umierać [1982]' => array('plus' => 202, 'minus' => 1101),
-                    'Sami swoi [1972]' => array('plus' => 102, 'minus' => 2301),
-                ),
                 'thumbnail' => 'http://rankingowiec.dev/img/slajdy/slide4.jpg',
                 'categories' => array('people', 'films', 'popular'),
                 'tags' => array('najlepszy', 'polskie'),
@@ -75,17 +53,6 @@ class RankingsFixtures extends AbstractFixture implements OrderedFixtureInterfac
                 'slug' => 'Najlepszy polski film wszechczasów',
                 'description' => 'W tym rankingu głosujemy na najlepszy polski film wszechczasów. Sprawa nie jest łatwa ponieważ polskie kindo od dziesiątek lat wypuszcza świetne produkcje. Jesteśmy niezmiernie ciekawi który film wygra w tym rankingu.',
                 'items' => array('Jestem mordercą [2016]', 'Sami Swoi [1986]', 'Bogowie [2015]', 'Pianista [2000]', 'Wołyń [2016]', 'Amator [1999]', 'Twardowski 2.0 [2014]', 'Pora umierać [1982]', 'Sami swoi [1972]'),
-                'items_result' => array(
-                    'Jestem mordercą [2016]' => array('plus' => 2021, 'minus' => 341),
-                    'Sami Swoi [1986]' => array('plus' => 102, 'minus' => 2301),
-                    'Bogowie [2015]' => array('plus' => 302, 'minus' => 4201),
-                    'Pianista [2000]' => array('plus' => 202, 'minus' => 1101),
-                    'Wołyń [2016]' => array('plus' => 8021, 'minus' => 2341),
-                    'Amator [1999]' => array('plus' => 102, 'minus' => 2301),
-                    'Twardowski 2.0 [2014]' => array('plus' => 302, 'minus' => 4201),
-                    'Pora umierać [1982]' => array('plus' => 202, 'minus' => 1101),
-                    'Sami swoi [1972]' => array('plus' => 102, 'minus' => 2301),
-                ),
                 'thumbnail' => 'http://rankingowiec.dev/img/slajdy/slide3.jpg',
                 'categories' => array('people', 'films', 'popular'),
                 'tags' => array('najlepszy', 'polskie'),
@@ -102,17 +69,6 @@ class RankingsFixtures extends AbstractFixture implements OrderedFixtureInterfac
                 'slug' => 'Kto najbardziej przyczynił się do rozwoju polski',
                 'description' => 'W tym rankingu głosujemy na najlepszy polski film wszechczasów. Sprawa nie jest łatwa ponieważ polskie kindo od dziesiątek lat wypuszcza świetne produkcje. Jesteśmy niezmiernie ciekawi który film wygra w tym rankingu.',
                 'items' => array('Jestem mordercą [2016]', 'Sami Swoi [1986]', 'Bogowie [2015]', 'Pianista [2000]', 'Wołyń [2016]', 'Amator [1999]', 'Twardowski 2.0 [2014]', 'Pora umierać [1982]', 'Sami swoi [1972]'),
-                'items_result' => array(
-                    'Jestem mordercą [2016]' => array('plus' => 2021, 'minus' => 341),
-                    'Sami Swoi [1986]' => array('plus' => 102, 'minus' => 2301),
-                    'Bogowie [2015]' => array('plus' => 302, 'minus' => 4201),
-                    'Pianista [2000]' => array('plus' => 202, 'minus' => 1101),
-                    'Wołyń [2016]' => array('plus' => 8021, 'minus' => 2341),
-                    'Amator [1999]' => array('plus' => 102, 'minus' => 2301),
-                    'Twardowski 2.0 [2014]' => array('plus' => 302, 'minus' => 4201),
-                    'Pora umierać [1982]' => array('plus' => 202, 'minus' => 1101),
-                    'Sami swoi [1972]' => array('plus' => 102, 'minus' => 2301),
-                ),
                 'thumbnail' => 'http://rankingowiec.dev/img/slajdy/slide2.jpg',
                 'categories' => array('people', 'films', 'popular' ),
                 'tags' => array('najlepszy', 'polskie'),
@@ -129,17 +85,6 @@ class RankingsFixtures extends AbstractFixture implements OrderedFixtureInterfac
                 'slug' => 'Najpiękniejsza polska aktorka',
                 'description' => 'W tym rankingu głosujemy na najlepszy polski film wszechczasów. Sprawa nie jest łatwa ponieważ polskie kindo od dziesiątek lat wypuszcza świetne produkcje. Jesteśmy niezmiernie ciekawi który film wygra w tym rankingu.',
                 'items' => array('Jestem mordercą [2016]', 'Sami Swoi [1986]', 'Bogowie [2015]', 'Pianista [2000]', 'Wołyń [2016]', 'Amator [1999]', 'Twardowski 2.0 [2014]', 'Pora umierać [1982]', 'Sami swoi [1972]'),
-                'items_result' => array(
-                    'Jestem mordercą [2016]' => array('plus' => 2021, 'minus' => 341),
-                    'Sami Swoi [1986]' => array('plus' => 102, 'minus' => 2301),
-                    'Bogowie [2015]' => array('plus' => 302, 'minus' => 4201),
-                    'Pianista [2000]' => array('plus' => 202, 'minus' => 1101),
-                    'Wołyń [2016]' => array('plus' => 8021, 'minus' => 2341),
-                    'Amator [1999]' => array('plus' => 102, 'minus' => 2301),
-                    'Twardowski 2.0 [2014]' => array('plus' => 302, 'minus' => 4201),
-                    'Pora umierać [1982]' => array('plus' => 202, 'minus' => 1101),
-                    'Sami swoi [1972]' => array('plus' => 102, 'minus' => 2301),
-                ),
                 'thumbnail' => 'http://rankingowiec.dev/img/slajdy/slide1.jpg',
                 'categories' => array('people', 'sport', 'popular'),
                 'tags' => array('najlepszy', 'polskie'),
@@ -156,17 +101,6 @@ class RankingsFixtures extends AbstractFixture implements OrderedFixtureInterfac
                 'slug' => 'Najlepszy polski bramkarz wszchczasów',
                 'description' => 'W tym rankingu głosujemy na najlepszy polski film wszechczasów. Sprawa nie jest łatwa ponieważ polskie kindo od dziesiątek lat wypuszcza świetne produkcje. Jesteśmy niezmiernie ciekawi który film wygra w tym rankingu.',
                 'items' => array('Jestem mordercą [2016]', 'Sami Swoi [1986]', 'Bogowie [2015]', 'Pianista [2000]', 'Wołyń [2016]', 'Amator [1999]', 'Twardowski 2.0 [2014]', 'Pora umierać [1982]', 'Sami swoi [1972]'),
-                'items_result' => array(
-                    'Jestem mordercą [2016]' => array('plus' => 2021, 'minus' => 341),
-                    'Sami Swoi [1986]' => array('plus' => 102, 'minus' => 2301),
-                    'Bogowie [2015]' => array('plus' => 302, 'minus' => 4201),
-                    'Pianista [2000]' => array('plus' => 202, 'minus' => 1101),
-                    'Wołyń [2016]' => array('plus' => 8021, 'minus' => 2341),
-                    'Amator [1999]' => array('plus' => 102, 'minus' => 2301),
-                    'Twardowski 2.0 [2014]' => array('plus' => 302, 'minus' => 4201),
-                    'Pora umierać [1982]' => array('plus' => 202, 'minus' => 1101),
-                    'Sami swoi [1972]' => array('plus' => 102, 'minus' => 2301),
-                ),
                 'thumbnail' => 'http://rankingowiec.dev/img/slajdy/slide3.jpg',
                 'categories' => array('people', 'sport'),
                 'tags' => array('najlepszy', 'polskie'),
@@ -183,17 +117,6 @@ class RankingsFixtures extends AbstractFixture implements OrderedFixtureInterfac
                 'slug' => 'Moje ulubione piwo',
                 'description' => 'W tym rankingu głosujemy na najlepszy polski film wszechczasów. Sprawa nie jest łatwa ponieważ polskie kindo od dziesiątek lat wypuszcza świetne produkcje. Jesteśmy niezmiernie ciekawi który film wygra w tym rankingu.',
                 'items' => array('Jestem mordercą [2016]', 'Sami Swoi [1986]', 'Bogowie [2015]', 'Pianista [2000]', 'Wołyń [2016]', 'Amator [1999]', 'Twardowski 2.0 [2014]', 'Pora umierać [1982]', 'Sami swoi [1972]'),
-                'items_result' => array(
-                    'Jestem mordercą [2016]' => array('plus' => 2021, 'minus' => 341),
-                    'Sami Swoi [1986]' => array('plus' => 102, 'minus' => 2301),
-                    'Bogowie [2015]' => array('plus' => 302, 'minus' => 4201),
-                    'Pianista [2000]' => array('plus' => 202, 'minus' => 1101),
-                    'Wołyń [2016]' => array('plus' => 8021, 'minus' => 2341),
-                    'Amator [1999]' => array('plus' => 102, 'minus' => 2301),
-                    'Twardowski 2.0 [2014]' => array('plus' => 302, 'minus' => 4201),
-                    'Pora umierać [1982]' => array('plus' => 202, 'minus' => 1101),
-                    'Sami swoi [1972]' => array('plus' => 102, 'minus' => 2301),
-                ),
                 'thumbnail' => 'http://rankingowiec.dev/img/slajdy/slide3.jpg',
                 'categories' => array('popular', 'sport'),
                 'tags' => array('najlepszy', 'polskie'),
@@ -210,17 +133,6 @@ class RankingsFixtures extends AbstractFixture implements OrderedFixtureInterfac
                 'slug' => 'Najlepsze zwierze do domu',
                 'description' => 'W tym rankingu głosujemy na najlepszy polski film wszechczasów. Sprawa nie jest łatwa ponieważ polskie kindo od dziesiątek lat wypuszcza świetne produkcje. Jesteśmy niezmiernie ciekawi który film wygra w tym rankingu.',
                 'items' => array('Jestem mordercą [2016]', 'Sami Swoi [1986]', 'Bogowie [2015]', 'Pianista [2000]', 'Wołyń [2016]', 'Amator [1999]', 'Twardowski 2.0 [2014]', 'Pora umierać [1982]', 'Sami swoi [1972]'),
-                'items_result' => array(
-                    'Jestem mordercą [2016]' => array('plus' => 2021, 'minus' => 341),
-                    'Sami Swoi [1986]' => array('plus' => 102, 'minus' => 2301),
-                    'Bogowie [2015]' => array('plus' => 302, 'minus' => 4201),
-                    'Pianista [2000]' => array('plus' => 202, 'minus' => 1101),
-                    'Wołyń [2016]' => array('plus' => 8021, 'minus' => 2341),
-                    'Amator [1999]' => array('plus' => 102, 'minus' => 2301),
-                    'Twardowski 2.0 [2014]' => array('plus' => 302, 'minus' => 4201),
-                    'Pora umierać [1982]' => array('plus' => 202, 'minus' => 1101),
-                    'Sami swoi [1972]' => array('plus' => 102, 'minus' => 2301),
-                ),
                 'thumbnail' => 'http://rankingowiec.dev/img/slajdy/slide4.jpg',
                 'categories' => array('popular', 'people'),
                 'tags' => array('najlepszy', 'polskie'),
@@ -237,17 +149,6 @@ class RankingsFixtures extends AbstractFixture implements OrderedFixtureInterfac
                 'slug' => 'Mój ulubiony yutuber',
                 'description' => 'W tym rankingu głosujemy na najlepszy polski film wszechczasów. Sprawa nie jest łatwa ponieważ polskie kindo od dziesiątek lat wypuszcza świetne produkcje. Jesteśmy niezmiernie ciekawi który film wygra w tym rankingu.',
                 'items' => array('Jestem mordercą [2016]', 'Sami Swoi [1986]', 'Bogowie [2015]', 'Pianista [2000]', 'Wołyń [2016]', 'Amator [1999]', 'Twardowski 2.0 [2014]', 'Pora umierać [1982]', 'Sami swoi [1972]'),
-                'items_result' => array(
-                    'Jestem mordercą [2016]' => array('plus' => 2021, 'minus' => 341),
-                    'Sami Swoi [1986]' => array('plus' => 102, 'minus' => 2301),
-                    'Bogowie [2015]' => array('plus' => 302, 'minus' => 4201),
-                    'Pianista [2000]' => array('plus' => 202, 'minus' => 1101),
-                    'Wołyń [2016]' => array('plus' => 8021, 'minus' => 2341),
-                    'Amator [1999]' => array('plus' => 102, 'minus' => 2301),
-                    'Twardowski 2.0 [2014]' => array('plus' => 302, 'minus' => 4201),
-                    'Pora umierać [1982]' => array('plus' => 202, 'minus' => 1101),
-                    'Sami swoi [1972]' => array('plus' => 102, 'minus' => 2301),
-                ),
                 'thumbnail' => 'http://rankingowiec.dev/img/slajdy/slide2.jpg',
                 'categories' => array('sport', 'people'),
                 'tags' => array('najlepszy', 'polskie'),
@@ -264,17 +165,6 @@ class RankingsFixtures extends AbstractFixture implements OrderedFixtureInterfac
                 'slug' => 'Najlepszy przedmiot w szkole',
                 'description' => 'W tym rankingu głosujemy na najlepszy polski film wszechczasów. Sprawa nie jest łatwa ponieważ polskie kindo od dziesiątek lat wypuszcza świetne produkcje. Jesteśmy niezmiernie ciekawi który film wygra w tym rankingu.',
                 'items' => array('Jestem mordercą [2016]', 'Sami Swoi [1986]', 'Bogowie [2015]', 'Pianista [2000]', 'Wołyń [2016]', 'Amator [1999]', 'Twardowski 2.0 [2014]', 'Pora umierać [1982]', 'Sami swoi [1972]'),
-                'items_result' => array(
-                    'Jestem mordercą [2016]' => array('plus' => 2021, 'minus' => 341),
-                    'Sami Swoi [1986]' => array('plus' => 102, 'minus' => 2301),
-                    'Bogowie [2015]' => array('plus' => 302, 'minus' => 4201),
-                    'Pianista [2000]' => array('plus' => 202, 'minus' => 1101),
-                    'Wołyń [2016]' => array('plus' => 8021, 'minus' => 2341),
-                    'Amator [1999]' => array('plus' => 102, 'minus' => 2301),
-                    'Twardowski 2.0 [2014]' => array('plus' => 302, 'minus' => 4201),
-                    'Pora umierać [1982]' => array('plus' => 202, 'minus' => 1101),
-                    'Sami swoi [1972]' => array('plus' => 102, 'minus' => 2301),
-                ),
                 'thumbnail' => 'http://rankingowiec.dev/img/slajdy/slide4.jpg',
                 'categories' => array('sport', 'people', 'popular'),
                 'tags' => array('najlepszy', 'polskie'),
@@ -291,17 +181,6 @@ class RankingsFixtures extends AbstractFixture implements OrderedFixtureInterfac
                 'slug' => 'Najlepszy trener reprezentacji polski',
                 'description' => 'W tym rankingu głosujemy na najlepszy polski film wszechczasów. Sprawa nie jest łatwa ponieważ polskie kindo od dziesiątek lat wypuszcza świetne produkcje. Jesteśmy niezmiernie ciekawi który film wygra w tym rankingu.',
                 'items' => array('Jestem mordercą [2016]', 'Sami Swoi [1986]', 'Bogowie [2015]', 'Pianista [2000]', 'Wołyń [2016]', 'Amator [1999]', 'Twardowski 2.0 [2014]', 'Pora umierać [1982]', 'Sami swoi [1972]'),
-                'items_result' => array(
-                    'Jestem mordercą [2016]' => array('plus' => 2021, 'minus' => 341),
-                    'Sami Swoi [1986]' => array('plus' => 102, 'minus' => 2301),
-                    'Bogowie [2015]' => array('plus' => 302, 'minus' => 4201),
-                    'Pianista [2000]' => array('plus' => 202, 'minus' => 1101),
-                    'Wołyń [2016]' => array('plus' => 8021, 'minus' => 2341),
-                    'Amator [1999]' => array('plus' => 102, 'minus' => 2301),
-                    'Twardowski 2.0 [2014]' => array('plus' => 302, 'minus' => 4201),
-                    'Pora umierać [1982]' => array('plus' => 202, 'minus' => 1101),
-                    'Sami swoi [1972]' => array('plus' => 102, 'minus' => 2301),
-                ),
                 'thumbnail' => 'http://rankingowiec.dev/img/slajdy/slide2.jpg',
                 'categories' => array('sport', 'people', 'popular'),
                 'tags' => array('najlepszy', 'polskie'),
@@ -318,16 +197,16 @@ class RankingsFixtures extends AbstractFixture implements OrderedFixtureInterfac
                 'slug' => 'Sport, który uwielbiam oglądać',
                 'description' => 'W tym rankingu głosujemy na najlepszy polski film wszechczasów. Sprawa nie jest łatwa ponieważ polskie kindo od dziesiątek lat wypuszcza świetne produkcje. Jesteśmy niezmiernie ciekawi który film wygra w tym rankingu.',
                 'items' => array('Jestem mordercą [2016]', 'Sami Swoi [1986]', 'Bogowie [2015]', 'Pianista [2000]', 'Wołyń [2016]', 'Amator [1999]', 'Twardowski 2.0 [2014]', 'Pora umierać [1982]'),
-                'items_result' => array(
-                    'Jestem mordercą [2016]' => array('plus' => 2021, 'minus' => 341),
-                    'Sami Swoi [1986]' => array('plus' => 102, 'minus' => 2301),
-                    'Bogowie [2015]' => array('plus' => 302, 'minus' => 4201),
-                    'Pianista [2000]' => array('plus' => 202, 'minus' => 1101),
-                    'Wołyń [2016]' => array('plus' => 8021, 'minus' => 2341),
-                    'Amator [1999]' => array('plus' => 102, 'minus' => 2301),
-                    'Twardowski 2.0 [2014]' => array('plus' => 302, 'minus' => 4201),
-                    'Pora umierać [1982]' => array('plus' => 202, 'minus' => 1101)
-                ),
+//                'items_result' => array(
+//                    'Jestem mordercą [2016]' => array('plus' => 2021, 'minus' => 341),
+//                    'Sami Swoi [1986]' => array('plus' => 102, 'minus' => 2301),
+//                    'Bogowie [2015]' => array('plus' => 302, 'minus' => 4201),
+//                    'Pianista [2000]' => array('plus' => 202, 'minus' => 1101),
+//                    'Wołyń [2016]' => array('plus' => 8021, 'minus' => 2341),
+//                    'Amator [1999]' => array('plus' => 102, 'minus' => 2301),
+//                    'Twardowski 2.0 [2014]' => array('plus' => 302, 'minus' => 4201),
+//                    'Pora umierać [1982]' => array('plus' => 202, 'minus' => 1101)
+//                ),
                 'thumbnail' => 'http://rankingowiec.dev/img/slajdy/slide0.jpg',
                 'categories' => array('sport', 'people', 'popular'),
                 'tags' => array('najlepszy', 'polskie'),
@@ -348,8 +227,8 @@ class RankingsFixtures extends AbstractFixture implements OrderedFixtureInterfac
 
             $Ranking->setTitle($details['title'])
                 ->setDescription($details['description'])
-                ->setItems($details['items'])
-                ->setItemsResult($details['items_result'])
+//                ->setItems($details['items'])
+//                ->setItemsResult($details['items_result'])
                 ->setThumbnail($details['thumbnail'])
                 ->setAuthor($details['author'])
                 ->setCreateDate(new \DateTime($details['create_date']))
@@ -368,6 +247,10 @@ class RankingsFixtures extends AbstractFixture implements OrderedFixtureInterfac
             foreach( $details['tags'] as $tag_name){
                 $Ranking->addTag($this->getReference('tag_'.$tag_name));
             }
+
+//            foreach( $details['items'] as $item_title){
+//                $Ranking->addItem($this->getReference('item_'.$item_title));
+//            }
 
             $manager->persist($Ranking);
         }

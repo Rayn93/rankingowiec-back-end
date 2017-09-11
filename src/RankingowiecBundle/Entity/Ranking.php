@@ -3,14 +3,28 @@
 namespace RankingowiecBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 
 /**
  * @ORM\Entity(repositoryClass="RankingowiecBundle\Repository\RankingRepository")
  * @ORM\Table(name="rankings")
  * @ORM\HasLifecycleCallbacks()
+ *
+ * @UniqueEntity(fields={"title"})
+ * @UniqueEntity(fields={"slug"})
+ *
+ * @Vich\Uploadable
  */
 class Ranking{
+
+
+    const DEFAULT_THUMBNAIL = 'default_ranking_thumbnail.jpg';
+    const UPLOAD_DIR = 'uploads/ranking_thumbnails/';
+
 
     /**
      * @ORM\Column(type="integer")
@@ -22,6 +36,11 @@ class Ranking{
 
     /**
      * @ORM\Column(type="string", length=120, unique=true)
+     *
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *      max = 120
+     * )
      */
     private $title;
 
@@ -34,26 +53,45 @@ class Ranking{
 
     /**
      * @ORM\Column(type="text")
+     *
+     * @Assert\NotBlank
      */
     private $description;
 
 
-    /**
-     * @ORM\Column(type="array")
-     */
+//    /**
+//     * @ORM\Column(type="array")
+//     */
+    /** @ORM\OneToMany(targetEntity="RankingItem", mappedBy="ranking") */
     private $items;
 
 
-    /**
-     * @ORM\Column(type="array")
-     */
-    private $items_result;
+//    /**
+//     * @ORM\Column(type="array")
+//     */
+//    private $items_result;
 
 
     /**
      * @ORM\Column(type="string", length=80)
      */
     private $thumbnail;
+
+
+    /**
+     * @Vich\UploadableField(mapping="thumbnail_image", fileNameProperty="thumbnail")
+     *
+     *
+     * @var File
+     */
+    private $thumbnailFile;
+
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     *
+     */
+    private $updatedAt;
 
 
     /**
@@ -96,6 +134,8 @@ class Ranking{
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     *
+     * @Assert\DateTime
      */
     private $published_date = null;
 
@@ -211,53 +251,6 @@ class Ranking{
         return $this->description;
     }
 
-    /**
-     * Set items
-     *
-     * @param array $items
-     *
-     * @return Ranking
-     */
-    public function setItems($items)
-    {
-        $this->items = $items;
-
-        return $this;
-    }
-
-    /**
-     * Get items
-     *
-     * @return array
-     */
-    public function getItems()
-    {
-        return $this->items;
-    }
-
-    /**
-     * Set itemsResult
-     *
-     * @param array $itemsResult
-     *
-     * @return Ranking
-     */
-    public function setItemsResult($itemsResult)
-    {
-        $this->items_result = $itemsResult;
-
-        return $this;
-    }
-
-    /**
-     * Get itemsResult
-     *
-     * @return array
-     */
-    public function getItemsResult()
-    {
-        return $this->items_result;
-    }
 
     /**
      * Set thumbnail
@@ -280,7 +273,35 @@ class Ranking{
      */
     public function getThumbnail()
     {
+//        return $this->thumbnail;
+
+        if($this->thumbnail == null ){
+            return Ranking::DEFAULT_THUMBNAIL;
+        }
+
         return $this->thumbnail;
+
+    }
+
+    public function setThumbnailFile(File $image = null)
+    {
+        $this->thumbnailFile = $image;
+
+        if ($image) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return File|null
+     */
+    public function getThumbnailFile()
+    {
+        return $this->thumbnailFile;
     }
 
     /**
@@ -496,6 +517,30 @@ class Ranking{
     }
 
     /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return Ranking
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
      * @ORM\PrePersist
      * @ORM\PreUpdate
      */
@@ -505,6 +550,50 @@ class Ranking{
             $this->setSlug($this->getTitle());
         }
 
+        if( $this->thumbnail === NULL){
+            $this->thumbnail = 'default_thumbnail.jpg';
+        }
+
+        if($this->create_date === NULL){
+            $this->create_date = new \DateTime();
+        }
+
     }
 
+
+
+
+    /**
+     * Add item
+     *
+     * @param \RankingowiecBundle\Entity\RankingItem $item
+     *
+     * @return Ranking
+     */
+    public function addItem(\RankingowiecBundle\Entity\RankingItem $item)
+    {
+        $this->items[] = $item;
+
+        return $this;
+    }
+
+    /**
+     * Remove item
+     *
+     * @param \RankingowiecBundle\Entity\RankingItem $item
+     */
+    public function removeItem(\RankingowiecBundle\Entity\RankingItem $item)
+    {
+        $this->items->removeElement($item);
+    }
+
+    /**
+     * Get items
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getItems()
+    {
+        return $this->items;
+    }
 }

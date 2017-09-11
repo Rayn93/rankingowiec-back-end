@@ -3,6 +3,7 @@
 
 namespace AdminBundle\Controller;
 
+use AdminBundle\Form\Type\RankingType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -82,8 +83,36 @@ class RankingsController extends Controller{
      *
      * @Template()
      */
-    public function formAction(){
-        return array();
+    public function formAction(Request $Request, $id = NULL){
+
+        if($id == null){
+            $Ranking = new Ranking();
+            $Ranking->setAuthor($this->getUser());
+            $newRankingForm = TRUE;
+        }else{
+            $Ranking = $this->getDoctrine()->getRepository('RankingowiecBundle:Ranking')->find($id);
+        }
+
+        $form = $this->createForm(new RankingType(), $Ranking);
+        $form->handleRequest($Request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($Ranking);
+            $em->flush();
+
+            $message = (isset($newRankingForm)) ? 'Poprawnie dodano nowy ranking!': 'Ranking został poprawiony!';
+            $this->get('session')->getFlashBag()->add('success', $message);
+
+            return $this->redirect($this->generateUrl('admin_rankingForm', array('id' => $Ranking->getId())));
+        }
+
+        return array(
+            'Form' => $form->createView(),
+            'Ranking' => $Ranking,
+            'currPage' => 'rankings',
+        );
     }
 
 

@@ -134,6 +134,13 @@ class RankObject{
     private $category;
 
 
+    /** @ORM\OneToMany(
+     *     targetEntity="RankingItem",
+     *     mappedBy="item")
+     */
+    protected $rankings;
+
+
     /**
      * Get id
      *
@@ -440,5 +447,72 @@ class RankObject{
             $this->create_date = new \DateTime();
         }
 
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->rankings = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return RankObject
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+
+
+    /**
+     * Add ranking
+     *
+     * @param \RankingowiecBundle\Entity\RankingItem $ranking
+     *
+     * @return RankObject
+     */
+    public function addRanking(\RankingowiecBundle\Entity\RankingItem $ranking)
+    {
+        $this->rankings[] = $ranking;
+
+        return $this;
+    }
+
+    /**
+     * Remove ranking
+     *
+     * @param \RankingowiecBundle\Entity\RankingItem $ranking
+     */
+    public function removeRanking(\RankingowiecBundle\Entity\RankingItem $ranking)
+    {
+        $this->rankings->removeElement($ranking);
+    }
+
+    /**
+     * Get rankings
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRankings()
+    {
+        return $this->rankings;
     }
 }
