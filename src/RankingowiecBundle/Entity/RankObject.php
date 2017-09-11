@@ -141,6 +141,16 @@ class RankObject{
     protected $rankings;
 
 
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->rankings = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+
     /**
      * Get id
      *
@@ -448,13 +458,7 @@ class RankObject{
         }
 
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->rankings = new \Doctrine\Common\Collections\ArrayCollection();
-    }
+
 
     /**
      * Set updatedAt
@@ -515,4 +519,10 @@ class RankObject{
     {
         return $this->rankings;
     }
+
+//    public function __toString()
+//    {
+//        return $this->title;
+//    }
+
 }

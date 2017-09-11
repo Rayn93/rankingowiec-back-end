@@ -14,6 +14,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 use PUGX\AutocompleterBundle\Form\Type\AutocompleteType;
 
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+
 class RankingType extends AbstractType
 {
 
@@ -50,16 +52,28 @@ class RankingType extends AbstractType
 
 //            ->add('items', AutocompleteType::class, array(
 //                'label' => 'Obiekty',
-//                'attr' => array(
-//                    'placeholder' => 'Link np. do Wikipedii',
-//                ),
-//                'class' => 'RankingowiecBundle\Entity\RankObject'
+//                'class' => 'RankingowiecBundle\Entity\RankingItem',
 //            ))
+
+//            ->add('items', EntityType::class, array(
+//                'label' => 'Kategoria',
+//                'class' => 'RankingowiecBundle\Entity\RankObject',
+//                'choice_label' => 'title',
+//                'multiple' => false,
+//                'empty_data' => 'Wybierz kategorię',
+//                'expanded' => true
+//            ))
+
+            ->add('items', CollectionType::class, [
+                'entry_type' => RankingItemType::class
+            ])
 
             ->add('thumbnailFile', Type\FileType::class, array(
                 'label' => 'Miniaturka',
                 'data_class' => null,
             ))
+
+
 
             ->add('publishedDate', Type\DateTimeType::class, array(
                 'label' => 'Data publikacji',

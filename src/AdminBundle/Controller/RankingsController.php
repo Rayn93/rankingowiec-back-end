@@ -93,6 +93,9 @@ class RankingsController extends Controller{
             $Ranking = $this->getDoctrine()->getRepository('RankingowiecBundle:Ranking')->find($id);
         }
 
+//        $items = $Ranking->getItems()->toArray();
+//        var_dump($items);
+
         $form = $this->createForm(new RankingType(), $Ranking);
         $form->handleRequest($Request);
 

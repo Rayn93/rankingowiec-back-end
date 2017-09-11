@@ -167,6 +167,7 @@ class Ranking{
     {
         $this->categories = new \Doctrine\Common\Collections\ArrayCollection();
         $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->items = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
