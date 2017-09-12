@@ -23,7 +23,34 @@
                         {{ form_row(Form.title) }}
                         {{ form_row(Form.slug) }}
                         {{ form_row(Form.description) }}
-                        {{ form_row(Form.items, {'label_length': 3, 'wrapper_length': 9, 'attr': {'class': 'select-block'}}) }}
+                        {#{{ form_row(Form.items, {'label_length': 3, 'wrapper_length': 9, 'attr': {'class': 'select-block'}}) }}#}
+
+                        <h3>Obiekty w rankingu</h3>
+                        <div class="row js-item-wrapper" data-prototype="{{ form_widget(Form.items.vars.prototype)|e('html_attr') }}" data-index="{{ Form.items|length }}">
+                            <div class="row nomargin">
+                                <div class="col-md-12">
+                                    <a href="#" class="js-add-item btn-sm btn-primary pull-right">
+                                        <span class="add-item-plus">&#10010;</span>
+                                        Dodaj nowy
+                                    </a>
+                                </div>
+                            </div>
+
+                            {% for rankItem in Form.items %}
+
+                                <div class="col-md-5  item-container">
+                                    <a href="#" class="js-remove-item pull-right">
+                                        <span class="item-delete">&#10006;</span>
+                                    </a>
+                                    {{ form_errors(rankItem) }}
+                                    {{ form_row(rankItem.item) }}
+                                    {{ form_row(rankItem.plus) }}
+                                    {{ form_row(rankItem.minus) }}
+                                </div>
+                            {% endfor %}
+
+                        </div>
+
                     </div>
                 </div>
             </div> <!-- .col-md-8 -->
@@ -114,147 +141,5 @@
         {{ form_end(Form) }}
     </div> <!-- .container -->
     <!-- /content container -->
-
-
-
-    {#<!-- content container -->#}
-    {#<div class="container">#}
-        {#<form action="#" method="post" class="form-horizontal" role="form">#}
-            {#<div class="row">#}
-                {#<div class="col-md-8">#}
-                    {#<div class="panel panel-default">#}
-                        {#<div class="panel-heading">#}
-                            {#Dodawanie nowego rankingu / Edycja rankingu "Lorem ipsum dolor sit amet."#}
-                        {#</div>#}
-                        {#<div class="panel-body">#}
-                            {#<div class="form-group has-error">#}
-                                {#<label for="title" class="col-lg-1 control-label">Tutuł</label>#}
-                                {#<div class="col-lg-11">#}
-                                    {#<input type="text" class="form-control" id="title" placeholder="Nazwa">#}
-                                    {#<p class="help-block">Uzupełnij to pole.</p>#}
-                                {#</div>#}
-                            {#</div>#}
-                            {#<div class="form-group">#}
-                                {#<label for="alias" class="col-lg-1 control-label">Alias:</label>#}
-                                {#<div class="col-lg-11">#}
-                                    {#<input type="text" class="form-control" id="alias" placeholder="Alias">#}
-                                {#</div>#}
-                            {#</div>#}
-                            {#<div class="form-group  has-error">#}
-                                {#<label for="content" class="col-lg-1 control-label">Opis:</label>#}
-                                {#<div class="col-lg-11">#}
-                                    {#<textarea class="form-control summernote" name="content" id="content" placeholder="Opis obiektu"></textarea>#}
-                                    {#<p class="help-block">Uzupełnij to pole.</p>#}
-                                {#</div>#}
-                            {#</div>#}
-                            {#<div class="form-group">#}
-                                {#<label for="ranking-list" class="col-lg-1 control-label">Lista</label>#}
-                                {#<div class="col-lg-11">#}
-                                    {#<select id="ranking-list" class="select-block js-objects-list-ajax" placeholder="Lista obiektów w rankingu" multiple>#}
-                                        {#<option>iOS</option>#}
-                                        {#<option>Android</option>#}
-                                        {#<option>Windows8</option>#}
-                                        {#<option>Bada</option>#}
-                                        {#<option>Samsung</option>#}
-                                    {#</select>#}
-                                {#</div>#}
-                            {#</div>#}
-                        {#</div>#}
-                    {#</div>#}
-                {#</div> <!-- .col-md-8 -->#}
-
-                {#<div class="col-md-4">#}
-                    {#<div class="row">#}
-                        {#<div class="col-md-12">#}
-                            {#<div class="panel panel-default">#}
-                                {#<div class="panel-heading">#}
-                                    {#Akcje#}
-                                {#</div>#}
-                                {#<div class="panel-body">#}
-                                    {#<button class="btn btn-success">Zapisz</button>#}
-                                {#</div>#}
-                            {#</div>#}
-                        {#</div> <!-- .col-md-12 -->#}
-
-                        {#<div class="col-md-12">#}
-                            {#<div class="panel panel-default">#}
-                                {#<div class="panel-heading">#}
-                                    {#Obraz#}
-                                {#</div>#}
-                                {#<div class="panel-body">#}
-                                    {#<!-- <p><img src="..." alt="..." class="img-thumbnail"></p> -->#}
-                                    {#<p>Brak obrazka</p>#}
-                                    {#<input type="file" name="thumbnail">#}
-                                {#</div>#}
-                            {#</div>#}
-                        {#</div> <!-- .col-md-12 -->#}
-
-                        {#<div class="col-md-12">#}
-                            {#<div class="panel panel-default">#}
-                                {#<div class="panel-heading">#}
-                                    {#Właściwości#}
-                                {#</div>#}
-                                {#<div class="panel-body">#}
-                                    {#<div class="form-group">#}
-                                        {#<label class="col-lg-5 required">Data publikacji</label>#}
-                                        {#<div class="col-lg-7">#}
-                                            {#<div>#}
-                                                {#<input type="date" id="date2" name="date2" class="form-control">#}
-                                                {#<input type="time" id="time" name="time" class="form-control">#}
-                                            {#</div>#}
-                                        {#</div>#}
-                                    {#</div>#}
-                                    {#<div class="form-group">#}
-                                        {#<label for="home-slider" class="col-lg-5">Home Slider</label>#}
-                                        {#<div class="col-lg-7">#}
-                                            {#<div>#}
-                                                {#<input type="checkbox" id="home-slider" name="home-slider" class="form-control">#}
-                                            {#</div>#}
-                                        {#</div>#}
-                                    {#</div>#}
-                                {#</div>#}
-                            {#</div>#}
-                        {#</div>#}
-
-                        {#<div class="col-md-12">#}
-                            {#<div class="panel panel-default">#}
-                                {#<div class="panel-heading">#}
-                                    {#Taksonomie#}
-                                {#</div>#}
-                                {#<div class="panel-body">#}
-                                    {#<div class="form-group">#}
-                                        {#<label for="category" class="col-lg-3 control-label">Kategoria:</label>#}
-                                        {#<div class="col-lg-9">#}
-                                            {#<select id="category" class="select-block" placeholder="Kategoria">#}
-                                                {#<option>Development</option>#}
-                                                {#<option>Front-end</option>#}
-                                                {#<option>Back-end</option>#}
-                                                {#<option>Mobile</option>#}
-                                                {#<option>Design</option>#}
-                                            {#</select>#}
-                                        {#</div>#}
-                                    {#</div>#}
-                                    {#<div class="form-group">#}
-                                        {#<label for="tags" class="col-lg-3 control-label">Tagi:</label>#}
-                                        {#<div class="col-lg-9">#}
-                                            {#<select id="tags" class="select-block" placeholder="Tagi" multiple>#}
-                                                {#<option>iOS</option>#}
-                                                {#<option>Android</option>#}
-                                                {#<option>Windows8</option>#}
-                                                {#<option>Bada</option>#}
-                                                {#<option>Samsung</option>#}
-                                            {#</select>#}
-                                        {#</div>#}
-                                    {#</div>#}
-                                {#</div>#}
-                            {#</div>#}
-                        {#</div> <!-- .col-md-12 -->#}
-
-                    {#</div>#}
-                {#</div>  <!-- .col-md-4 -->#}
-            {#</div> <!-- .row -->#}
-        {#</form>#}
-    {#</div> <!-- .container -->#}
-    {#<!-- /content container -->#}
 
 {% endblock %}

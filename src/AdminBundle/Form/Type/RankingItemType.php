@@ -11,6 +11,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use PUGX\AutocompleterBundle\Form\Type\AutocompleteType;
 
 
 class RankingItemType extends AbstractType
@@ -33,6 +34,8 @@ class RankingItemType extends AbstractType
 //                    return $repo->createIsScientistQueryBuilder();
 //                }
             ])
+            ->add('plus')
+            ->add('minus')
             ->getForm();
     }
 

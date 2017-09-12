@@ -62,7 +62,13 @@ class Ranking{
 //    /**
 //     * @ORM\Column(type="array")
 //     */
-    /** @ORM\OneToMany(targetEntity="RankingItem", mappedBy="ranking") */
+    /** @ORM\OneToMany(
+     *     targetEntity="RankingItem",
+     *     mappedBy="ranking",
+     *     orphanRemoval=true,
+     *     cascade={"persist"}
+     * )
+     */
     private $items;
 
 
@@ -562,8 +568,6 @@ class Ranking{
     }
 
 
-
-
     /**
      * Add item
      *
@@ -573,9 +577,12 @@ class Ranking{
      */
     public function addItem(\RankingowiecBundle\Entity\RankingItem $item)
     {
+        if ($this->items->contains($item)) {
+            return;
+        }
         $this->items[] = $item;
-
-        return $this;
+        // needed to update the owning side of the relationship!
+        $item->setRanking($this);
     }
 
     /**
@@ -587,6 +594,7 @@ class Ranking{
     {
         $this->items->removeElement($item);
     }
+
 
     /**
      * Get items

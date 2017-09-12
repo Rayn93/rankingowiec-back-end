@@ -510,6 +510,8 @@ class RankObject{
         $this->rankings->removeElement($ranking);
     }
 
+
+
     /**
      * Get rankings
      *

@@ -65,7 +65,10 @@ class RankingType extends AbstractType
 //            ))
 
             ->add('items', CollectionType::class, [
-                'entry_type' => RankingItemType::class
+                'entry_type' => RankingItemType::class,
+                'allow_delete' => true,
+                'allow_add' => true,
+                'by_reference' => false,
             ])
 
             ->add('thumbnailFile', Type\FileType::class, array(
