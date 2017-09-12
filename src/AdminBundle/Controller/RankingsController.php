@@ -87,14 +87,11 @@ class RankingsController extends Controller{
 
         if($id == null){
             $Ranking = new Ranking();
-            $Ranking->setAuthor($this->getUser());
+            $Ranking->setAuthor($this->getUser())->setNumbVisits(1);
             $newRankingForm = TRUE;
         }else{
             $Ranking = $this->getDoctrine()->getRepository('RankingowiecBundle:Ranking')->find($id);
         }
-
-//        $items = $Ranking->getItems()->toArray();
-//        var_dump($items);
 
         $form = $this->createForm(new RankingType(), $Ranking);
         $form->handleRequest($Request);

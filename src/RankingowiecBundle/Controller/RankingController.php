@@ -90,7 +90,7 @@ class RankingController extends Controller{
 
 
         $RankRepo = $this->getDoctrine()->getRepository('RankingowiecBundle:Ranking');
-        $ObjectRepo = $this->getDoctrine()->getRepository('RankingowiecBundle:RankObject');
+        $ItemsRepo = $this->getDoctrine()->getRepository('RankingowiecBundle:RankingItem');
 
         $Ranking = $RankRepo->getPublishedRanking($slug);
 
@@ -99,45 +99,47 @@ class RankingController extends Controller{
         }
         else{
 
-            $RankingItems = $Ranking->getItems();
-            $Objects = $ObjectRepo->getRankingObjects($RankingItems);
-            $results = $Ranking->getItemsResult();
+            $RankingId = $Ranking->getId();
+            $Items = $ItemsRepo->getRankingObjects($RankingId);
+//            $results = $Ranking->getItemsResult();
 
-            //Tworzenie tablicy z listą pozycji w rankingu
-            $my_object_list = array();
-            foreach ($Objects as $object){
+//            \Doctrine\Common\Util\Debug::dump($Items);
 
-                $my_object_list[] = array(
-                    'title' => $object->getTitle(),
-                    'slug' => $object->getSlug(),
-                    'description' => $object->getDescription(),
-                    'thumbnail' => $object->getThumbnail(),
-                    'plus' => $results[$object->getTitle()]['plus'],
-                    'minus' => $results[$object->getTitle()]['minus'],
-                    'result' => $results[$object->getTitle()]['plus'] - $results[$object->getTitle()]['minus']
-                );
-            }
-
-            $total_votes = 0;
-
-            foreach ($my_object_list as $item){
-                $total_votes += $item['plus'];
-                $total_votes += $item['minus'];
-            }
-
-            //Sortowanie listy ze względu na ilośc zdobytych punktów
-            $final_result = array();
-            foreach ($my_object_list as $key => $row){
-
-                $final_result[$key] = $row['result'];
-            }
-            array_multisort($final_result, SORT_DESC, $my_object_list);
+//            //Tworzenie tablicy z listą pozycji w rankingu
+//            $my_object_list = array();
+//            foreach ($Objects as $object){
+//
+//                $my_object_list[] = array(
+//                    'title' => $object->getTitle(),
+//                    'slug' => $object->getSlug(),
+//                    'description' => $object->getDescription(),
+//                    'thumbnail' => $object->getThumbnail(),
+//                    'plus' => $results[$object->getTitle()]['plus'],
+//                    'minus' => $results[$object->getTitle()]['minus'],
+//                    'result' => $results[$object->getTitle()]['plus'] - $results[$object->getTitle()]['minus']
+//                );
+//            }
+//
+            $total_votes = 210;
+//
+//            foreach ($my_object_list as $item){
+//                $total_votes += $item['plus'];
+//                $total_votes += $item['minus'];
+//            }
+//
+//            //Sortowanie listy ze względu na ilośc zdobytych punktów
+//            $final_result = array();
+//            foreach ($my_object_list as $key => $row){
+//
+//                $final_result[$key] = $row['result'];
+//            }
+//            array_multisort($final_result, SORT_DESC, $my_object_list);
 
         }
 
         return array(
             'Ranking' => $Ranking,
-            'Objects' => $my_object_list,
+            'Objects' => $Items,
             'TotalVotes' => $total_votes
         );
     }

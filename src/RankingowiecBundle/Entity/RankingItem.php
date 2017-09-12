@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="RankingowiecBundle\Repository\RankingItemRepository")
  * @ORM\Table(name="rankings_items")
  */
 class RankingItem{

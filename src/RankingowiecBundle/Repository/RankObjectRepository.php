@@ -8,20 +8,20 @@ use Doctrine\ORM\EntityRepository;
 class RankObjectRepository extends EntityRepository{
 
 
-    //Zwraca liste obiektow dla konkretnego rankingu
-    public function getRankingObjects(array $objectList = array()){
-
-        $qb = $this->getQueryBuilder(array());
-
-        foreach ($objectList as $id => $title) {
-            $qb->orWhere('o.title = :title_'.$id)
-                ->setParameter('title_'.$id, $title);
-
-        }
-
-        return $qb->getQuery()->getResult();
-
-    }
+    //Zwraca liste obiektow dla konkretnego rankingu [NIEAKTUALNE]
+//    public function getRankingObjects(array $objectList = array()){
+//
+//        $qb = $this->getQueryBuilder(array());
+//
+//        foreach ($objectList as $id => $title) {
+//            $qb->orWhere('o.title = :title_'.$id)
+//                ->setParameter('title_'.$id, $title);
+//
+//        }
+//
+//        return $qb->getQuery()->getResult();
+//
+//    }
 
     //Zwraca obiekt o konkretnym slugu
     public function getPublishedObject($slug){

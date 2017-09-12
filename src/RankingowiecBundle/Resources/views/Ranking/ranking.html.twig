@@ -12,7 +12,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="ranking-photo">
-                <img src="{{ Ranking.thumbnail }}" alt="{{ Ranking.slug }}">
+                <img src="{{ vich_uploader_asset(Ranking, 'thumbnailFile') }}" alt="{{ Ranking.slug }}">
                 <div class="rank-caption">
                     <h1 class="rank-title">{{ Ranking.title }}</h1>
                     <p class="rank-desc">
@@ -35,7 +35,7 @@
             <div class="row">
                 <div class="col-md-12 nopadding">
                     <ul>
-                        <li><i class="fa fa-user" aria-hidden="true"></i>Autor: <a href="#">{{ Ranking.author }}</a></li>
+                        <li><i class="fa fa-user" aria-hidden="true"></i>Autor: {{ Ranking.author }}</li>
                         <li><i class="fa fa-calendar" aria-hidden="true"></i>Data: {{ Ranking.publishedDate|date('d-m-Y') }}</li>
                         <li><i class="fa fa-thumbs-up" aria-hidden="true"></i> Głosów: {{ TotalVotes|restyleNumber }}</li>
                         {#<li><i class="fa fa-users" aria-hidden="true"></i> Głosujących: 12 tyś</li>#}
@@ -131,18 +131,18 @@
                                             <span>{{ loop.index }}</span>
                                         </div>
                                         <div class="col-sm-2 col-xs-2 item-photo nopadding">
-                                            <a href="#"><img class="img-thumbnail" src="{{ object.thumbnail }}" alt=""></a>
+                                            <a href="#"><img class="img-thumbnail" src="{{ vich_uploader_asset(object.item, 'thumbnailFile') }}" alt=""></a>
                                         </div>
                                         <div class="col-sm-2 col-xs-3 thumbns nopadding">
                                             <ul>
-                                                <li class="up"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span>{{ object.plus }}</span></li>
-                                                <li class="down"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span>{{ object.minus }}</span></li>
+                                                <li class="up"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span class="appear">{{ object.plus }}</span></li>
+                                                <li class="down"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span class="appear">{{ object.minus }}</span></li>
                                             </ul>
-                                            <div class="result"><i class="fa fa-retweet" aria-hidden="true"></i> Wynik: {{ object.result }}</div>
+                                            <div class="result"><i class="fa fa-retweet" aria-hidden="true"></i> Wynik: {{ object.plus - object.minus }}</div>
                                         </div>
                                         <div class="col-sm-7 col-xs-6 item-name">
-                                            <h4><a href="{{ path('single_object', {'slug': object.slug }) }}">{{ object.title }}</a> </h4>
-                                            {{ object.description|cutText(160) }}
+                                            <h4><a href="{{ path('single_object', {'slug': object.item.slug }) }}">{{ object.item.title }}</a> </h4>
+                                            {{ object.item.description|cutText(160) }}
                                         </div>
                                     </li>
                                 </ol>
