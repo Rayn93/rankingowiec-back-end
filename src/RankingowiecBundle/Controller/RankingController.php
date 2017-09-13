@@ -101,39 +101,13 @@ class RankingController extends Controller{
 
             $RankingId = $Ranking->getId();
             $Items = $ItemsRepo->getRankingObjects($RankingId);
-//            $results = $Ranking->getItemsResult();
 
-//            \Doctrine\Common\Util\Debug::dump($Items);
+            $total_votes = 0;
 
-//            //Tworzenie tablicy z listą pozycji w rankingu
-//            $my_object_list = array();
-//            foreach ($Objects as $object){
-//
-//                $my_object_list[] = array(
-//                    'title' => $object->getTitle(),
-//                    'slug' => $object->getSlug(),
-//                    'description' => $object->getDescription(),
-//                    'thumbnail' => $object->getThumbnail(),
-//                    'plus' => $results[$object->getTitle()]['plus'],
-//                    'minus' => $results[$object->getTitle()]['minus'],
-//                    'result' => $results[$object->getTitle()]['plus'] - $results[$object->getTitle()]['minus']
-//                );
-//            }
-//
-            $total_votes = 210;
-//
-//            foreach ($my_object_list as $item){
-//                $total_votes += $item['plus'];
-//                $total_votes += $item['minus'];
-//            }
-//
-//            //Sortowanie listy ze względu na ilośc zdobytych punktów
-//            $final_result = array();
-//            foreach ($my_object_list as $key => $row){
-//
-//                $final_result[$key] = $row['result'];
-//            }
-//            array_multisort($final_result, SORT_DESC, $my_object_list);
+            foreach ($Items as $item){
+                $total_votes += $item->getPlus();
+                $total_votes += $item->getMinus();
+            }
 
         }
 
@@ -165,10 +139,10 @@ class RankingController extends Controller{
         }
         else{
 
-            $RankRepo = $this->getDoctrine()->getRepository('RankingowiecBundle:Ranking');
-            $object_title = $Object->getTitle();
+            $RankItemRepo = $this->getDoctrine()->getRepository('RankingowiecBundle:RankingItem');
+            $objectId = $Object->getId();
 
-            $RankingsWithObject = $RankRepo->getRankingsWithObject($object_title);
+            $RankingsWithObject = $RankItemRepo->getRankingsWithItem($objectId);
 
         }
 

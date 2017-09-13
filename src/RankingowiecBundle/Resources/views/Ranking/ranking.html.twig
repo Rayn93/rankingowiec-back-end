@@ -95,12 +95,13 @@
                         <li role="presentation">
                             <a href="#rank-desc" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-file-text-o" aria-hidden="true"></i>Opis</a>
                         </li>
-                        <li role="presentation">
-                            <a href="#comments" aria-controls="profile" role="tab" data-toggle="tab"><i class="fa fa-comments" aria-hidden="true"></i>Dyskusja</a>
-                        </li>
-                        <li role="presentation">
-                            <a href="#waiting-room" aria-controls="messages" role="tab" data-toggle="tab"><i class="fa fa-clock-o" aria-hidden="true"></i>Poczekalnia</a>
-                        </li>
+                        {#<li role="presentation">#}
+                            {#<a href="#comments" aria-controls="profile" role="tab" data-toggle="tab"><i class="fa fa-comments" aria-hidden="true"></i>Dyskusja</a>#}
+                        {#</li>#}
+                        {#<li role="presentation">#}
+                            {#<a href="#waiting-room" aria-controls="messages" role="tab" data-toggle="tab"><i class="fa fa-clock-o" aria-hidden="true"></i>Poczekalnia</a>#}
+                        {#</li>#}
+
                         <!--<li role="presentation">-->
                         <!--<a href="#ustawienia" aria-controls="settings" role="tab" data-toggle="tab"><i class="fa fa-users" aria-hidden="true"></i>Grupy społeczne</a>-->
                         <!--</li>-->
@@ -131,7 +132,7 @@
                                             <span>{{ loop.index }}</span>
                                         </div>
                                         <div class="col-sm-2 col-xs-2 item-photo nopadding">
-                                            <a href="#"><img class="img-thumbnail" src="{{ vich_uploader_asset(object.item, 'thumbnailFile') }}" alt=""></a>
+                                            <a href="{{ path('single_object', {'slug': object.item.slug }) }}"><img class="img-thumbnail" src="{{ vich_uploader_asset(object.item, 'thumbnailFile') }}" alt=""></a>
                                         </div>
                                         <div class="col-sm-2 col-xs-3 thumbns nopadding">
                                             <ul>
@@ -157,117 +158,117 @@
                             <p>{{ Ranking.description|raw }}</p>
                         </div>
 
-                        <div role="tabpanel" class="tab-pane fade" id="comments">
-                            <div class="comments">
+                        {#<div role="tabpanel" class="tab-pane fade" id="comments">#}
+                            {#<div class="comments">#}
 
-                                <div class="respond">
-                                    <header>
-                                        <h3>Dodaj komentarz</h3>
-                                        <a href="#"> <img class="avatar" src="{{ asset('img/avatar.JPG') }}" alt=""></a>
-                                    </header>
-                                    <div class="cancel-comment-reply">
-                                        <a style="display:none;" href="#" rel="nofollow">Kliknij tutaj, aby anulować odpowiadanie.</a>
-                                    </div>
+                                {#<div class="respond">#}
+                                    {#<header>#}
+                                        {#<h3>Dodaj komentarz</h3>#}
+                                        {#<a href="#"> <img class="avatar" src="{{ asset('img/avatar.JPG') }}" alt=""></a>#}
+                                    {#</header>#}
+                                    {#<div class="cancel-comment-reply">#}
+                                        {#<a style="display:none;" href="#" rel="nofollow">Kliknij tutaj, aby anulować odpowiadanie.</a>#}
+                                    {#</div>#}
 
-                                    <form id="commentform" method="post" action="#">
-                                        <textarea name="comment" placeholder="Treść komentarza"></textarea>
-                                        <input class="button" type="submit" value="Wyślij">
-                                    </form>
+                                    {#<form id="commentform" method="post" action="#">#}
+                                        {#<textarea name="comment" placeholder="Treść komentarza"></textarea>#}
+                                        {#<input class="button" type="submit" value="Wyślij">#}
+                                    {#</form>#}
 
-                                </div>
+                                {#</div>#}
 
-                                <div class="comments-list">
-                                    <div class="comment parent">
-                                        <div class="inner">
-                                            <a href="#"><img class="avatar" src="{{ asset('img/avatar.JPG') }}" alt=""></a>
-                                            <h4>
-                                                <a href="#">admin</a> w dniu 9 kwietnia 2013 o 10:24
-                                                <a class="option" href="#"><i class="fa fa-times" aria-hidden="true"></i> Usuń </a>
-                                                <a class="option" href="#"><i class="fa fa-reply" aria-hidden="true"></i> Odpowiedz </a>
-                                            </h4>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed magna orci, eget
-                                                egestas tellus. Mauris id lectus lorem, et condimentum est.</p>
-                                        </div>
+                                {#<div class="comments-list">#}
+                                    {#<div class="comment parent">#}
+                                        {#<div class="inner">#}
+                                            {#<a href="#"><img class="avatar" src="{{ asset('img/avatar.JPG') }}" alt=""></a>#}
+                                            {#<h4>#}
+                                                {#<a href="#">admin</a> w dniu 9 kwietnia 2013 o 10:24#}
+                                                {#<a class="option" href="#"><i class="fa fa-times" aria-hidden="true"></i> Usuń </a>#}
+                                                {#<a class="option" href="#"><i class="fa fa-reply" aria-hidden="true"></i> Odpowiedz </a>#}
+                                            {#</h4>#}
+                                            {#<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed magna orci, eget#}
+                                                {#egestas tellus. Mauris id lectus lorem, et condimentum est.</p>#}
+                                        {#</div>#}
 
-                                        <div class="comment">
+                                        {#<div class="comment">#}
 
-                                            <div class="inner">
-                                                <a href="#"> <img class="avatar" src="{{ asset('img/avatar.JPG') }}" alt=""></a>
-                                                <h4>
-                                                    <a href="#">admin</a> w dniu 9 kwietnia 2013 o 10:24
-                                                    <a class="option" href="#"><i class="fa fa-times" aria-hidden="true"></i> Usuń </a>
-                                                    <a class="option" href="#"><i class="fa fa-reply" aria-hidden="true"></i> Odpowiedz </a>
-                                                </h4>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed magna orci, eget
-                                                    egestas tellus. Mauris id lectus lorem, et condimentum est.</p>
+                                            {#<div class="inner">#}
+                                                {#<a href="#"> <img class="avatar" src="{{ asset('img/avatar.JPG') }}" alt=""></a>#}
+                                                {#<h4>#}
+                                                    {#<a href="#">admin</a> w dniu 9 kwietnia 2013 o 10:24#}
+                                                    {#<a class="option" href="#"><i class="fa fa-times" aria-hidden="true"></i> Usuń </a>#}
+                                                    {#<a class="option" href="#"><i class="fa fa-reply" aria-hidden="true"></i> Odpowiedz </a>#}
+                                                {#</h4>#}
+                                                {#<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed magna orci, eget#}
+                                                    {#egestas tellus. Mauris id lectus lorem, et condimentum est.</p>#}
 
-                                                <div class="comment-awaiting-moderation">Twój komentarz oczekuje na moderację!</div>
-                                            </div>
+                                                {#<div class="comment-awaiting-moderation">Twój komentarz oczekuje na moderację!</div>#}
+                                            {#</div>#}
 
-                                        </div>
-                                    </div>
+                                        {#</div>#}
+                                    {#</div>#}
 
-                                    <!-- <p class="no-comments">Ten wpis nie posiada jeszcze żadnych komentrzy.</p> -->
-                                </div>
+                                    {#<!-- <p class="no-comments">Ten wpis nie posiada jeszcze żadnych komentrzy.</p> -->#}
+                                {#</div>#}
 
-                            </div>
-                        </div>
+                            {#</div>#}
+                        {#</div>#}
 
-                        <div role="tabpanel" class="tab-pane fade" id="waiting-room">
+                        {#<div role="tabpanel" class="tab-pane fade" id="waiting-room">#}
 
-                            <div class="comments">
+                            {#<div class="comments">#}
 
-                                <div class="respond">
-                                    <header>
-                                        <h3>Dodaj do poczekalni</h3>
-                                        <a href="#"> <img class="avatar" src="{{ asset('img/avatar.JPG') }}" alt=""></a>
-                                    </header>
-                                    <div class="cancel-comment-reply">
-                                        <a style="display:none;" href="#" rel="nofollow">Kliknij tutaj, aby anulować.</a>
-                                    </div>
+                                {#<div class="respond">#}
+                                    {#<header>#}
+                                        {#<h3>Dodaj do poczekalni</h3>#}
+                                        {#<a href="#"> <img class="avatar" src="{{ asset('img/avatar.JPG') }}" alt=""></a>#}
+                                    {#</header>#}
+                                    {#<div class="cancel-comment-reply">#}
+                                        {#<a style="display:none;" href="#" rel="nofollow">Kliknij tutaj, aby anulować.</a>#}
+                                    {#</div>#}
 
-                                    <form id="waiting-room-form" method="post" action="#">
-                                        <textarea name="comment" placeholder="Twoja propozycja"></textarea>
-                                        <input class="button" type="submit" value="Wyślij">
-                                    </form>
+                                    {#<form id="waiting-room-form" method="post" action="#">#}
+                                        {#<textarea name="comment" placeholder="Twoja propozycja"></textarea>#}
+                                        {#<input class="button" type="submit" value="Wyślij">#}
+                                    {#</form>#}
 
-                                </div>
+                                {#</div>#}
 
-                                <div class="comments-list">
-                                    <div class="comment parent">
-                                        <div class="inner">
-                                            <a href="#"><img class="avatar" src="{{ asset('img/avatar.JPG') }}" alt=""></a>
-                                            <h4>
-                                                <a href="#">admin</a> w dniu 9 kwietnia 2013 o 10:24
-                                                <a class="option" href="#"><i class="fa fa-times" aria-hidden="true"></i> Usuń </a>
-                                                <a class="option" href="#"><i class="fa fa-reply" aria-hidden="true"></i> Odpowiedz </a>
-                                            </h4>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed magna orci, eget egestas tellus. Mauris id lectus lorem, et condimentum est.</p>
-                                        </div>
+                                {#<div class="comments-list">#}
+                                    {#<div class="comment parent">#}
+                                        {#<div class="inner">#}
+                                            {#<a href="#"><img class="avatar" src="{{ asset('img/avatar.JPG') }}" alt=""></a>#}
+                                            {#<h4>#}
+                                                {#<a href="#">admin</a> w dniu 9 kwietnia 2013 o 10:24#}
+                                                {#<a class="option" href="#"><i class="fa fa-times" aria-hidden="true"></i> Usuń </a>#}
+                                                {#<a class="option" href="#"><i class="fa fa-reply" aria-hidden="true"></i> Odpowiedz </a>#}
+                                            {#</h4>#}
+                                            {#<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed magna orci, eget egestas tellus. Mauris id lectus lorem, et condimentum est.</p>#}
+                                        {#</div>#}
 
-                                        <div class="comment">
+                                        {#<div class="comment">#}
 
-                                            <div class="inner">
-                                                <a href="#"> <img class="avatar" src="{{ asset('img/avatar.JPG') }}" alt=""></a>
-                                                <h4>
-                                                    <a href="#">admin</a> w dniu 9 kwietnia 2013 o 10:24
-                                                    <a class="option" href="#"><i class="fa fa-times" aria-hidden="true"></i> Usuń </a>
-                                                    <a class="option" href="#"><i class="fa fa-reply" aria-hidden="true"></i> Odpowiedz </a>
-                                                </h4>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed magna orci, eget
-                                                    egestas tellus. Mauris id lectus lorem, et condimentum est.</p>
+                                            {#<div class="inner">#}
+                                                {#<a href="#"> <img class="avatar" src="{{ asset('img/avatar.JPG') }}" alt=""></a>#}
+                                                {#<h4>#}
+                                                    {#<a href="#">admin</a> w dniu 9 kwietnia 2013 o 10:24#}
+                                                    {#<a class="option" href="#"><i class="fa fa-times" aria-hidden="true"></i> Usuń </a>#}
+                                                    {#<a class="option" href="#"><i class="fa fa-reply" aria-hidden="true"></i> Odpowiedz </a>#}
+                                                {#</h4>#}
+                                                {#<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed magna orci, eget#}
+                                                    {#egestas tellus. Mauris id lectus lorem, et condimentum est.</p>#}
 
-                                                <div class="comment-awaiting-moderation">Twój komentarz oczekuje na moderację!</div>
-                                            </div>
+                                                {#<div class="comment-awaiting-moderation">Twój komentarz oczekuje na moderację!</div>#}
+                                            {#</div>#}
 
-                                        </div>
-                                    </div>
+                                        {#</div>#}
+                                    {#</div>#}
 
-                                    <!-- <p class="no-comments">Ten wpis nie posiada jeszcze żadnych komentrzy.</p> -->
-                                </div>
+                                    {#<!-- <p class="no-comments">Ten wpis nie posiada jeszcze żadnych komentrzy.</p> -->#}
+                                {#</div>#}
 
-                            </div>
-                        </div>
+                            {#</div>#}
+                        {#</div>#}
 
                         <div role="tabpanel" class="tab-pane fade" id="ustawienia">
                             <h1>POCZEKALNIA</h1>

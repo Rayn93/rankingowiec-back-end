@@ -11,20 +11,26 @@ class RankingItemRepository extends EntityRepository{
 //    Zwraca liste obiektow dla konkretnego rankingu
     public function getRankingObjects($Rankingid){
 
-        $qb = $this->createQueryBuilder('i')
-                ->select('i')
-                ->where('i.ranking = :rankingId')
+        $qb = $this->getQueryBuilder();
+
+        $qb     ->andwhere('i.ranking = :rankingId')
                 ->setParameter('rankingId', $Rankingid)
-                ->orderBy('i.plus - i.minus', 'DESC');;
+                ->orderBy('i.plus - i.minus', 'DESC');
 
-//        foreach ($objectList as $id => $title) {
-//            $qb->orWhere('o.title = :title_'.$id)
-//                ->setParameter('title_'.$id, $title);
-//
-//        }
+        return $qb->getQuery()->getResult();
 
-//        $qb->andWhere('i.id = :rankingId')
-//            ->setParameter('rankingId', $Rankingid);
+    }
+
+    //Zwraca wszystkie rankingi z obiektem o podanym ID
+    public function getRankingsWithItem($ItemId){
+
+        $qb = $this->getQueryBuilder(array(
+            'status' => 'published'
+        ));
+
+        $qb->andWhere('i.item = :itemId')
+            ->setParameter('itemId', $ItemId)
+            ->distinct();
 
         return $qb->getQuery()->getResult();
 
@@ -39,6 +45,19 @@ class RankingItemRepository extends EntityRepository{
             ->select('i, r, it')
             ->leftJoin('i.ranking', 'r')
             ->leftJoin('i.item', 'it');
+
+
+        if(!empty($params['status'])){
+
+            if($params['status'] == 'published'){
+                $qb->where('it.published_date <= :curr_date AND it.published_date IS NOT NULL')
+                    ->setParameter('curr_date', new \DateTime());
+            }
+            else if($params['status'] == 'unpublished'){
+                $qb->where('it.published_date > :curr_date OR it.published_date IS NULL')
+                    ->setParameter('curr_date', new \DateTime());
+            }
+        }
 
 
         return $qb;

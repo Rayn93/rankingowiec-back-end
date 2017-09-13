@@ -67,15 +67,15 @@
 
                         <div class="ranking-list-squere col-md-4 col-sm-6">
                             <div class="thumbnail">
-                                <a href="{{ path('single_ranking', {'slug': ranking.slug }) }}">
+                                <a href="{{ path('single_ranking', {'slug': ranking.ranking.slug }) }}">
                                     <div class="thumbnail-img">
-                                        <img class="img-responsive" src="{{ ranking.thumbnail }}" alt="{{ ranking.title }}">
+                                        <img class="img-responsive" src="{{ ranking.ranking.thumbnail }}" alt="{{ ranking.ranking.title }}">
                                     </div>
                                     <div class="caption">
-                                        <h3>{{ ranking.title }}</h3>
-                                        <span class="badge"><i class="fa fa-cubes" aria-hidden="true"></i> Pozycji: {{ ranking.items|length }}</span>
-                                        <span class="badge"><i class="fa fa-eye" aria-hidden="true"></i> Wizyt: {{ ranking.numbVisits|restyleNumber }}</span>
-                                        {{ ranking.description|cutText(200) }}
+                                        <h3>{{ ranking.ranking.title }}</h3>
+                                        <span class="badge"><i class="fa fa-cubes" aria-hidden="true"></i> Pozycji: {{ ranking.ranking.items|length }}</span>
+                                        <span class="badge"><i class="fa fa-eye" aria-hidden="true"></i> Wizyt: {{ ranking.ranking.numbVisits|restyleNumber }}</span>
+                                        {{ ranking.ranking.description|cutText(200) }}
                                     </div>
                                 </a>
                             </div>

@@ -24,21 +24,21 @@ class RankingRepository extends EntityRepository{
 
     }
 
-    //Zwraca wszystkie rankingi z obiektem o podanym tytule
-    public function getRankingsWithObject($title){
-
-        $qb = $this->getQueryBuilder(array(
-            'status' => 'published'
-        ));
-
-        $objectTitle = '%'.$title.'%';
-
-        $qb->andWhere('r.items LIKE :objectTitle')
-            ->setParameter('objectTitle', $objectTitle);
-
-        return $qb->getQuery()->getResult();
-
-    }
+//    //Zwraca wszystkie rankingi z obiektem o podanym tytule [NIEAKTUALNE]
+//    public function getRankingsWithObject($title){
+//
+//        $qb = $this->getQueryBuilder(array(
+//            'status' => 'published'
+//        ));
+//
+//        $objectTitle = '%'.$title.'%';
+//
+//        $qb->andWhere('r.items LIKE :objectTitle')
+//            ->setParameter('objectTitle', $objectTitle);
+//
+//        return $qb->getQuery()->getResult();
+//
+//    }
 
 
     //Tworzy zapytania DQL dla encji Ranking z przekazanymi parametrami
