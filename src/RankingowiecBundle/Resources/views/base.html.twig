@@ -255,11 +255,16 @@
         'assets/js/jquery-ui.min.js'
         'assets/js/bootstrap.min.js'
         'assets/js/select2.min.js'
+        'assets/js/jquery.cookie.js'
         'assets/js/script_main.js'
         output = 'js/website_compiled.js'
     %}
         <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
+
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+
 
 {% endblock %}
 

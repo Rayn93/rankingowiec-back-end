@@ -51,6 +51,22 @@ a:hover{
     display: none !important;
 }
 
+.chooseme{
+    transform: scale(1.2) !important;
+}
+
+.chooseother{
+    transform: scale(0.8) !important;
+
+}
+
+.chooseother i:hover{
+    cursor: not-allowed !important;
+    transform: scale(1);
+    background: #ff1719
+
+}
+
 ::-moz-selection {
     background: #f35f4a;
     color: #fff

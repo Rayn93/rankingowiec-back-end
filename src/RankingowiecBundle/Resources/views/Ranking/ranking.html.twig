@@ -136,10 +136,11 @@
                                         </div>
                                         <div class="col-sm-2 col-xs-3 thumbns nopadding">
                                             <ul>
-                                                <li class="up"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span class="appear">{{ object.plus }}</span></li>
-                                                <li class="down"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span class="appear">{{ object.minus }}</span></li>
+                                                {#<li class="up vote thumb_up_{{ object.id }}"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span class="appear">{{ object.plus }}</span></li>#}
+                                                {#<li class="down vote thumb_down_{{ object.id }}"><i class="fa fa-thumbs-down" aria-hidden="true"></i><span class="appear">{{ object.minus }}</span></li>#}
+                                                {{ printThumbs(Ranking.id, object.item.id, object.plus, object.minus)|raw }}
                                             </ul>
-                                            <div class="result"><i class="fa fa-retweet" aria-hidden="true"></i> Wynik: {{ object.plus - object.minus }}</div>
+                                            <div class="result result_{{ object.item.id }}"><i class="fa fa-retweet" aria-hidden="true"></i> Wynik: <span class="span">{{ object.plus - object.minus }}</span></div>
                                         </div>
                                         <div class="col-sm-7 col-xs-6 item-name">
                                             <h4><a href="{{ path('single_object', {'slug': object.item.slug }) }}">{{ object.item.title }}</a> </h4>
@@ -345,3 +346,5 @@
     </section>
 
 {% endblock %}
+
+

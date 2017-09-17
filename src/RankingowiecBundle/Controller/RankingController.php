@@ -2,11 +2,15 @@
 
 namespace RankingowiecBundle\Controller;
 
+use RankingowiecBundle\Entity\RankObject;
 use RankingowiecBundle\RankingowiecBundle;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Cookie;
 
 class RankingController extends Controller{
 
@@ -109,6 +113,11 @@ class RankingController extends Controller{
                 $total_votes += $item->getMinus();
             }
 
+        }
+
+        $request = $this->get('request');
+        if($request->isXmlHttpRequest()) {
+            $value = $request->request->get('sentValue');
         }
 
         return array(
@@ -372,6 +381,60 @@ class RankingController extends Controller{
 
 
     }
+
+//Logika głosowania
+    /**
+     * @Route(
+     *     "/ajax/rankingvote/update/data",
+     *     name="ranking_voting",
+     *     options={"expose"=true}
+     * )
+     *
+     */
+    public function updateDataAction(Request $request)
+    {
+        $rankingId = $request->get('rankingId');
+        $itemId = $request->get('itemId');
+        $plus = $request->get('plus');
+        $minus = $request->get('minus');
+
+        //Dodawania punktów do wyników rankingów
+        $ItemsRepo = $this->getDoctrine()->getRepository('RankingowiecBundle:RankingItem');
+
+        $Item = $ItemsRepo->findOneBy(array(
+           'ranking' =>  $rankingId,
+            'item' => $itemId
+        ));
+
+        $finalPlus = $Item->getPlus() + $plus;
+        $finalMinus = $Item->getMinus() + $minus;
+        $ItemsRepo->updateRankingResult($rankingId, $itemId, $finalPlus, $finalMinus);
+
+        //Dodawanie punktów do Obiektów Rankingowych
+        $RankObject = $this->getDoctrine()->getRepository('RankingowiecBundle:RankObject')->find($itemId);
+
+        $totalResult = $RankObject->getTotalResult();
+
+        $newTotalResult = array(
+            $totalResult[0] => $totalResult[0] + $plus,
+            $totalResult[1] => $totalResult[1] + $minus,
+        );
+
+
+        $RankObject->setTotalResult($newTotalResult);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($RankObject);
+        $em->flush();
+
+        $response = new JsonResponse();
+        $response->setData(array(
+            'plus' => $finalPlus,
+            'minus' => $finalMinus,
+            'total' => ($finalPlus - $finalMinus)
+        ));
+        return $response;
+    }
+
 
 
 

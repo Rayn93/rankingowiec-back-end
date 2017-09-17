@@ -1,4 +1,5 @@
-﻿$(window).scroll(function() {
+﻿
+$(window).scroll(function() {
     if ($(this).scrollTop() > 1){
         $('#header-top').addClass("sticky");
     }
@@ -51,6 +52,9 @@ $(document).ready(function () {
 
 
 
+
+
+
 ////PODMIANA KLASY PRZY SZEROKOŚCI OKNA 620PX DLA SEKCJI KATEGORIE
 //
 //     var width = $(window).width();
@@ -68,6 +72,42 @@ $(document).ready(function () {
 });
 
 
+// Voting system with AJAX
+function changeVoteButton($itemId , $rankingId, $upOrDown) {
+
+    var getTeamsUrl = Routing.generate('ranking_voting');
+
+    $('.thumb_'+$upOrDown+'_'+$itemId).children().addClass('chooseme');
+    $('.thumb_'+$upOrDown+'_'+$itemId).siblings().addClass('chooseother');
+    $('.thumb_up_'+$itemId).removeAttr('onclick');
+    $('.thumb_down_'+$itemId).removeAttr('onclick');
+
+    var data;
+
+    if ($upOrDown == 'up'){
+        data = {rankingId: $rankingId, itemId: $itemId, plus: 1, minus: 0}
+    }
+    else if($upOrDown == 'down'){
+        data = {rankingId: $rankingId, itemId: $itemId, plus: 0, minus: 1}
+    }
+
+    $.ajax({
+        type: "POST",
+        url: getTeamsUrl,
+        data: data,
+        dataType: 'json',
+        timeout: 3000,
+        success: function(response){
+            $('.thumb_up_'+$itemId+' .appear').text(response.plus);
+            $('.thumb_down_'+$itemId+' .appear').text(response.minus);
+            $('.result_'+$itemId+' .span').text(response.total);
+        },
+        error: function() {
+            $('.result_'+$itemId+' span').text('Error!!!');
+        }
+    });
+
+}
 
 ////PODMIANA KLASY PRZY SZEROKOŚCI OKNA 620PX DLA SEKCJI KATEGORIE
 //$(window).resize(function () {
@@ -172,3 +212,6 @@ var myPiechart = new Piechart(
 myPiechart.draw();
 
 //END PIE CHART ON OBJECT PAGE
+
+
+

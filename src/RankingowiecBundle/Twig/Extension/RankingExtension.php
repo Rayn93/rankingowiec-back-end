@@ -27,7 +27,9 @@ class RankingExtension extends \Twig_Extension {
                 array(
                     'needs_environment' => true,
                     'is_safe' => array('html')
-                ))
+                )),
+
+            new \Twig_SimpleFunction('printThumbs', array($this, 'printThumbs'))
         );
     }
 
@@ -121,6 +123,27 @@ class RankingExtension extends \Twig_Extension {
         } else {
             return $input;
         }
+    }
+
+
+    //Drukuje SYSTEM GŁOSOWANIA DLA RANKINGÓW
+    public function printThumbs($rankingId, $itemId, $plus, $minus) {
+
+
+//        $getJSON = array('rankingId' => $rankingId, 'itemId' => $itemId); // We create a JSON with the number of stars and the media ID
+//        $getJSON = json_encode($getJSON);
+
+        $thumbs = '<li class="up vote thumb_up_'.$itemId.'" onclick="changeVoteButton('.$itemId.', '.$rankingId.', \'up\');">
+                    <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+                    <span class="appear">'.$plus.'</span>
+                   </li>';
+
+        $thumbs .= '<li class="down vote thumb_down_'.$itemId.'" onclick="changeVoteButton('.$itemId.', '.$rankingId.', \'down\');">
+                        <i class="fa fa-thumbs-down" aria-hidden="true"></i>
+                        <span class="appear">'.$minus.'</span>
+                    </li>';
+
+        return $thumbs;
     }
 
 

@@ -8,12 +8,32 @@ use Doctrine\ORM\EntityRepository;
 class RankingItemRepository extends EntityRepository{
 
 
+//   Dodawanie punktów do konkretnych obiektów w rankingach
+    public function updateRankingResult($rankingId, $itemId, $plus, $minus){
+
+        $qb = $this->createQueryBuilder('i')
+            ->update('RankingowiecBundle\Entity\RankingItem', 'i')
+            ->set('i.plus', '?1')
+            ->set('i.minus', '?2')
+            ->where('i.ranking = ?3')
+            ->andWhere('i.item = ?4')
+            ->setParameter(1, $plus)
+            ->setParameter(2, $minus)
+            ->setParameter(3, $rankingId)
+            ->setParameter(4, $itemId);
+
+        return $qb->getQuery()->execute();
+
+
+    }
+
+
 //    Zwraca liste obiektow dla konkretnego rankingu
     public function getRankingObjects($Rankingid){
 
         $qb = $this->getQueryBuilder();
 
-        $qb     ->andwhere('i.ranking = :rankingId')
+        $qb     ->andWhere('i.ranking = :rankingId')
                 ->setParameter('rankingId', $Rankingid)
                 ->orderBy('i.plus - i.minus', 'DESC');
 
