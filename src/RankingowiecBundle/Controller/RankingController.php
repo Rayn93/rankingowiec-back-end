@@ -5,12 +5,8 @@ namespace RankingowiecBundle\Controller;
 use RankingowiecBundle\Entity\RankObject;
 use RankingowiecBundle\RankingowiecBundle;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Cookie;
 
 class RankingController extends Controller{
 

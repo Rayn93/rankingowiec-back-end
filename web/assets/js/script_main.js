@@ -98,6 +98,7 @@ function changeVoteButton($itemId , $rankingId, $upOrDown) {
         dataType: 'json',
         timeout: 3000,
         success: function(response){
+            $.cookie("ratingSystem_rank" + $rankingId + "_item"+$itemId , "Rated", { expires : 7 }); // Add jQuery Cookie Plugin to use this function
             $('.thumb_up_'+$itemId+' .appear').text(response.plus);
             $('.thumb_down_'+$itemId+' .appear').text(response.minus);
             $('.result_'+$itemId+' .span').text(response.total);

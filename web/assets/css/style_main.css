@@ -1516,6 +1516,11 @@ footer .copyright{
 }
 
 
+p.rated{
+    margin: -20px auto 5px auto;
+    font-weight: bold;
+}
+
 
 
 

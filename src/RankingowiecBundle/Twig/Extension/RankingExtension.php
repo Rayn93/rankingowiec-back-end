@@ -1,7 +1,11 @@
 <?php
 
-
 namespace RankingowiecBundle\Twig\Extension;
+
+use Symfony\Bridge\Doctrine\RegistryInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\HttpFoundation\Cookie;
+
 
 //Developerskie Rozszerzenia dla szablonów Twig
 class RankingExtension extends \Twig_Extension {
@@ -12,12 +16,15 @@ class RankingExtension extends \Twig_Extension {
      */
     private $doctrine;
 
+    private $request;
+
     /**
      * RankingExtension constructor.
      * @param \Doctrine\Bundle\DoctrineBundle\Registry $doctrine
      */
-    public function __construct(\Doctrine\Bundle\DoctrineBundle\Registry $doctrine){
+    public function __construct(RegistryInterface $doctrine, RequestStack $request_stack){
         $this->doctrine = $doctrine;
+        $this->request = $request_stack->getCurrentRequest();
     }
 
 
@@ -129,19 +136,33 @@ class RankingExtension extends \Twig_Extension {
     //Drukuje SYSTEM GŁOSOWANIA DLA RANKINGÓW
     public function printThumbs($rankingId, $itemId, $plus, $minus) {
 
+        $cookies = $this->request->cookies->get('ratingSystem_rank'.$rankingId.'_item'.$itemId);
 
-//        $getJSON = array('rankingId' => $rankingId, 'itemId' => $itemId); // We create a JSON with the number of stars and the media ID
-//        $getJSON = json_encode($getJSON);
+        if($cookies != NULL){
+            $thumbs = '<li class="up vote chooseother" >
+                    <i class="fa fa-thumbs-up " aria-hidden="true"></i>
+                    <span class="appear ">'.$plus.'</span>
+                   </li>';
 
-        $thumbs = '<li class="up vote thumb_up_'.$itemId.'" onclick="changeVoteButton('.$itemId.', '.$rankingId.', \'up\');">
+            $thumbs .= '<li class="down vote chooseother" >
+                        <i class="fa fa-thumbs-down " aria-hidden="true"></i>
+                        <span class="appear ">'.$minus.'</span>
+                    </li>';
+            $thumbs .= '<p class="rated">Już głosowano</p>';
+        }
+        else{
+            $thumbs = '<li class="up vote thumb_up_'.$itemId.'" onclick="changeVoteButton('.$itemId.', '.$rankingId.', \'up\');">
                     <i class="fa fa-thumbs-up" aria-hidden="true"></i>
                     <span class="appear">'.$plus.'</span>
                    </li>';
 
-        $thumbs .= '<li class="down vote thumb_down_'.$itemId.'" onclick="changeVoteButton('.$itemId.', '.$rankingId.', \'down\');">
+            $thumbs .= '<li class="down vote thumb_down_'.$itemId.'" onclick="changeVoteButton('.$itemId.', '.$rankingId.', \'down\');">
                         <i class="fa fa-thumbs-down" aria-hidden="true"></i>
                         <span class="appear">'.$minus.'</span>
                     </li>';
+        }
+
+
 
         return $thumbs;
     }

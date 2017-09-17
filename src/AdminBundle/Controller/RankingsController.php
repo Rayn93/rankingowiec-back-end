@@ -1,6 +1,5 @@
 <?php
 
-
 namespace AdminBundle\Controller;
 
 use AdminBundle\Form\Type\RankingType;
@@ -11,7 +10,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 
 use RankingowiecBundle\Entity\Ranking;
-//use AdminBundle\Form\Type\RankingType;
 
 class RankingsController extends Controller{
 
