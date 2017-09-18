@@ -9,7 +9,7 @@
 
             <div class="col-xs-12 ranking">
                 <a href="{{ path('single_ranking', {'slug': ranking.slug }) }}">
-                    <img class="img-responsive myBackgroundImage" src="{{ ranking.thumbnail }}" alt="1">
+                    <img class="img-responsive myBackgroundImage" src="{{ vich_uploader_asset(ranking, 'thumbnailFile') }}" alt="1">
                     <div class="rank-title "><h5>{{ ranking.title }}</h5></div>
                 </a>
             </div>

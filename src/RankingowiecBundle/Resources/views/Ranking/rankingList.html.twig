@@ -27,7 +27,7 @@
                     {% for slide in Slides %}
                         {% if loop.index0 == 0 %}
                             <div class="item active">
-                                <img src="{{ slide.thumbnail }}" alt="{{ slide.slug }}"/>
+                                <img src="{{ vich_uploader_asset(slide, 'thumbnailFile') }}" alt="{{ slide.slug }}"/>
                                 <div class="carousel-caption">
                                     <h3>{{ slide.title }}</h3>
                                     <a class="button" href="{{ path('single_ranking', {'slug': slide.slug }) }}"><span>ZOBACZ RANKING</span></a>
@@ -35,7 +35,7 @@
                             </div>
                         {% else %}
                             <div class="item">
-                                <img src="{{ slide.thumbnail }}" alt="{{ slide.slug }}"/>
+                                <img src="{{ vich_uploader_asset(slide, 'thumbnailFile') }}" alt="{{ slide.slug }}"/>
                                 <div class="carousel-caption">
                                     <h3>{{ slide.title }}</h3>
                                     <a class="button" href="{{ path('single_ranking', {'slug': slide.slug }) }}"><span>ZOBACZ RANKING</span></a>
@@ -98,7 +98,7 @@
                             <div class="thumbnail">
                                 <a href="{{ path('single_ranking', {'slug': ranking.slug }) }}">
                                     <div class="thumbnail-img">
-                                        <img class="img-responsive" src="{{ ranking.thumbnail }}" alt="{{ ranking.title }}">
+                                        <img class="img-responsive" src="{{ vich_uploader_asset(ranking, 'thumbnailFile') }}" alt="{{ ranking.title }}">
                                     </div>
                                     <div class="caption">
                                         <h3>{{ ranking.title }} </h3>

@@ -2,7 +2,7 @@
 <html lang="pl">
 <head>
     <meta charset="utf-8"/>
-    <title>{% spaceless %}{% block pageTitle %} {% endblock %}{% endspaceless %} | Rankingowiec.pl</title>
+    <title>{% spaceless %}{% block pageTitle %} {% endblock %}{% endspaceless %} | Rankingowe.pl</title>
     <meta name="description"
           content="{% spaceless %}{% block pageDescription %}{% endblock pageDescription %}{% endspaceless %}"/>
     <meta name="keywords" content="Ranking, rankingi, oceniać"/>
@@ -58,14 +58,14 @@
             <i class="fa fa-times-circle close" aria-hidden="true"></i>
 
             <div class="logo">
-                <h1><a href="{{ path('ranking_index') }}">RANKING <br/> - owiec</a></h1>
+                <h1><a href="{{ path('ranking_index') }}">RANKING <br/> - owe.pl</a></h1>
             </div>
 
             <nav>
                 <ul>
                     <li><a href="{{ path('ranking_category', {'slug': 'ludzie' }) }}"><i class="fa fa-users" aria-hidden="true"></i> LUDZIE </a></li>
                     <li><a href="{{ path('ranking_category', {'slug': 'film' }) }}"><i class="fa fa-video-camera" aria-hidden="true"></i> FILM </a></li>
-                    <li><a href="{{ path('ranking_category', {'slug': 'telewizja' }) }}"><i class="fa fa-television" aria-hidden="true"></i> TELEWIZJA </a></li>
+                    <li><a href="{{ path('ranking_category', {'slug': 'tv' }) }}"><i class="fa fa-television" aria-hidden="true"></i> TV </a></li>
                     <li><a href="{{ path('ranking_category', {'slug': 'muzyka' }) }}"><i class="fa fa-music" aria-hidden="true"></i> MUZYKA </a></li>
                     <li><a href="{{ path('ranking_category', {'slug': 'sport' }) }}"><i class="fa fa-futbol-o" aria-hidden="true"></i> SPORT </a></li>
                     <li><a href="{{ path('ranking_category', {'slug': 'gry' }) }}"><i class="fa fa-gamepad" aria-hidden="true"></i> GRY </a></li>
@@ -171,10 +171,10 @@
 
 <!--SOCIAL MEDIA ICONS-->
 <div id="fb-widget">
-    <div class="fb-page" data-href="https://www.facebook.com/freelancelotPL" data-tabs="timeline"
+    <div class="fb-page" data-href="https://www.facebook.com/facebook" data-tabs="timeline"
          data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
-        <blockquote cite="https://www.facebook.com/freelancelotPL" class="fb-xfbml-parse-ignore"><a
-                    href="https://www.facebook.com/freelancelotPL">FreeLancelot</a></blockquote>
+        <blockquote cite="https://www.facebook.com/facebook" class="fb-xfbml-parse-ignore"><a
+                    href="https://www.facebook.com/facebook">FreeLancelot</a></blockquote>
     </div>
     <img class="zakladka" src="{{ asset('img/facebook-icon.png') }}" alt="Rankingowiec facebook funpage"/>
 </div>

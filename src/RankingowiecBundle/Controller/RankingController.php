@@ -4,13 +4,15 @@ namespace RankingowiecBundle\Controller;
 
 use RankingowiecBundle\Entity\RankObject;
 use RankingowiecBundle\RankingowiecBundle;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 class RankingController extends Controller{
 
-    protected $itemsLimit = 3;
+    protected $itemsLimit = 9;
     protected $slideLimit = 8;
 
 

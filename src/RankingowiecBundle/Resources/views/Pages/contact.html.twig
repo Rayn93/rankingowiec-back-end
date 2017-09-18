@@ -29,6 +29,17 @@
     <section class="static-content {{ Page.slug }}">
         <div class="container">
             <div class="row">
+                {% for flashMessage in app.session.flashbag.get('success') %}
+                    <div class="feedback_good">
+                        {{ flashMessage }}
+                    </div>
+                {% endfor %}
+
+                {% for flashMessage in app.session.flashbag.get('fail') %}
+                    <div class="feedback_bad">
+                        {{ flashMessage }}
+                    </div>
+                {% endfor %}
                 <div class="col-md-6">
 
                     {{ Page.content|raw }}
@@ -37,22 +48,21 @@
 
                 <div class="col-md-6">
 
-                    <form>
+                    <form class="form-horizontal" method="post" action="{{ path('contact_page') }}" novalidate>
                         <div class="form-group">
-                            <label class="hidden" for="guest-name">Imię i nazwisko</label>
-                            <input type="text" class="form-control" id="guest-name" placeholder="Imię i nazwisko">
+                            {{ form_widget(contactForm.name, {'attr': {'class': 'form-control'}}) }}
                         </div>
                         <div class="form-group">
-                            <label class="hidden" for="guest-email">Password</label>
-                            <input type="email" class="form-control" id="guest-email" placeholder="Twój Email">
+                            {{ form_widget(contactForm.email, {'attr': {'class': 'form-control'}}) }}
                         </div>
                         <div class="form-group">
-                            <label class="hidden" for="guest-massage">Password</label>
-                            <textarea  class="form-control" id="guest-massage" placeholder="Wiadomość"></textarea>
+                            {{ form_widget(contactForm.message, {'attr': {'class': 'form-control'}}) }}
                         </div>
-
-                        <button type="submit" class="btn btn-success btn-lg">Wyślij</button>
+                        {{ form_widget(contactForm.send, {'attr': {'class': 'btn btn-primary btn-lg'}}) }}
+                        {{ form_rest(contactForm) }}
+                        <input type="hidden" name="checker" value="1" />
                     </form>
+
 
                 </div>
             </div>

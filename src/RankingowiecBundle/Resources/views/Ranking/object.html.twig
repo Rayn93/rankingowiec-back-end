@@ -69,7 +69,7 @@
                             <div class="thumbnail">
                                 <a href="{{ path('single_ranking', {'slug': ranking.ranking.slug }) }}">
                                     <div class="thumbnail-img">
-                                        <img class="img-responsive" src="{{ ranking.ranking.thumbnail }}" alt="{{ ranking.ranking.title }}">
+                                        <img class="img-responsive" src="{{ vich_uploader_asset(ranking.ranking, 'thumbnailFile') }}" alt="{{ ranking.ranking.title }}">
                                     </div>
                                     <div class="caption">
                                         <h3>{{ ranking.ranking.title }}</h3>

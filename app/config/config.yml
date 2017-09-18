@@ -70,6 +70,7 @@ swiftmailer:
     password: '%mailer_password%'
     spool: { type: memory }
 
+
 # Assetic budnle configuration
 assetic:
     debug:          '%kernel.debug%'
