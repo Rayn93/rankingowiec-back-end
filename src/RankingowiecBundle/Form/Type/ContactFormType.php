@@ -12,7 +12,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 use Symfony\Component\OptionsResolver\OptionsResolver;
-//use EWZ\Bundle\RecaptchaBundle\Form\Type\EWZRecaptchaType;
+use EWZ\Bundle\RecaptchaBundle\Form\Type\EWZRecaptchaType;
+use EWZ\Bundle\RecaptchaBundle\Validator\Constraints\IsTrue as RecaptchaTrue;
 use Symfony\Component\Validator\Constraints as Assert;
 
 
@@ -50,7 +51,22 @@ class ContactFormType extends AbstractType{
                     new Assert\NotBlank()
                 )
             ))
-//            ->add('recaptcha', EWZRecaptchaType::class)
+            ->add('recaptcha', EWZRecaptchaType::class, array(
+                'attr' => array(
+                    'options' => array(
+                        'theme' => 'light',
+                        'type' => 'image',
+                        'size' => 'normal',
+                        'defer' => true,
+                        'async' => true,
+                    )
+                )
+            ,
+                'mapped' => false,
+                'constraints' => array(
+                    new RecaptchaTrue()
+                )
+            ))
             ->add('send', SubmitType::class, array('label' => 'WYŚLIJ'))
             ->getForm();
 

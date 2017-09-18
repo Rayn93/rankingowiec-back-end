@@ -24,6 +24,7 @@ class AppKernel extends Kernel
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new PUGX\AutocompleterBundle\PUGXAutocompleterBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
+            new EWZ\Bundle\RecaptchaBundle\EWZRecaptchaBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

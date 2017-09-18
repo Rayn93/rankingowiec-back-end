@@ -58,7 +58,9 @@
                         <div class="form-group">
                             {{ form_widget(contactForm.message, {'attr': {'class': 'form-control'}}) }}
                         </div>
+                        {{ form_widget(contactForm.recaptcha) }}
                         {{ form_widget(contactForm.send, {'attr': {'class': 'btn btn-primary btn-lg'}}) }}
+
                         {{ form_rest(contactForm) }}
                         <input type="hidden" name="checker" value="1" />
                     </form>

@@ -36,7 +36,7 @@ class PagesController extends Controller
         if ($request->isMethod('POST')) {
             $contactForm->handleRequest($request);
 
-            if ($contactForm->isValid()) {
+            if ($contactForm->isSubmitted() && $contactForm->isValid()) {
 
                 $name = $contactForm->getData()['name'];
                 $email = $contactForm->getData()['email'];

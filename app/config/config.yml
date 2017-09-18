@@ -105,3 +105,10 @@ vich_uploader:
 knp_paginator:
     template:
         sortable: AdminBundle:Pagination:sortable_link.html.twig
+
+
+ewz_recaptcha:
+    public_key:  6Le7ITEUAAAAAMV5wQ1AGDE58y6xcWJmdTwuo90Y
+    private_key: 6Le7ITEUAAAAAGjytdTHdeLXwsLd9t1iU95rYTiP
+    # Not needed as "%kernel.default_locale%" is the default value for the locale key
+    locale_key:  %kernel.default_locale%
