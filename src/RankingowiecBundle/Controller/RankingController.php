@@ -420,8 +420,8 @@ class RankingController extends Controller{
         $totalResult = $RankObject->getTotalResult();
 
         $newTotalResult = array(
-            $totalResult[0] => $totalResult[0] + $plus,
-            $totalResult[1] => $totalResult[1] + $minus,
+            'plus' => $totalResult[0] + $plus,
+            'minus' => $totalResult[1] + $minus,
         );
 
 

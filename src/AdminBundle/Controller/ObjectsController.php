@@ -84,7 +84,8 @@ class ObjectsController extends Controller{
 
         if($id == null){
             $RankObject = new RankObject();
-            $RankObject->setAuthor($this->getUser())->setTotalResult(array(1,1));
+            $RankObject->setAuthor($this->getUser())
+                        ->setTotalResult(array('plus' => 1, 'minus' => 1));
             $newRankObjectForm = TRUE;
         }else{
             $RankObject = $this->getDoctrine()->getRepository('RankingowiecBundle:RankObject')->find($id);
@@ -127,11 +128,20 @@ class ObjectsController extends Controller{
 
 
         $Object = $this->getDoctrine()->getRepository('RankingowiecBundle:RankObject')->find($id);
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($Object);
-        $em->flush();
+        $RankItem = $this->getDoctrine()->getRepository('RankingowiecBundle:RankingItem')->getRankingsWithItem($id);
 
-        $this->get('session')->getFlashBag()->add('success', 'Poprawnie usunięto obiekt');
+
+        if($RankItem == NULL){
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($Object);
+            $em->flush();
+            $this->get('session')->getFlashBag()->add('success', 'Poprawnie usunięto obiekt');
+
+        }
+        else{
+            $this->get('session')->getFlashBag()->add('error', 'Nie można usunąć obiektu który jest aktualnie w jakimś rankingu.');
+
+        }
 
         return $this->redirect($this->generateUrl('admin_objects'));
 
