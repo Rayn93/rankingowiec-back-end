@@ -33,7 +33,7 @@ class PagesController extends Controller{
         $PageRepository = $this->getDoctrine()->getRepository('RankingowiecBundle:Page');
         $qb = $PageRepository->getQueryBuilder($queryParams);
 
-        $paginationLimit = $this->container->getParameter('admin.pagination_limit');
+        $paginationLimit = 20; //$this->container->getParameter('admin.pagination_limit');
         $limitList = array(5, 10, 20, 50);
         $limit = $request->query->get('limit', $paginationLimit);
 

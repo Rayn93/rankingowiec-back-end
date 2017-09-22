@@ -104,6 +104,12 @@ class RankingController extends Controller{
             $RankingId = $Ranking->getId();
             $Items = $ItemsRepo->getRankingObjects($RankingId);
 
+            $em = $this->getDoctrine()->getManager();
+            $views = $Ranking->getNumbVisits();
+            $Ranking->setNumbVisits($views+1);
+            $em->persist($Ranking);
+            $em->flush();
+
             $total_votes = 0;
 
             foreach ($Items as $item){

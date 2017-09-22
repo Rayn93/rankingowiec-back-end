@@ -34,7 +34,7 @@ class ObjectsController extends Controller{
         $ObjectRepository = $this->getDoctrine()->getRepository('RankingowiecBundle:RankObject');
         $qb = $ObjectRepository->getQueryBuilder($queryParams);
 
-        $paginationLimit = $this->container->getParameter('admin.pagination_limit');
+        $paginationLimit = 20; //$this->container->getParameter('admin.pagination_limit');
         $limitList = array(5, 10, 20, 50);
         $limit = $request->query->get('limit', $paginationLimit);
 
@@ -84,7 +84,7 @@ class ObjectsController extends Controller{
 
         if($id == null){
             $RankObject = new RankObject();
-            $RankObject->setAuthor($this->getUser());
+            $RankObject->setAuthor($this->getUser())->setTotalResult(array(1,1));
             $newRankObjectForm = TRUE;
         }else{
             $RankObject = $this->getDoctrine()->getRepository('RankingowiecBundle:RankObject')->find($id);

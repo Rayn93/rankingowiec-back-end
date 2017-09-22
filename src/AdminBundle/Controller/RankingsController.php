@@ -33,7 +33,7 @@ class RankingsController extends Controller{
         $RankingRepository = $this->getDoctrine()->getRepository('RankingowiecBundle:Ranking');
         $qb = $RankingRepository->getQueryBuilder($queryParams);
 
-        $paginationLimit = $this->container->getParameter('admin.pagination_limit');
+        $paginationLimit = 20; //$this->container->getParameter('admin.pagination_limit');
         $limitList = array(5, 10, 20, 50);
         $limit = $request->query->get('limit', $paginationLimit);
 

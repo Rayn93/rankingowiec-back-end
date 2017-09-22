@@ -35,7 +35,7 @@ class UsersController extends Controller{
         $UserRepository = $this->getDoctrine()->getRepository('RankingowiecBundle:User');
         $qb = $UserRepository->getQueryBuilder($queryParams);
 
-        $paginationLimit = $this->container->getParameter('admin.pagination_limit');
+        $paginationLimit = 20; //$this->container->getParameter('admin.pagination_limit');
         $limitList = array(5, 10, 20, 50);
         $limit = $request->query->get('limit', $paginationLimit);
 
