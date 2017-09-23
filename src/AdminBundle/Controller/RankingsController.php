@@ -124,8 +124,16 @@ class RankingsController extends Controller{
      *
      * @Template()
      */
-    public function deleteAction(){
-        return array();
+    public function deleteAction($id){
+
+        $Ranking = $this->getDoctrine()->getRepository('RankingowiecBundle:Ranking')->find($id);
+
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($Ranking);
+        $em->flush();
+        $this->get('session')->getFlashBag()->add('success', 'Poprawnie usunięto ranking');
+
+        return $this->redirect($this->generateUrl('admin_rankings'));
     }
 
 

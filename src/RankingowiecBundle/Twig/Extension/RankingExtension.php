@@ -99,15 +99,17 @@ class RankingExtension extends \Twig_Extension {
     public function cutText($text, $length = 200, $wrapTag = 'p'){
 
         $text = strip_tags($text);
-        $text = substr($text, 0, $length).' [...]';
+        mb_internal_encoding('utf-8');
+        $text2 = mb_substr($text, 0, $length, 'UTF-8').' [...]';
+
 
         if($wrapTag == ''){
-            return $text;
+            return $text2;
         }
         else{
             $open_tag = '<'.$wrapTag.'>';
             $close_tag = '</'.$wrapTag.'>';
-            return $open_tag.$text.$close_tag;
+            return $open_tag.$text2.$close_tag;
         }
 
     }
